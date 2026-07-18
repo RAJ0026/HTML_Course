@@ -1,0 +1,2 @@
+//This .gitkeep is used to keep the img folder in the repository even if it's empty.
+//Because Git does not track empty directories, adding a .gitkeep file allows the folder to be included in the repository.

@@ -1,0 +1,2 @@
+//This will ignore the environment [.env] variable file for the Todo List application and any file you want to ignore.
+.env

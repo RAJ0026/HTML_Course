@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazon Clone – Home</title>
     <meta name="description" content="A sleek demo of an Amazon‑style e‑commerce homepage – 5% mockup." />
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Prime</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Kindle</a></li>
+            <li><a href="#">Gift Cards</a></li>
+        </ul>
+    </nav>
+
     <!-- Header -->
     <header class="site-header">
         <div class="header-left">
@@ -25,6 +36,17 @@
             <a href="#" class="nav-link cart">🛒 <span class="cart-count">0</span></a>
         </div>
     </header>
+
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+        <div class="carousel-slides">
+            <div class="slide"><img src="https://picsum.photos/1200/300?random=10" alt="Hero 1" /></div>
+            <div class="slide"><img src="https://picsum.photos/1200/300?random=11" alt="Hero 2" /></div>
+            <div class="slide"><img src="https://picsum.photos/1200/300?random=12" alt="Hero 3" /></div>
+        </div>
+        <button class="carousel-prev">&#10094;</button>
+        <button class="carousel-next">&#10095;</button>
+    </section>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -48,11 +70,54 @@
                 <button class="add-to-cart">Add to Cart</button>
             </article>
         </section>
+
+        <!-- Deals Carousel -->
+        <section class="deals-carousel">
+            <h2>Today's Deals</h2>
+            <div class="deals-container">
+                <article class="deal-card">
+                    <img src="https://picsum.photos/180/180?random=4" alt="Deal 1" />
+                    <h4>Smart Speaker</h4>
+                    <p class="price">$19.99</p>
+                </article>
+                <article class="deal-card">
+                    <img src="https://picsum.photos/180/180?random=5" alt="Deal 2" />
+                    <h4>Wireless Earbuds</h4>
+                    <p class="price">$49.99</p>
+                </article>
+                <article class="deal-card">
+                    <img src="https://picsum.photos/180/180?random=6" alt="Deal 3" />
+                    <h4>Bluetooth Speaker</h4>
+                    <p class="price">$29.99</p>
+                </article>
+                <article class="deal-card">
+                    <img src="https://picsum.photos/180/180?random=7" alt="Deal 4" />
+                    <h4>Kindle Cover</h4>
+                    <p class="price">$9.99</p>
+                </article>
+                <article class="deal-card">
+                    <img src="https://picsum.photos/180/180?random=8" alt="Deal 5" />
+                    <h4>Amazon Gift Card $25</h4>
+                    <p class="price">Free</p>
+                </article>
+            </div>
+            <button class="deals-prev">&#10094;</button>
+            <button class="deals-next">&#10095;</button>
+        </section>
     </main>
 
-    <!-- Footer (tiny placeholder) -->
+    <!-- Footer -->
     <footer class="site-footer">
-        <p>&copy; 2026 Amazon Clone Demo</p>
+        <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="#">Prime</a></li>
+            <li><a href="#">Policies</a></li>
+            <li><a href="#">© 2026 Amazon Clone Demo</a></li>
+        </ul>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Clone – Home</title>
+    <meta name="description" content="A sleek demo of an Amazon‑style e‑commerce homepage – 5% mockup." />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Here an Ecommerece Website</h1>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-left">
+            <a href="#" class="logo">Amazon</a>
+        </div>
+        <div class="header-center">
+            <input type="text" class="search-input" placeholder="Search Amazon" />
+            <button class="search-button">🔍</button>
+        </div>
+        <div class="header-right">
+            <a href="#" class="nav-link">Sign In</a>
+            <a href="#" class="nav-link">Orders</a>
+            <a href="#" class="nav-link cart">🛒 <span class="cart-count">0</span></a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="product-grid">
+            <article class="product-card">
+                <img src="https://picsum.photos/200/200?random=1" alt="Product 1" />
+                <h3>Echo Dot (5th Gen)</h3>
+                <p class="price">$29.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </article>
+            <article class="product-card">
+                <img src="https://picsum.photos/200/200?random=2" alt="Product 2" />
+                <h3>Kindle Paperwhite</h3>
+                <p class="price">$129.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </article>
+            <article class="product-card">
+                <img src="https://picsum.photos/200/200?random=3" alt="Product 3" />
+                <h3>Fire TV Stick 4K</h3>
+                <p class="price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer (tiny placeholder) -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Amazon Clone Demo</p>
+    </footer>
 </body>
 </html>

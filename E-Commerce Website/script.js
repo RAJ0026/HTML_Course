@@ -1,4 +1,4 @@
-/* script.js – Amazon Clone interactive features (~25% milestone) */
+/* script.js – Amazon Clone interactive features (~30% milestone) */
 
 'use strict';
 
@@ -52,8 +52,10 @@ const cart = {
   },
 
   remove(id) {
+    const removed = this.items.find(i => i.id === id);
     this.items = this.items.filter(i => i.id !== id);
     this._sync();
+    if (removed) showUndoToast(removed);
   },
 
   changeQty(id, delta) {
@@ -306,6 +308,8 @@ function openQuickView(id) {
   $('#modal-overlay')?.classList.add('open');
   $('#quick-view-modal')?.classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Animate rating bars with a slight delay so CSS transition fires
+  setTimeout(animateRatingBars, 80);
 }
 
 function closeQuickView() {
@@ -847,4 +851,260 @@ document.addEventListener('DOMContentLoaded', () => {
   initRecentlyViewed();  // new
   initPromoCode();       // new
   initNewsletter();      // new
+});
+
+/* ============================================================
+   Sticky Shrinking Header
+   ============================================================ */
+function initStickyHeader() {
+  const header = $('#site-header');
+  if (!header) return;
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+}
+
+/* ============================================================
+   Mobile Navigation Drawer
+   ============================================================ */
+function initMobileNav() {
+  const hamburger = $('#hamburger-btn');
+  const mobileNav = $('#mobile-nav');
+  const overlay   = $('#mobile-nav-overlay');
+  const closeBtn  = $('#mobile-nav-close');
+  if (!hamburger || !mobileNav) return;
+
+  function openNav() {
+    mobileNav.classList.add('open');
+    overlay?.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    mobileNav.classList.remove('open');
+    overlay?.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeNav() : openNav();
+  });
+
+  closeBtn?.addEventListener('click', closeNav);
+  overlay?.addEventListener('click', closeNav);
+
+  // Close on any mobile-nav link click
+  $$('.mobile-nav-link', mobileNav).forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+  });
+}
+
+/* ============================================================
+   Wishlist Header Badge
+   ============================================================ */
+function updateWishlistBadge(count) {
+  const badge = $('#wishlist-count');
+  if (!badge) return;
+  badge.textContent = count;
+  badge.setAttribute('aria-label', `${count} item${count !== 1 ? 's' : ''} in wishlist`);
+  badge.classList.add('bump');
+  setTimeout(() => badge.classList.remove('bump'), 300);
+}
+
+/* patch initWishlist to also update header badge */
+const _patchWishlistBadge = initWishlist;
+function initWishlist() {
+  const KEY = 'wishlist';
+  let wishlist = new Set(JSON.parse(localStorage.getItem(KEY) ?? '[]'));
+
+  function save() { localStorage.setItem(KEY, JSON.stringify([...wishlist])); }
+
+  function applyWishlisted(btn, active) {
+    const icon = btn.querySelector('i');
+    if (!icon) return;
+    if (active) {
+      btn.classList.add('active');
+      icon.classList.replace('fa-regular', 'fa-solid');
+    } else {
+      btn.classList.remove('active');
+      icon.classList.replace('fa-solid', 'fa-regular');
+    }
+  }
+
+  $$('.wishlist-btn').forEach(btn => {
+    if (wishlist.has(btn.dataset.id)) applyWishlisted(btn, true);
+  });
+  updateWishlistBadge(wishlist.size);
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.wishlist-btn');
+    if (!btn) return;
+    e.stopPropagation();
+    const id = btn.dataset.id;
+    if (wishlist.has(id)) {
+      wishlist.delete(id);
+      applyWishlisted(btn, false);
+      showToast('💔 Removed from wishlist');
+    } else {
+      wishlist.add(id);
+      applyWishlisted(btn, true);
+      showToast('❤️ Saved to wishlist!');
+    }
+    save();
+    updateWishlistBadge(wishlist.size);
+  });
+}
+
+/* ============================================================
+   Card Qty Stepper
+   ============================================================ */
+function initCardQtyStepper() {
+  // Read qty from the display next to the clicked Add-to-Cart button
+  // Override add behavior: use card's qty display value
+  document.addEventListener('click', e => {
+    // Handle card-qty-btn clicks
+    const qtyBtn = e.target.closest('.card-qty-btn');
+    if (qtyBtn) {
+      const row     = qtyBtn.closest('.card-qty-row');
+      const display = row?.querySelector('.card-qty-display');
+      if (!display) return;
+      let val = parseInt(display.textContent) || 1;
+      if (qtyBtn.dataset.action === 'inc') val = Math.min(val + 1, 10);
+      if (qtyBtn.dataset.action === 'dec') val = Math.max(val - 1, 1);
+      display.textContent = val;
+    }
+  });
+}
+
+// Override ATC to respect the card qty stepper
+function initCartButtonsWithQty() {
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.add-to-cart');
+    if (!btn || btn.id === 'modal-atc') return;  // modal handled separately
+    const card = btn.closest('[data-id]');
+    if (!card) return;
+    const id = card.dataset.id;
+
+    // Get qty from stepper if present
+    const qtyDisplay = card.querySelector('.card-qty-display');
+    const qty = qtyDisplay ? (parseInt(qtyDisplay.textContent) || 1) : 1;
+
+    for (let i = 0; i < qty; i++) cart.add(id);
+    if (qty > 1) showToast(`🛒 Added ${qty}× ${getProduct(id)?.name ?? ''} to cart`);
+
+    // Reset stepper to 1
+    if (qtyDisplay) qtyDisplay.textContent = '1';
+
+    const original = btn.textContent;
+    btn.textContent = '✓ Added';
+    btn.classList.add('added');
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('added');
+      btn.disabled = false;
+    }, 1800);
+  });
+}
+
+/* ============================================================
+   Undo Remove Toast
+   ============================================================ */
+let undoTimer  = null;
+let undoItem   = null;
+
+function injectUndoToast() {
+  const el = document.createElement('div');
+  el.className = 'undo-toast';
+  el.id = 'undo-toast';
+  el.innerHTML = `
+    <span id="undo-msg">Item removed</span>
+    <button class="undo-toast-btn" id="undo-btn">Undo</button>
+  `;
+  document.body.appendChild(el);
+
+  $('#undo-btn')?.addEventListener('click', () => {
+    if (undoItem) {
+      // Re-add at original qty
+      const existing = cart.items.find(i => i.id === undoItem.id);
+      if (existing) {
+        existing.qty += undoItem.qty;
+        cart._sync();
+      } else {
+        cart.items.push({ ...undoItem });
+        cart._sync();
+      }
+      showToast(`↔️ "${undoItem.name}" restored`);
+    }
+    hideUndoToast();
+  });
+}
+
+function showUndoToast(item) {
+  undoItem = { ...item };
+  const toast  = $('#undo-toast');
+  const msg    = $('#undo-msg');
+  if (!toast) return;
+  if (msg) msg.textContent = `“${item.name}” removed`;
+  toast.classList.add('show');
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(hideUndoToast, 5000);
+}
+
+function hideUndoToast() {
+  $('#undo-toast')?.classList.remove('show');
+  undoItem = null;
+}
+
+/* ============================================================
+   Rating Bars Animation (triggers on quick-view open)
+   ============================================================ */
+function animateRatingBars() {
+  const bars = $$('.rb-bar', $('#quick-view-modal'));
+  // Force a reflow, then restore the target width
+  bars.forEach(bar => {
+    const target = bar.style.width;
+    bar.style.width = '0';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        bar.style.width = target;
+      });
+    });
+  });
+}
+
+/* ============================================================
+   Boot
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  injectUndoToast();     // inject before other inits
+  loadCart();
+  initCartDrawer();
+  initCartButtons();     // kept as base (modal ATC)
+  initCartButtonsWithQty(); // new: cards with stepper
+  initWishlist();        // overridden above to include badge
+  initQuickView();
+  initSearch();
+  initHeroCarousel();
+  initDealsCarousel();
+  initBackToTop();
+  initKeyboard();
+  initScrollReveal();
+  initFilterSort();
+  initDealCountdowns();
+  initRecentlyViewed();
+  initPromoCode();
+  initNewsletter();
+  initStickyHeader();    // new
+  initMobileNav();       // new
+  initCardQtyStepper();  // new
 });

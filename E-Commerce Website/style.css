@@ -109,6 +109,13 @@ img {
   padding: 0.6rem 2rem;
   background: var(--header-bg);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: padding var(--transition), box-shadow var(--transition);
+}
+
+/* Shrink header on scroll */
+.site-header.scrolled {
+  padding: 0.3rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .logo {
@@ -1691,5 +1698,332 @@ img {
 
   .newsletter-section {
     padding: 2rem 1rem;
+  }
+}
+
+/* ============================================================
+   Hamburger Button
+   ============================================================ */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.ham-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-btn[aria-expanded="true"] .ham-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn[aria-expanded="true"] .ham-bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn[aria-expanded="true"] .ham-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   Mobile Nav Drawer
+   ============================================================ */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(300px, 85vw);
+  height: 100vh;
+  background: var(--nav-bg);
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: var(--header-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.mobile-nav-title {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.75;
+  transition: opacity var(--transition);
+}
+
+.mobile-nav-close:hover {
+  opacity: 1;
+}
+
+.mobile-nav-list {
+  padding: 0.5rem 0;
+  flex: 1;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.8rem 1.4rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background var(--transition), color var(--transition);
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--primary);
+}
+
+/* ============================================================
+   Wishlist Header Badge
+   ============================================================ */
+.wishlist-header-btn {
+  position: relative;
+}
+
+.wishlist-count {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #e53935;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 3px;
+  transition: transform 0.2s ease;
+}
+
+.wishlist-count.bump {
+  transform: scale(1.4);
+}
+
+/* ============================================================
+   Card Qty Stepper
+   ============================================================ */
+.card-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.35rem;
+}
+
+.card-qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid #d4d4d4;
+  background: #f8f8f8;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  line-height: 1;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.card-qty-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.card-qty-display {
+  min-width: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   Product Thumb Zoom on Hover
+   ============================================================ */
+.product-card {
+  overflow: hidden;
+}
+
+.product-thumb {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-thumb {
+  transform: scale(1.07);
+}
+
+/* ============================================================
+   Rating Breakdown Bars (Quick-View Modal)
+   ============================================================ */
+.rating-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0.4rem 0;
+}
+
+.rb-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.rb-label {
+  width: 30px;
+  color: var(--text-muted);
+  font-weight: 600;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.rb-bar-track {
+  flex: 1;
+  height: 7px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rb-bar {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  width: 0; /* animated in via JS */
+  transition: width 0.6s ease;
+}
+
+.rb-pct {
+  width: 28px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Undo Toast
+   ============================================================ */
+.undo-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--nav-bg);
+  color: #fff;
+  padding: 0.65rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.undo-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+
+.undo-toast-btn {
+  background: var(--primary);
+  color: #111;
+  border: none;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.undo-toast-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* ============================================================
+   Responsive – 30% additions
+   ============================================================ */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .header-right .nav-link:not(.cart):not(.wishlist-header-btn) {
+    display: none;
+  }
+
+  .site-header {
+    padding: 0.55rem 1rem;
+    gap: 0.6rem;
+  }
+
+  .site-header.scrolled {
+    padding: 0.3rem 1rem;
   }
 }

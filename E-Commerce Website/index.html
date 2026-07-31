@@ -28,9 +28,13 @@
             <li><a href="#" class="top-nav-link">Deals</a></li>
         </ul>
     </nav>
-
-    <!-- Header -->
-    <header class="site-header" role="banner">
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>    <header class="site-header" id="site-header" role="banner">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="ham-bar"></span>
+            <span class="ham-bar"></span>
+            <span class="ham-bar"></span>
+        </button>
         <div class="header-left">
             <a href="#" class="logo" aria-label="Amazon Clone Home">Amazon</a>
         </div>
@@ -42,8 +46,14 @@
             <ul class="search-dropdown" id="search-dropdown" role="listbox" aria-label="Search suggestions"></ul>
         </div>
         <div class="header-right">
-            <a href="#" class="nav-link" id="signin-link">Hello, Sign In<span class="nav-sub">Account & Lists</span></a>
-            <a href="#" class="nav-link" id="orders-link">Returns<span class="nav-sub">& Orders</span></a>
+            <a href="#" class="nav-link" id="signin-link">Hello, Sign In<span class="nav-sub">Account &amp; Lists</span></a>
+            <a href="#" class="nav-link" id="orders-link">Returns<span class="nav-sub">&amp; Orders</span></a>
+            <!-- Wishlist icon with badge -->
+            <button class="nav-link wishlist-header-btn" id="wishlist-header-btn" aria-label="Your wishlist">
+                <i class="fa-regular fa-heart"></i>
+                <span class="wishlist-count" id="wishlist-count" aria-label="0 items in wishlist">0</span>
+                <span class="nav-sub">Wishlist</span>
+            </button>
             <button class="nav-link cart" id="cart-link" aria-label="Open cart" aria-haspopup="dialog">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-count" id="cart-count">0</span>
@@ -51,6 +61,25 @@
             </button>
         </div>
     </header>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title"><i class="fa-solid fa-bars"></i> Menu</span>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="#" class="mobile-nav-link">All Departments</a></li>
+            <li><a href="#" class="mobile-nav-link">Prime</a></li>
+            <li><a href="#" class="mobile-nav-link">Electronics</a></li>
+            <li><a href="#" class="mobile-nav-link">Books</a></li>
+            <li><a href="#" class="mobile-nav-link">Fashion</a></li>
+            <li><a href="#" class="mobile-nav-link">Home &amp; Kitchen</a></li>
+            <li><a href="#" class="mobile-nav-link">Kindle</a></li>
+            <li><a href="#" class="mobile-nav-link">Gift Cards</a></li>
+            <li><a href="#" class="mobile-nav-link">Deals</a></li>
+        </ul>
+    </nav>
 
     <!-- Hero Carousel -->
     <section class="hero-carousel" aria-label="Featured promotions">
@@ -174,6 +203,11 @@
                             <span class="price-original">$49.99</span>
                             <span class="discount-badge">40% off</span>
                         </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-1">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
+                        </div>
                         <button class="add-to-cart" data-id="1">Add to Cart</button>
                     </div>
                 </article>
@@ -192,6 +226,11 @@
                                 class="review-count">(12,091)</span></div>
                         <div class="price-row">
                             <span class="price">$129.99</span>
+                        </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-2">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
                         </div>
                         <button class="add-to-cart" data-id="2">Add to Cart</button>
                     </div>
@@ -214,6 +253,11 @@
                             <span class="price-original">$59.99</span>
                             <span class="discount-badge">17% off</span>
                         </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-3">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
+                        </div>
                         <button class="add-to-cart" data-id="3">Add to Cart</button>
                     </div>
                 </article>
@@ -235,6 +279,11 @@
                             <span class="price-original">$139.99</span>
                             <span class="discount-badge">29% off</span>
                         </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-4">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
+                        </div>
                         <button class="add-to-cart" data-id="4">Add to Cart</button>
                     </div>
                 </article>
@@ -252,6 +301,11 @@
                                 class="review-count">(9,301)</span></div>
                         <div class="price-row">
                             <span class="price">$199.00</span>
+                        </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-5">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
                         </div>
                         <button class="add-to-cart" data-id="5">Add to Cart</button>
                     </div>
@@ -273,6 +327,11 @@
                             <span class="price">$899.99</span>
                             <span class="price-original">$1,299.99</span>
                             <span class="discount-badge">31% off</span>
+                        </div>
+                        <div class="card-qty-row">
+                            <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
+                            <span class="card-qty-display" id="qty-6">1</span>
+                            <button class="card-qty-btn" data-action="inc" aria-label="Increase">+</button>
                         </div>
                         <button class="add-to-cart" data-id="6">Add to Cart</button>
                     </div>
@@ -429,6 +488,14 @@
             <div class="modal-info">
                 <h2 id="modal-name"></h2>
                 <div class="modal-stars" id="modal-stars"></div>
+                <!-- Rating breakdown bars -->
+                <div class="rating-breakdown" id="modal-rating-breakdown">
+                    <div class="rb-row"><span class="rb-label">5 ★</span><div class="rb-bar-track"><div class="rb-bar" style="width:62%"></div></div><span class="rb-pct">62%</span></div>
+                    <div class="rb-row"><span class="rb-label">4 ★</span><div class="rb-bar-track"><div class="rb-bar" style="width:22%"></div></div><span class="rb-pct">22%</span></div>
+                    <div class="rb-row"><span class="rb-label">3 ★</span><div class="rb-bar-track"><div class="rb-bar" style="width:9%"></div></div><span class="rb-pct">9%</span></div>
+                    <div class="rb-row"><span class="rb-label">2 ★</span><div class="rb-bar-track"><div class="rb-bar" style="width:4%"></div></div><span class="rb-pct">4%</span></div>
+                    <div class="rb-row"><span class="rb-label">1 ★</span><div class="rb-bar-track"><div class="rb-bar" style="width:3%"></div></div><span class="rb-pct">3%</span></div>
+                </div>
                 <p id="modal-desc" class="modal-desc"></p>
                 <div class="modal-price-row">
                     <span class="price" id="modal-price"></span>

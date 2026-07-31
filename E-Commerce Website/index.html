@@ -8,6 +8,7 @@
     <meta name="description"
         content="A sleek Amazon-style e-commerce homepage with live cart, carousels, and category browsing." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -33,19 +34,21 @@
         <div class="header-left">
             <a href="#" class="logo" aria-label="Amazon Clone Home">Amazon</a>
         </div>
-        <div class="header-center">
+        <div class="header-center" style="position:relative;">
             <input id="search-input" type="text" class="search-input" placeholder="Search products, brands and more…"
-                aria-label="Search products" />
+                aria-label="Search products" autocomplete="off" />
             <button id="search-btn" class="search-button" aria-label="Submit search">🔍</button>
+            <!-- Search Autocomplete Dropdown -->
+            <ul class="search-dropdown" id="search-dropdown" role="listbox" aria-label="Search suggestions"></ul>
         </div>
         <div class="header-right">
             <a href="#" class="nav-link" id="signin-link">Hello, Sign In<span class="nav-sub">Account & Lists</span></a>
             <a href="#" class="nav-link" id="orders-link">Returns<span class="nav-sub">& Orders</span></a>
-            <a href="#" class="nav-link cart" id="cart-link" aria-label="Cart">
-                🛒
+            <button class="nav-link cart" id="cart-link" aria-label="Open cart" aria-haspopup="dialog">
+                <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-count" id="cart-count">0</span>
                 <span class="nav-sub">Cart</span>
-            </a>
+            </button>
         </div>
     </header>
 
@@ -132,12 +135,18 @@
             <h2 id="featured-heading" class="section-title">Featured Products</h2>
             <div class="product-grid" id="product-grid">
 
-                <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99">
+                <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99"
+                    data-img="https://picsum.photos/200/200?random=1"
+                    data-desc="The Echo Dot 5th Gen delivers rich, room-filling sound with built-in Alexa voice assistant.">
                     <div class="badge badge-prime">Prime</div>
-                    <img src="https://picsum.photos/200/200?random=1" alt="Echo Dot (5th Gen)" loading="lazy" />
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="1"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=1" alt="Echo Dot (5th Gen)" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>Echo Dot (5th Gen)</h3>
-                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½</div>
+                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½ <span
+                                class="review-count">(3,847)</span></div>
                         <div class="price-row">
                             <span class="price">$29.99</span>
                             <span class="price-original">$49.99</span>
@@ -147,12 +156,18 @@
                     </div>
                 </article>
 
-                <article class="product-card" data-id="2" data-name="Kindle Paperwhite" data-price="129.99">
+                <article class="product-card" data-id="2" data-name="Kindle Paperwhite" data-price="129.99"
+                    data-img="https://picsum.photos/200/200?random=2"
+                    data-desc="The thinnest, lightest Kindle Paperwhite yet — with a flush-front design and 300 ppi glare-free display.">
                     <div class="badge badge-new">New</div>
-                    <img src="https://picsum.photos/200/200?random=2" alt="Kindle Paperwhite" loading="lazy" />
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="2"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=2" alt="Kindle Paperwhite" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>Kindle Paperwhite</h3>
-                        <div class="stars" aria-label="Rating: 4.8 out of 5">★★★★★</div>
+                        <div class="stars" aria-label="Rating: 4.8 out of 5">★★★★★ <span
+                                class="review-count">(12,091)</span></div>
                         <div class="price-row">
                             <span class="price">$129.99</span>
                         </div>
@@ -160,12 +175,18 @@
                     </div>
                 </article>
 
-                <article class="product-card" data-id="3" data-name="Fire TV Stick 4K" data-price="49.99">
+                <article class="product-card" data-id="3" data-name="Fire TV Stick 4K" data-price="49.99"
+                    data-img="https://picsum.photos/200/200?random=3"
+                    data-desc="Stream in crystal-clear 4K Ultra HD with support for Dolby Vision, HDR, and HDR10+.">
                     <div class="badge badge-deal">Deal</div>
-                    <img src="https://picsum.photos/200/200?random=3" alt="Fire TV Stick 4K" loading="lazy" />
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="3"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=3" alt="Fire TV Stick 4K" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>Fire TV Stick 4K</h3>
-                        <div class="stars" aria-label="Rating: 4.6 out of 5">★★★★½</div>
+                        <div class="stars" aria-label="Rating: 4.6 out of 5">★★★★½ <span
+                                class="review-count">(7,523)</span></div>
                         <div class="price-row">
                             <span class="price">$49.99</span>
                             <span class="price-original">$59.99</span>
@@ -175,12 +196,18 @@
                     </div>
                 </article>
 
-                <article class="product-card" data-id="4" data-name="Ring Video Doorbell" data-price="99.99">
+                <article class="product-card" data-id="4" data-name="Ring Video Doorbell" data-price="99.99"
+                    data-img="https://picsum.photos/200/200?random=20"
+                    data-desc="See, hear and speak to visitors from anywhere with the Ring Video Doorbell.">
                     <div class="badge badge-prime">Prime</div>
-                    <img src="https://picsum.photos/200/200?random=20" alt="Ring Video Doorbell" loading="lazy" />
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="4"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=20" alt="Ring Video Doorbell" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>Ring Video Doorbell</h3>
-                        <div class="stars" aria-label="Rating: 4.3 out of 5">★★★★☆</div>
+                        <div class="stars" aria-label="Rating: 4.3 out of 5">★★★★☆ <span
+                                class="review-count">(5,204)</span></div>
                         <div class="price-row">
                             <span class="price">$99.99</span>
                             <span class="price-original">$139.99</span>
@@ -190,11 +217,17 @@
                     </div>
                 </article>
 
-                <article class="product-card" data-id="5" data-name="AirPods Pro (2nd Gen)" data-price="199.00">
-                    <img src="https://picsum.photos/200/200?random=21" alt="AirPods Pro (2nd Gen)" loading="lazy" />
+                <article class="product-card" data-id="5" data-name="AirPods Pro (2nd Gen)" data-price="199.00"
+                    data-img="https://picsum.photos/200/200?random=21"
+                    data-desc="AirPods Pro (2nd Gen) feature active noise cancellation and Adaptive Transparency for immersive audio.">
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="5"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=21" alt="AirPods Pro (2nd Gen)" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>AirPods Pro (2nd Gen)</h3>
-                        <div class="stars" aria-label="Rating: 4.7 out of 5">★★★★★</div>
+                        <div class="stars" aria-label="Rating: 4.7 out of 5">★★★★★ <span
+                                class="review-count">(9,301)</span></div>
                         <div class="price-row">
                             <span class="price">$199.00</span>
                         </div>
@@ -202,12 +235,18 @@
                     </div>
                 </article>
 
-                <article class="product-card" data-id="6" data-name="Samsung 65\" QLED TV" data-price="899.99">
+                <article class="product-card" data-id="6" data-name="Samsung 65&quot; QLED TV" data-price="899.99"
+                    data-img="https://picsum.photos/200/200?random=22"
+                    data-desc="Samsung 65&quot; QLED TV with Quantum HDR and an ultra-slim bezel design for cinema-quality viewing.">
                     <div class="badge badge-deal">Hot Deal</div>
-                    <img src="https://picsum.photos/200/200?random=22" alt='Samsung 65" QLED TV' loading="lazy" />
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-id="6"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <img src="https://picsum.photos/200/200?random=22" alt="Samsung 65 inch QLED TV" loading="lazy"
+                        class="product-thumb" />
                     <div class="card-body">
                         <h3>Samsung 65" QLED TV</h3>
-                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½</div>
+                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½ <span
+                                class="review-count">(2,158)</span></div>
                         <div class="price-row">
                             <span class="price">$899.99</span>
                             <span class="price-original">$1,299.99</span>
@@ -317,6 +356,49 @@
 
     <!-- Cart Toast Notification -->
     <div class="cart-toast" id="cart-toast" role="status" aria-live="polite"></div>
+
+    <!-- Cart Sidebar Drawer -->
+    <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Your shopping cart">
+        <div class="cart-drawer-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Your Cart <span id="drawer-count">(0 items)</span></h2>
+            <button class="cart-drawer-close" id="cart-close" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-drawer-body" id="cart-drawer-body">
+            <p class="cart-empty-msg" id="cart-empty">Your cart is empty. Start adding items!</p>
+        </div>
+        <div class="cart-drawer-footer" id="cart-drawer-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <strong id="cart-subtotal">$0.00</strong>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+            <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
+        </div>
+    </aside>
+
+    <!-- Quick-View Modal -->
+    <div class="modal-overlay" id="modal-overlay" aria-hidden="true"></div>
+    <div class="quick-view-modal" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Product quick view">
+        <button class="modal-close" id="modal-close" aria-label="Close quick view">&times;</button>
+        <div class="modal-body">
+            <img id="modal-img" src="" alt="" class="modal-product-img" />
+            <div class="modal-info">
+                <h2 id="modal-name"></h2>
+                <div class="modal-stars" id="modal-stars"></div>
+                <p id="modal-desc" class="modal-desc"></p>
+                <div class="modal-price-row">
+                    <span class="price" id="modal-price"></span>
+                </div>
+                <button class="add-to-cart modal-atc" id="modal-atc">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <!-- Footer -->
     <footer class="site-footer" role="contentinfo">

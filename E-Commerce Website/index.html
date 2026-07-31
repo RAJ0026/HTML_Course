@@ -54,6 +54,10 @@
                 <span class="wishlist-count" id="wishlist-count" aria-label="0 items in wishlist">0</span>
                 <span class="nav-sub">Wishlist</span>
             </button>
+            <!-- Dark Mode Toggle -->
+            <button class="dark-mode-btn" id="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <i class="fa-solid fa-moon" id="dark-mode-icon"></i>
+            </button>
             <button class="nav-link cart" id="cart-link" aria-label="Open cart" aria-haspopup="dialog">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-count" id="cart-count">0</span>
@@ -187,7 +191,7 @@
             <div class="product-grid" id="product-grid">
 
                 <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99"
-                    data-img="https://picsum.photos/200/200?random=1"
+                    data-img="https://picsum.photos/200/200?random=1" data-stock="in-stock"
                     data-desc="The Echo Dot 5th Gen delivers rich, room-filling sound with built-in Alexa voice assistant.">
                     <div class="badge badge-prime">Prime</div>
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="1"><i
@@ -203,6 +207,7 @@
                             <span class="price-original">$49.99</span>
                             <span class="discount-badge">40% off</span>
                         </div>
+                        <div class="stock-badge in-stock"><i class="fa-solid fa-circle-check"></i> In Stock</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-1">1</span>
@@ -213,7 +218,7 @@
                 </article>
 
                 <article class="product-card" data-id="2" data-name="Kindle Paperwhite" data-price="129.99"
-                    data-img="https://picsum.photos/200/200?random=2"
+                    data-img="https://picsum.photos/200/200?random=2" data-stock="low"
                     data-desc="The thinnest, lightest Kindle Paperwhite yet — with a flush-front design and 300 ppi glare-free display.">
                     <div class="badge badge-new">New</div>
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="2"><i
@@ -227,6 +232,7 @@
                         <div class="price-row">
                             <span class="price">$129.99</span>
                         </div>
+                        <div class="stock-badge low"><i class="fa-solid fa-triangle-exclamation"></i> Only 3 left!</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-2">1</span>
@@ -237,7 +243,7 @@
                 </article>
 
                 <article class="product-card" data-id="3" data-name="Fire TV Stick 4K" data-price="49.99"
-                    data-img="https://picsum.photos/200/200?random=3"
+                    data-img="https://picsum.photos/200/200?random=3" data-stock="in-stock"
                     data-desc="Stream in crystal-clear 4K Ultra HD with support for Dolby Vision, HDR, and HDR10+.">
                     <div class="badge badge-deal">Deal</div>
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="3"><i
@@ -253,6 +259,7 @@
                             <span class="price-original">$59.99</span>
                             <span class="discount-badge">17% off</span>
                         </div>
+                        <div class="stock-badge in-stock"><i class="fa-solid fa-circle-check"></i> In Stock</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-3">1</span>
@@ -263,7 +270,7 @@
                 </article>
 
                 <article class="product-card" data-id="4" data-name="Ring Video Doorbell" data-price="99.99"
-                    data-img="https://picsum.photos/200/200?random=20"
+                    data-img="https://picsum.photos/200/200?random=20" data-stock="low"
                     data-desc="See, hear and speak to visitors from anywhere with the Ring Video Doorbell.">
                     <div class="badge badge-prime">Prime</div>
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="4"><i
@@ -279,6 +286,7 @@
                             <span class="price-original">$139.99</span>
                             <span class="discount-badge">29% off</span>
                         </div>
+                        <div class="stock-badge low"><i class="fa-solid fa-triangle-exclamation"></i> Only 5 left!</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-4">1</span>
@@ -289,7 +297,7 @@
                 </article>
 
                 <article class="product-card" data-id="5" data-name="AirPods Pro (2nd Gen)" data-price="199.00"
-                    data-img="https://picsum.photos/200/200?random=21"
+                    data-img="https://picsum.photos/200/200?random=21" data-stock="in-stock"
                     data-desc="AirPods Pro (2nd Gen) feature active noise cancellation and Adaptive Transparency for immersive audio.">
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="5"><i
                             class="fa-regular fa-heart"></i></button>
@@ -302,6 +310,7 @@
                         <div class="price-row">
                             <span class="price">$199.00</span>
                         </div>
+                        <div class="stock-badge in-stock"><i class="fa-solid fa-circle-check"></i> In Stock</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-5">1</span>
@@ -312,7 +321,7 @@
                 </article>
 
                 <article class="product-card" data-id="6" data-name="Samsung 65&quot; QLED TV" data-price="899.99"
-                    data-img="https://picsum.photos/200/200?random=22"
+                    data-img="https://picsum.photos/200/200?random=22" data-stock="low"
                     data-desc="Samsung 65&quot; QLED TV with Quantum HDR and an ultra-slim bezel design for cinema-quality viewing.">
                     <div class="badge badge-deal">Hot Deal</div>
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-id="6"><i
@@ -328,6 +337,7 @@
                             <span class="price-original">$1,299.99</span>
                             <span class="discount-badge">31% off</span>
                         </div>
+                        <div class="stock-badge low"><i class="fa-solid fa-triangle-exclamation"></i> Only 2 left!</div>
                         <div class="card-qty-row">
                             <button class="card-qty-btn" data-action="dec" aria-label="Decrease">−</button>
                             <span class="card-qty-display" id="qty-6">1</span>
@@ -503,6 +513,11 @@
                 <button class="add-to-cart modal-atc" id="modal-atc">Add to Cart</button>
             </div>
         </div>
+        <!-- You might also like -->
+        <div class="modal-related" id="modal-related">
+            <h4 class="related-title">You might also like</h4>
+            <div class="related-grid" id="related-grid"></div>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -570,6 +585,24 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Order Success Modal -->
+    <div class="order-overlay" id="order-overlay" aria-hidden="true"></div>
+    <div class="order-modal" id="order-modal" role="dialog" aria-modal="true" aria-label="Order placed successfully">
+        <div class="order-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h2 class="order-modal-title">Order Placed!</h2>
+        <p class="order-modal-msg">Thank you for your purchase. Your order has been confirmed and will ship within 1–2 business days.</p>
+        <div class="order-modal-detail" id="order-detail">
+            <span id="order-items-count">0 items</span>
+            <span class="order-dot">&bull;</span>
+            <span id="order-total-display">$0.00</span>
+        </div>
+        <div class="order-modal-actions">
+            <button class="order-continue-btn" id="order-continue">Continue Shopping</button>
+            <a href="#" class="order-track-btn" id="order-track">Track Order</a>
+        </div>
+        <p class="order-modal-note">A confirmation email has been sent to your registered address.</p>
+    </div>
 </body>
 
 </html>

@@ -2027,3 +2027,324 @@ img {
     padding: 0.3rem 1rem;
   }
 }
+
+/* ============================================================
+   Dark Mode – CSS variable overrides
+   ============================================================ */
+body,
+body * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+body.dark-mode {
+  --body-bg: hsl(220, 18%, 10%);
+  --card-bg: hsl(220, 16%, 15%);
+  --text-primary: #e8eaf0;
+  --text-muted: #9aa5b4;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Individual overrides that CSS vars don't reach */
+body.dark-mode .filter-btn,
+body.dark-mode .sort-select,
+body.dark-mode .promo-input,
+body.dark-mode .newsletter-input {
+  background: hsl(220, 16%, 20%);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+
+body.dark-mode .filter-btn.active {
+  background: var(--primary);
+  color: #111;
+}
+
+body.dark-mode .card-qty-btn {
+  background: hsl(220, 16%, 22%);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+
+body.dark-mode .rb-bar-track {
+  background: hsl(220, 16%, 25%);
+}
+
+body.dark-mode .search-dropdown {
+  background: hsl(220, 16%, 18%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-dropdown li:hover {
+  background: hsl(220, 16%, 24%);
+}
+
+/* ============================================================
+   Dark Mode Toggle Button
+   ============================================================ */
+.dark-mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--transition), border-color var(--transition), transform 0.35s ease;
+}
+
+.dark-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--primary);
+  transform: rotate(20deg);
+}
+
+body.dark-mode .dark-mode-btn {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ============================================================
+   Stock Indicator Badge
+   ============================================================ */
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0;
+  margin-bottom: 0.25rem;
+}
+
+.stock-badge.in-stock {
+  color: #10b981;
+}
+
+.stock-badge.low {
+  color: #f59e0b;
+}
+
+.stock-badge i {
+  font-size: 0.7rem;
+}
+
+/* ============================================================
+   "You Might Also Like" – in Quick-View Modal
+   ============================================================ */
+.modal-related {
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.4rem 1.2rem;
+}
+
+.related-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.related-card {
+  background: var(--body-bg);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.related-card img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}
+
+.related-card-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.3rem 0.45rem 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-card-price {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #b12704;
+  padding: 0 0.45rem 0.35rem;
+}
+
+/* ============================================================
+   Order Success Modal
+   ============================================================ */
+.order-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.order-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.order-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%) scale(0.9);
+  z-index: 3010;
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 2.5rem 2rem 2rem;
+  width: min(480px, 92vw);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.order-modal.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.order-success-icon {
+  font-size: 4rem;
+  color: #10b981;
+  margin-bottom: 0.75rem;
+  animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop-in {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.order-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.order-modal-msg {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.order-modal-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--body-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.order-dot {
+  color: var(--text-muted);
+}
+
+.order-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.order-continue-btn {
+  padding: 0.65rem 1.4rem;
+  background: var(--primary);
+  color: #111;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.order-continue-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.03);
+}
+
+.order-track-btn {
+  padding: 0.65rem 1.4rem;
+  background: transparent;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background var(--transition), color var(--transition);
+}
+
+.order-track-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+.order-modal-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Responsive – 35% additions
+   ============================================================ */
+@media (max-width: 600px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .order-modal {
+    padding: 2rem 1.2rem 1.5rem;
+  }
+
+  .dark-mode-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}

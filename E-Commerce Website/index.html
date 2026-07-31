@@ -132,7 +132,29 @@
 
         <!-- Featured Products -->
         <section class="product-section" aria-labelledby="featured-heading">
-            <h2 id="featured-heading" class="section-title">Featured Products</h2>
+            <div class="filter-sort-bar" role="toolbar" aria-label="Filter and sort products">
+                <h2 id="featured-heading" class="section-title">Featured Products</h2>
+                <div class="filter-sort-controls">
+                    <!-- Filter buttons -->
+                    <div class="filter-btns" role="group" aria-label="Filter by type">
+                        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+                        <button class="filter-btn" data-filter="prime" id="filter-prime">Prime</button>
+                        <button class="filter-btn" data-filter="deal" id="filter-deal">Deals</button>
+                        <button class="filter-btn" data-filter="new" id="filter-new">New</button>
+                    </div>
+                    <!-- Sort select -->
+                    <div class="sort-control">
+                        <label for="sort-select" class="sort-label"><i class="fa-solid fa-arrow-up-wide-short"></i></label>
+                        <select id="sort-select" class="sort-select" aria-label="Sort products">
+                            <option value="default">Sort by: Featured</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating">Top Rated</option>
+                            <option value="discount">Biggest Discount</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="product-grid" id="product-grid">
 
                 <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99"
@@ -270,11 +292,12 @@
                 <div class="deals-viewport">
                     <div class="deals-track" id="deals-track">
 
-                        <article class="deal-card" data-id="d1" data-name="Smart Speaker Mini" data-price="19.99">
+                        <article class="deal-card" data-id="d1" data-name="Smart Speaker Mini" data-price="19.99" data-ends="5400">
                             <img src="https://picsum.photos/180/180?random=4" alt="Smart Speaker Mini" loading="lazy" />
                             <div class="deal-badge">68% off</div>
                             <h4>Smart Speaker Mini</h4>
                             <div class="deal-stars">★★★★☆</div>
+                            <div class="deal-countdown" aria-label="Deal ends in"><i class="fa-regular fa-clock"></i> <span class="countdown-time">01:30:00</span></div>
                             <div class="deal-prices">
                                 <span class="price">$19.99</span>
                                 <span class="price-original">$62.99</span>
@@ -282,12 +305,12 @@
                             <button class="add-to-cart deal-btn" data-id="d1">Add to Cart</button>
                         </article>
 
-                        <article class="deal-card" data-id="d2" data-name="Wireless Earbuds Pro" data-price="49.99">
-                            <img src="https://picsum.photos/180/180?random=5" alt="Wireless Earbuds Pro"
-                                loading="lazy" />
+                        <article class="deal-card" data-id="d2" data-name="Wireless Earbuds Pro" data-price="49.99" data-ends="9000">
+                            <img src="https://picsum.photos/180/180?random=5" alt="Wireless Earbuds Pro" loading="lazy" />
                             <div class="deal-badge">38% off</div>
                             <h4>Wireless Earbuds Pro</h4>
                             <div class="deal-stars">★★★★½</div>
+                            <div class="deal-countdown" aria-label="Deal ends in"><i class="fa-regular fa-clock"></i> <span class="countdown-time">02:30:00</span></div>
                             <div class="deal-prices">
                                 <span class="price">$49.99</span>
                                 <span class="price-original">$79.99</span>
@@ -295,12 +318,12 @@
                             <button class="add-to-cart deal-btn" data-id="d2">Add to Cart</button>
                         </article>
 
-                        <article class="deal-card" data-id="d3" data-name="Bluetooth Speaker 360°" data-price="29.99">
-                            <img src="https://picsum.photos/180/180?random=6" alt="Bluetooth Speaker 360°"
-                                loading="lazy" />
+                        <article class="deal-card" data-id="d3" data-name="Bluetooth Speaker 360°" data-price="29.99" data-ends="3600">
+                            <img src="https://picsum.photos/180/180?random=6" alt="Bluetooth Speaker 360°" loading="lazy" />
                             <div class="deal-badge">25% off</div>
                             <h4>Bluetooth Speaker 360°</h4>
                             <div class="deal-stars">★★★★☆</div>
+                            <div class="deal-countdown" aria-label="Deal ends in"><i class="fa-regular fa-clock"></i> <span class="countdown-time">01:00:00</span></div>
                             <div class="deal-prices">
                                 <span class="price">$29.99</span>
                                 <span class="price-original">$39.99</span>
@@ -352,6 +375,15 @@
             </div>
         </section>
 
+        <!-- Recently Viewed -->
+        <section class="recently-viewed-section" id="recently-viewed-section" aria-labelledby="rv-heading" style="display:none;">
+            <div class="section-header">
+                <h2 id="rv-heading" class="section-title">Recently Viewed</h2>
+                <button class="see-all-link" id="clear-rv-btn" style="background:none;border:none;cursor:pointer;">Clear history</button>
+            </div>
+            <div class="recently-viewed-grid" id="recently-viewed-grid"></div>
+        </section>
+
     </main>
 
     <!-- Cart Toast Notification -->
@@ -368,6 +400,17 @@
             <p class="cart-empty-msg" id="cart-empty">Your cart is empty. Start adding items!</p>
         </div>
         <div class="cart-drawer-footer" id="cart-drawer-footer">
+            <!-- Promo Code -->
+            <div class="promo-row">
+                <input id="promo-input" type="text" class="promo-input" placeholder="Promo code (try SAVE10)" aria-label="Enter promo code" />
+                <button class="promo-apply-btn" id="promo-apply">Apply</button>
+            </div>
+            <div class="promo-feedback" id="promo-feedback"></div>
+            <!-- Savings line -->
+            <div class="cart-savings" id="cart-savings" style="display:none;">
+                <span>You save:</span>
+                <strong id="savings-amount" class="savings-text">$0.00</strong>
+            </div>
             <div class="cart-subtotal">
                 <span>Subtotal:</span>
                 <strong id="cart-subtotal">$0.00</strong>
@@ -399,6 +442,21 @@
     <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
         <i class="fa-solid fa-chevron-up"></i>
     </button>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" aria-labelledby="newsletter-heading">
+        <div class="newsletter-inner">
+            <div class="newsletter-text">
+                <h2 id="newsletter-heading"><i class="fa-solid fa-envelope-open-text"></i> Stay in the Loop</h2>
+                <p>Get exclusive deals, new arrivals, and Prime offers delivered straight to your inbox.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form" novalidate>
+                <input id="newsletter-email" type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required />
+                <button type="submit" class="newsletter-btn" id="newsletter-submit">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <p class="newsletter-disclaimer">No spam, ever. Unsubscribe at any time.</p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="site-footer" role="contentinfo">

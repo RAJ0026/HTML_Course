@@ -1,4 +1,4 @@
-/* script.js – Amazon Clone interactive features (~20% milestone) */
+/* script.js – Amazon Clone interactive features (~25% milestone) */
 
 'use strict';
 
@@ -82,6 +82,28 @@ const cart = {
     setTimeout(() => badge.classList.remove('bump'), 300);
   }
 };
+
+/* ============================================================
+   Cart localStorage Persistence
+   ============================================================ */
+function saveCart() {
+  localStorage.setItem('cart_items', JSON.stringify(cart.items));
+}
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('cart_items') ?? '[]');
+    if (Array.isArray(saved)) {
+      cart.items = saved;
+      cart._updateBadge();
+      renderCartDrawer();
+    }
+  } catch { /* ignore corrupt data */ }
+}
+
+// Patch cart methods to auto-save
+const _origSync = cart._sync.bind(cart);
+cart._sync = function() { _origSync(); saveCart(); };
 
 /* ============================================================
    Toast Notification
@@ -521,9 +543,295 @@ function initScrollReveal() {
 }
 
 /* ============================================================
+   Filter & Sort Bar
+   ============================================================ */
+function initFilterSort() {
+  const grid     = $('#product-grid');
+  const sortSel  = $('#sort-select');
+  if (!grid) return;
+
+  // Store original order
+  const original = $$('.product-card', grid);
+
+  // badge map: which badge class → filter key
+  const BADGE_MAP = { 'badge-prime': 'prime', 'badge-deal': 'deal', 'badge-new': 'new' };
+
+  function getBadge(card) {
+    for (const [cls, key] of Object.entries(BADGE_MAP)) {
+      if (card.querySelector('.' + cls)) return key;
+    }
+    return null;
+  }
+
+  // Rating stars → numeric score
+  function ratingOf(card) {
+    const stars = card.querySelector('.stars')?.textContent ?? '';
+    return (stars.match(/★/g)?.length ?? 0) + (stars.includes('½') ? 0.5 : 0);
+  }
+
+  // Discount % from the badge text
+  function discountOf(card) {
+    const txt = card.querySelector('.discount-badge')?.textContent ?? '0';
+    return parseInt(txt) || 0;
+  }
+
+  function applyFilterSort(filter, sortKey) {
+    let cards = [...original];
+
+    // Filter
+    cards.forEach(c => {
+      const badge = getBadge(c);
+      const show  = filter === 'all' || badge === filter;
+      c.classList.toggle('hidden', !show);
+      c.style.opacity   = '';
+      c.style.transform = '';
+    });
+
+    // Sort visible cards
+    const visible = cards.filter(c => !c.classList.contains('hidden'));
+    if (sortKey === 'price-asc') {
+      visible.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+    } else if (sortKey === 'price-desc') {
+      visible.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+    } else if (sortKey === 'rating') {
+      visible.sort((a, b) => ratingOf(b) - ratingOf(a));
+    } else if (sortKey === 'discount') {
+      visible.sort((a, b) => discountOf(b) - discountOf(a));
+    }
+
+    // Re-append in sorted order
+    visible.forEach(c => grid.appendChild(c));
+  }
+
+  let currentFilter = 'all';
+  let currentSort   = 'default';
+
+  $$('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      applyFilterSort(currentFilter, currentSort);
+    });
+  });
+
+  sortSel?.addEventListener('change', () => {
+    currentSort = sortSel.value;
+    applyFilterSort(currentFilter, currentSort);
+  });
+}
+
+/* ============================================================
+   Deal Countdown Timers
+   ============================================================ */
+function initDealCountdowns() {
+  $$('.deal-card[data-ends]').forEach(card => {
+    let seconds = parseInt(card.dataset.ends, 10);
+    const display = card.querySelector('.countdown-time');
+    if (!display || isNaN(seconds)) return;
+
+    function tick() {
+      if (seconds <= 0) {
+        display.textContent = 'Expired';
+        display.closest('.deal-countdown').style.background = '#f3f4f6';
+        display.closest('.deal-countdown').style.color = '#9ca3af';
+        return;
+      }
+      const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      const s = String(seconds % 60).padStart(2, '0');
+      display.textContent = `${h}:${m}:${s}`;
+      seconds--;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  });
+}
+
+/* ============================================================
+   Recently Viewed
+   ============================================================ */
+function initRecentlyViewed() {
+  const KEY      = 'recently_viewed';
+  const section  = $('#recently-viewed-section');
+  const gridEl   = $('#recently-viewed-grid');
+  const clearBtn = $('#clear-rv-btn');
+  if (!section || !gridEl) return;
+
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(KEY) ?? '[]'); } catch { history = []; }
+
+  function saveHistory() {
+    localStorage.setItem(KEY, JSON.stringify(history));
+  }
+
+  function renderHistory() {
+    gridEl.innerHTML = '';
+    if (history.length === 0) { section.style.display = 'none'; return; }
+    section.style.display = '';
+    history.forEach(id => {
+      const p = getProduct(id);
+      if (!p) return;
+      const card = document.createElement('div');
+      card.className = 'rv-card';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" loading="lazy" />
+        <div class="rv-card-body">
+          <div class="rv-card-name">${p.name}</div>
+          <div class="rv-card-price">$${p.price.toFixed(2)}</div>
+        </div>
+      `;
+      card.addEventListener('click', () => openQuickView(p.id));
+      gridEl.appendChild(card);
+    });
+  }
+
+  // Track views: hook into openQuickView via product thumbnail clicks
+  document.addEventListener('click', e => {
+    const thumb = e.target.closest('.product-thumb');
+    if (!thumb) return;
+    const card = thumb.closest('[data-id]');
+    if (!card) return;
+    const id = card.dataset.id;
+    history = history.filter(i => i !== id);
+    history.unshift(id);
+    if (history.length > 8) history = history.slice(0, 8);
+    saveHistory();
+    renderHistory();
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    history = [];
+    saveHistory();
+    renderHistory();
+  });
+
+  renderHistory();
+}
+
+/* ============================================================
+   Promo Code
+   ============================================================ */
+const PROMO_CODES = {
+  'SAVE10':  { type: 'percent', value: 10,   label: '10% off applied! 🎉' },
+  'SAVE20':  { type: 'percent', value: 20,   label: '20% off applied! 🎉' },
+  'FLAT5':   { type: 'flat',    value: 5,    label: '$5 off applied! 🎉' },
+  'PRIME':   { type: 'percent', value: 15,   label: 'Prime 15% off applied! 🎉' },
+};
+
+let activePromo = null;
+
+function applyPromoToDrawer() {
+  const subtotalEl   = $('#cart-subtotal');
+  const savingsRow   = $('#cart-savings');
+  const savingsEl    = $('#savings-amount');
+  if (!subtotalEl) return;
+
+  const rawTotal = cart.subtotal;
+  let discount   = 0;
+
+  if (activePromo) {
+    if (activePromo.type === 'percent') {
+      discount = rawTotal * (activePromo.value / 100);
+    } else {
+      discount = Math.min(activePromo.value, rawTotal);
+    }
+  }
+
+  const finalTotal = Math.max(0, rawTotal - discount);
+  subtotalEl.textContent = `$${finalTotal.toFixed(2)}`;
+
+  if (discount > 0 && savingsRow && savingsEl) {
+    savingsRow.style.display = '';
+    savingsEl.textContent    = `-$${discount.toFixed(2)}`;
+  } else if (savingsRow) {
+    savingsRow.style.display = 'none';
+  }
+}
+
+function initPromoCode() {
+  const input    = $('#promo-input');
+  const applyBtn = $('#promo-apply');
+  const feedback = $('#promo-feedback');
+  if (!input || !applyBtn) return;
+
+  applyBtn.addEventListener('click', () => {
+    const code = input.value.trim().toUpperCase();
+    feedback.className = 'promo-feedback';
+    if (!code) {
+      feedback.textContent = 'Please enter a promo code.';
+      feedback.classList.add('error');
+      return;
+    }
+    const promo = PROMO_CODES[code];
+    if (promo) {
+      activePromo            = promo;
+      feedback.textContent   = promo.label;
+      feedback.classList.add('success');
+      input.value            = '';
+      input.disabled         = true;
+      applyBtn.disabled      = true;
+      applyBtn.textContent   = '✓';
+      applyPromoToDrawer();
+    } else {
+      activePromo          = null;
+      feedback.textContent = 'Invalid code. Try SAVE10 or PRIME.';
+      feedback.classList.add('error');
+      applyPromoToDrawer();
+    }
+  });
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') applyBtn.click();
+  });
+}
+
+// Patch renderCartDrawer to also run promo recalc
+const _origRenderCart = renderCartDrawer;
+function renderCartDrawer() {
+  _origRenderCart();
+  applyPromoToDrawer();
+}
+
+/* ============================================================
+   Newsletter Form
+   ============================================================ */
+function initNewsletter() {
+  const form   = $('#newsletter-form');
+  const input  = $('#newsletter-email');
+  const btn    = $('#newsletter-submit');
+  if (!form) return;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = input?.value.trim();
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailRe.test(email)) {
+      input.style.borderColor = '#e53935';
+      input.focus();
+      return;
+    }
+
+    input.style.borderColor = '';
+    btn.textContent = '✓ Subscribed!';
+    btn.classList.add('subscribed');
+    btn.disabled = true;
+    input.disabled = true;
+    showToast('📧 Thanks for subscribing!');
+  });
+
+  input?.addEventListener('input', () => {
+    input.style.borderColor = '';
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  loadCart();            // restore persisted cart first
   initCartDrawer();
   initCartButtons();
   initWishlist();
@@ -534,4 +842,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initKeyboard();
   initScrollReveal();
+  initFilterSort();      // new
+  initDealCountdowns();  // new
+  initRecentlyViewed();  // new
+  initPromoCode();       // new
+  initNewsletter();      // new
 });

@@ -1,123 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazon Clone – Home</title>
-    <meta name="description" content="A sleek demo of an Amazon‑style e‑commerce homepage – 5% mockup." />
+    <meta name="description"
+        content="A sleek Amazon-style e-commerce homepage with live cart, carousels, and category browsing." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav" role="navigation" aria-label="Category navigation">
         <ul>
-            <li><a href="#">All</a></li>
-            <li><a href="#">Prime</a></li>
-            <li><a href="#">Electronics</a></li>
-            <li><a href="#">Books</a></li>
-            <li><a href="#">Kindle</a></li>
-            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#" class="top-nav-link">All</a></li>
+            <li><a href="#" class="top-nav-link">Prime</a></li>
+            <li><a href="#" class="top-nav-link">Electronics</a></li>
+            <li><a href="#" class="top-nav-link">Books</a></li>
+            <li><a href="#" class="top-nav-link">Fashion</a></li>
+            <li><a href="#" class="top-nav-link">Home & Kitchen</a></li>
+            <li><a href="#" class="top-nav-link">Kindle</a></li>
+            <li><a href="#" class="top-nav-link">Gift Cards</a></li>
+            <li><a href="#" class="top-nav-link">Deals</a></li>
         </ul>
     </nav>
 
     <!-- Header -->
-    <header class="site-header">
+    <header class="site-header" role="banner">
         <div class="header-left">
-            <a href="#" class="logo">Amazon</a>
+            <a href="#" class="logo" aria-label="Amazon Clone Home">Amazon</a>
         </div>
         <div class="header-center">
-            <input type="text" class="search-input" placeholder="Search Amazon" />
-            <button class="search-button">🔍</button>
+            <input id="search-input" type="text" class="search-input" placeholder="Search products, brands and more…"
+                aria-label="Search products" />
+            <button id="search-btn" class="search-button" aria-label="Submit search">🔍</button>
         </div>
         <div class="header-right">
-            <a href="#" class="nav-link">Sign In</a>
-            <a href="#" class="nav-link">Orders</a>
-            <a href="#" class="nav-link cart">🛒 <span class="cart-count">0</span></a>
+            <a href="#" class="nav-link" id="signin-link">Hello, Sign In<span class="nav-sub">Account & Lists</span></a>
+            <a href="#" class="nav-link" id="orders-link">Returns<span class="nav-sub">& Orders</span></a>
+            <a href="#" class="nav-link cart" id="cart-link" aria-label="Cart">
+                🛒
+                <span class="cart-count" id="cart-count">0</span>
+                <span class="nav-sub">Cart</span>
+            </a>
         </div>
     </header>
 
     <!-- Hero Carousel -->
-    <section class="hero-carousel">
-        <div class="carousel-slides">
-            <div class="slide"><img src="https://picsum.photos/1200/300?random=10" alt="Hero 1" /></div>
-            <div class="slide"><img src="https://picsum.photos/1200/300?random=11" alt="Hero 2" /></div>
-            <div class="slide"><img src="https://picsum.photos/1200/300?random=12" alt="Hero 3" /></div>
+    <section class="hero-carousel" aria-label="Featured promotions">
+        <div class="carousel-track" id="hero-track">
+            <div class="slide">
+                <img src="https://picsum.photos/1400/400?random=10" alt="Summer Sale – Up to 60% off Electronics"
+                    loading="eager" />
+                <div class="slide-overlay">
+                    <h2>Summer Sale</h2>
+                    <p>Up to 60% off Electronics</p>
+                    <a href="#" class="slide-cta">Shop Now</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/1400/400?random=11" alt="New Arrivals – Kindle Paperwhite"
+                    loading="lazy" />
+                <div class="slide-overlay">
+                    <h2>New Arrivals</h2>
+                    <p>Kindle Paperwhite – Read More, Anywhere</p>
+                    <a href="#" class="slide-cta">Discover</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/1400/400?random=12" alt="Prime Deals – Exclusive Member Offers"
+                    loading="lazy" />
+                <div class="slide-overlay">
+                    <h2>Prime Exclusive</h2>
+                    <p>Member-only deals you won't find anywhere else</p>
+                    <a href="#" class="slide-cta">Go Prime</a>
+                </div>
+            </div>
         </div>
-        <button class="carousel-prev">&#10094;</button>
-        <button class="carousel-next">&#10095;</button>
+        <button class="carousel-btn carousel-prev" id="hero-prev" aria-label="Previous slide">&#10094;</button>
+        <button class="carousel-btn carousel-next" id="hero-next" aria-label="Next slide">&#10095;</button>
+        <div class="carousel-dots" id="hero-dots" aria-label="Slide indicators"></div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
-        <section class="product-grid">
-            <article class="product-card">
-                <img src="https://picsum.photos/200/200?random=1" alt="Product 1" />
-                <h3>Echo Dot (5th Gen)</h3>
-                <p class="price">$29.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </article>
-            <article class="product-card">
-                <img src="https://picsum.photos/200/200?random=2" alt="Product 2" />
-                <h3>Kindle Paperwhite</h3>
-                <p class="price">$129.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </article>
-            <article class="product-card">
-                <img src="https://picsum.photos/200/200?random=3" alt="Product 3" />
-                <h3>Fire TV Stick 4K</h3>
-                <p class="price">$49.99</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </article>
+
+        <!-- Category Tiles -->
+        <section class="categories-section" aria-labelledby="categories-heading">
+            <h2 id="categories-heading" class="section-title">Shop by Category</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-tile" id="cat-electronics">
+                    <span class="cat-icon">📱</span>
+                    <span class="cat-label">Electronics</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-books">
+                    <span class="cat-icon">📚</span>
+                    <span class="cat-label">Books</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-fashion">
+                    <span class="cat-icon">👗</span>
+                    <span class="cat-label">Fashion</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-home">
+                    <span class="cat-icon">🏠</span>
+                    <span class="cat-label">Home & Kitchen</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-sports">
+                    <span class="cat-icon">⚽</span>
+                    <span class="cat-label">Sports</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-beauty">
+                    <span class="cat-icon">💄</span>
+                    <span class="cat-label">Beauty</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-toys">
+                    <span class="cat-icon">🧸</span>
+                    <span class="cat-label">Toys</span>
+                </a>
+                <a href="#" class="category-tile" id="cat-automotive">
+                    <span class="cat-icon">🚗</span>
+                    <span class="cat-label">Automotive</span>
+                </a>
+            </div>
         </section>
 
-        <!-- Deals Carousel -->
-        <section class="deals-carousel">
-            <h2>Today's Deals</h2>
-            <div class="deals-container">
-                <article class="deal-card">
-                    <img src="https://picsum.photos/180/180?random=4" alt="Deal 1" />
-                    <h4>Smart Speaker</h4>
-                    <p class="price">$19.99</p>
+        <!-- Featured Products -->
+        <section class="product-section" aria-labelledby="featured-heading">
+            <h2 id="featured-heading" class="section-title">Featured Products</h2>
+            <div class="product-grid" id="product-grid">
+
+                <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99">
+                    <div class="badge badge-prime">Prime</div>
+                    <img src="https://picsum.photos/200/200?random=1" alt="Echo Dot (5th Gen)" loading="lazy" />
+                    <div class="card-body">
+                        <h3>Echo Dot (5th Gen)</h3>
+                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½</div>
+                        <div class="price-row">
+                            <span class="price">$29.99</span>
+                            <span class="price-original">$49.99</span>
+                            <span class="discount-badge">40% off</span>
+                        </div>
+                        <button class="add-to-cart" data-id="1">Add to Cart</button>
+                    </div>
                 </article>
-                <article class="deal-card">
-                    <img src="https://picsum.photos/180/180?random=5" alt="Deal 2" />
-                    <h4>Wireless Earbuds</h4>
-                    <p class="price">$49.99</p>
+
+                <article class="product-card" data-id="2" data-name="Kindle Paperwhite" data-price="129.99">
+                    <div class="badge badge-new">New</div>
+                    <img src="https://picsum.photos/200/200?random=2" alt="Kindle Paperwhite" loading="lazy" />
+                    <div class="card-body">
+                        <h3>Kindle Paperwhite</h3>
+                        <div class="stars" aria-label="Rating: 4.8 out of 5">★★★★★</div>
+                        <div class="price-row">
+                            <span class="price">$129.99</span>
+                        </div>
+                        <button class="add-to-cart" data-id="2">Add to Cart</button>
+                    </div>
                 </article>
-                <article class="deal-card">
-                    <img src="https://picsum.photos/180/180?random=6" alt="Deal 3" />
-                    <h4>Bluetooth Speaker</h4>
-                    <p class="price">$29.99</p>
+
+                <article class="product-card" data-id="3" data-name="Fire TV Stick 4K" data-price="49.99">
+                    <div class="badge badge-deal">Deal</div>
+                    <img src="https://picsum.photos/200/200?random=3" alt="Fire TV Stick 4K" loading="lazy" />
+                    <div class="card-body">
+                        <h3>Fire TV Stick 4K</h3>
+                        <div class="stars" aria-label="Rating: 4.6 out of 5">★★★★½</div>
+                        <div class="price-row">
+                            <span class="price">$49.99</span>
+                            <span class="price-original">$59.99</span>
+                            <span class="discount-badge">17% off</span>
+                        </div>
+                        <button class="add-to-cart" data-id="3">Add to Cart</button>
+                    </div>
                 </article>
-                <article class="deal-card">
-                    <img src="https://picsum.photos/180/180?random=7" alt="Deal 4" />
-                    <h4>Kindle Cover</h4>
-                    <p class="price">$9.99</p>
+
+                <article class="product-card" data-id="4" data-name="Ring Video Doorbell" data-price="99.99">
+                    <div class="badge badge-prime">Prime</div>
+                    <img src="https://picsum.photos/200/200?random=20" alt="Ring Video Doorbell" loading="lazy" />
+                    <div class="card-body">
+                        <h3>Ring Video Doorbell</h3>
+                        <div class="stars" aria-label="Rating: 4.3 out of 5">★★★★☆</div>
+                        <div class="price-row">
+                            <span class="price">$99.99</span>
+                            <span class="price-original">$139.99</span>
+                            <span class="discount-badge">29% off</span>
+                        </div>
+                        <button class="add-to-cart" data-id="4">Add to Cart</button>
+                    </div>
                 </article>
-                <article class="deal-card">
-                    <img src="https://picsum.photos/180/180?random=8" alt="Deal 5" />
-                    <h4>Amazon Gift Card $25</h4>
-                    <p class="price">Free</p>
+
+                <article class="product-card" data-id="5" data-name="AirPods Pro (2nd Gen)" data-price="199.00">
+                    <img src="https://picsum.photos/200/200?random=21" alt="AirPods Pro (2nd Gen)" loading="lazy" />
+                    <div class="card-body">
+                        <h3>AirPods Pro (2nd Gen)</h3>
+                        <div class="stars" aria-label="Rating: 4.7 out of 5">★★★★★</div>
+                        <div class="price-row">
+                            <span class="price">$199.00</span>
+                        </div>
+                        <button class="add-to-cart" data-id="5">Add to Cart</button>
+                    </div>
                 </article>
+
+                <article class="product-card" data-id="6" data-name="Samsung 65\" QLED TV" data-price="899.99">
+                    <div class="badge badge-deal">Hot Deal</div>
+                    <img src="https://picsum.photos/200/200?random=22" alt='Samsung 65" QLED TV' loading="lazy" />
+                    <div class="card-body">
+                        <h3>Samsung 65" QLED TV</h3>
+                        <div class="stars" aria-label="Rating: 4.5 out of 5">★★★★½</div>
+                        <div class="price-row">
+                            <span class="price">$899.99</span>
+                            <span class="price-original">$1,299.99</span>
+                            <span class="discount-badge">31% off</span>
+                        </div>
+                        <button class="add-to-cart" data-id="6">Add to Cart</button>
+                    </div>
+                </article>
+
             </div>
-            <button class="deals-prev">&#10094;</button>
-            <button class="deals-next">&#10095;</button>
         </section>
+
+        <!-- Today's Deals Carousel -->
+        <section class="deals-section" aria-labelledby="deals-heading">
+            <div class="section-header">
+                <h2 id="deals-heading" class="section-title">Today's Deals</h2>
+                <a href="#" class="see-all-link">See all deals →</a>
+            </div>
+            <div class="deals-wrapper">
+                <button class="carousel-btn deals-prev" id="deals-prev" aria-label="Previous deals">&#10094;</button>
+                <div class="deals-viewport">
+                    <div class="deals-track" id="deals-track">
+
+                        <article class="deal-card" data-id="d1" data-name="Smart Speaker Mini" data-price="19.99">
+                            <img src="https://picsum.photos/180/180?random=4" alt="Smart Speaker Mini" loading="lazy" />
+                            <div class="deal-badge">68% off</div>
+                            <h4>Smart Speaker Mini</h4>
+                            <div class="deal-stars">★★★★☆</div>
+                            <div class="deal-prices">
+                                <span class="price">$19.99</span>
+                                <span class="price-original">$62.99</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d1">Add to Cart</button>
+                        </article>
+
+                        <article class="deal-card" data-id="d2" data-name="Wireless Earbuds Pro" data-price="49.99">
+                            <img src="https://picsum.photos/180/180?random=5" alt="Wireless Earbuds Pro"
+                                loading="lazy" />
+                            <div class="deal-badge">38% off</div>
+                            <h4>Wireless Earbuds Pro</h4>
+                            <div class="deal-stars">★★★★½</div>
+                            <div class="deal-prices">
+                                <span class="price">$49.99</span>
+                                <span class="price-original">$79.99</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d2">Add to Cart</button>
+                        </article>
+
+                        <article class="deal-card" data-id="d3" data-name="Bluetooth Speaker 360°" data-price="29.99">
+                            <img src="https://picsum.photos/180/180?random=6" alt="Bluetooth Speaker 360°"
+                                loading="lazy" />
+                            <div class="deal-badge">25% off</div>
+                            <h4>Bluetooth Speaker 360°</h4>
+                            <div class="deal-stars">★★★★☆</div>
+                            <div class="deal-prices">
+                                <span class="price">$29.99</span>
+                                <span class="price-original">$39.99</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d3">Add to Cart</button>
+                        </article>
+
+                        <article class="deal-card" data-id="d4" data-name="Kindle Leather Cover" data-price="9.99">
+                            <img src="https://picsum.photos/180/180?random=7" alt="Kindle Leather Cover"
+                                loading="lazy" />
+                            <div class="deal-badge">50% off</div>
+                            <h4>Kindle Leather Cover</h4>
+                            <div class="deal-stars">★★★★☆</div>
+                            <div class="deal-prices">
+                                <span class="price">$9.99</span>
+                                <span class="price-original">$19.99</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d4">Add to Cart</button>
+                        </article>
+
+                        <article class="deal-card" data-id="d5" data-name="Amazon Gift Card $25" data-price="25.00">
+                            <img src="https://picsum.photos/180/180?random=8" alt="Amazon Gift Card $25"
+                                loading="lazy" />
+                            <div class="deal-badge deal-badge--free">Free Shipping</div>
+                            <h4>Amazon Gift Card $25</h4>
+                            <div class="deal-stars">★★★★★</div>
+                            <div class="deal-prices">
+                                <span class="price">$25.00</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d5">Add to Cart</button>
+                        </article>
+
+                        <article class="deal-card" data-id="d6" data-name="USB-C Fast Charger" data-price="14.99">
+                            <img src="https://picsum.photos/180/180?random=30" alt="USB-C Fast Charger 65W"
+                                loading="lazy" />
+                            <div class="deal-badge">55% off</div>
+                            <h4>USB-C Fast Charger 65W</h4>
+                            <div class="deal-stars">★★★★½</div>
+                            <div class="deal-prices">
+                                <span class="price">$14.99</span>
+                                <span class="price-original">$33.99</span>
+                            </div>
+                            <button class="add-to-cart deal-btn" data-id="d6">Add to Cart</button>
+                        </article>
+
+                    </div>
+                </div>
+                <button class="carousel-btn deals-next" id="deals-next" aria-label="Next deals">&#10095;</button>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Cart Toast Notification -->
+    <div class="cart-toast" id="cart-toast" role="status" aria-live="polite"></div>
+
     <!-- Footer -->
-    <footer class="site-footer">
-        <ul class="footer-links">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Customer Service</a></li>
-            <li><a href="#">Your Account</a></li>
-            <li><a href="#">Prime</a></li>
-            <li><a href="#">Policies</a></li>
-            <li><a href="#">© 2026 Amazon Clone Demo</a></li>
-        </ul>
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Get to Know Us</h4>
+                <ul>
+                    <li><a href="#">About Amazon</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Make Money with Us</h4>
+                <ul>
+                    <li><a href="#">Sell products on Amazon</a></li>
+                    <li><a href="#">Become an Affiliate</a></li>
+                    <li><a href="#">Advertise Your Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Amazon Payment Products</h4>
+                <ul>
+                    <li><a href="#">Amazon Business Card</a></li>
+                    <li><a href="#">Shop with Points</a></li>
+                    <li><a href="#">Reload Your Balance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Let Us Help You</h4>
+                <ul>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Your Orders</a></li>
+                    <li><a href="#">Shipping Rates</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="#" class="logo footer-logo">Amazon</a>
+            <p>© 2026 Amazon Clone Demo &mdash; Built for learning purposes.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1157,6 +1157,29 @@ function initCheckoutModal() {
   });
 }
 
+function initDarkMode() {
+  const toggleBtn = $('#dark-mode-btn');
+  const icon = $('#dark-mode-icon');
+  if (!toggleBtn || !icon) return;
+
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    icon.classList.replace('fa-moon', 'fa-sun');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+      icon.classList.replace('fa-moon', 'fa-sun');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      icon.classList.replace('fa-sun', 'fa-moon');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1184,6 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardQtyStepper();  // new
   initAuthModal();       // completion phase
   initCheckoutModal();   // completion phase
+  initDarkMode();        // completion phase
 });
 // Increment 1
 

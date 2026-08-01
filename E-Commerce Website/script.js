@@ -1180,6 +1180,31 @@ function initDarkMode() {
   });
 }
 
+function initOrdersModal() {
+  const ordersLink = $('#orders-link');
+  const ordersModal = $('#orders-list-modal');
+  const ordersOverlay = $('#orders-overlay');
+  const ordersClose = $('#orders-close');
+  const startShoppingBtn = $('#start-shopping-btn');
+
+  function openOrders() {
+    ordersModal?.classList.add('open');
+    ordersOverlay?.classList.add('open');
+  }
+  function closeOrders() {
+    ordersModal?.classList.remove('open');
+    ordersOverlay?.classList.remove('open');
+  }
+
+  ordersLink?.addEventListener('click', e => { e.preventDefault(); openOrders(); });
+  ordersClose?.addEventListener('click', closeOrders);
+  ordersOverlay?.addEventListener('click', closeOrders);
+  startShoppingBtn?.addEventListener('click', () => {
+    closeOrders();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1208,6 +1233,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAuthModal();       // completion phase
   initCheckoutModal();   // completion phase
   initDarkMode();        // completion phase
+  initOrdersModal();     // completion phase
 });
 // Increment 1
 

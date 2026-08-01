@@ -1083,6 +1083,59 @@ function animateRatingBars() {
 }
 
 /* ============================================================
+   Auth & Checkout Modals (Completion Phase)
+   ============================================================ */
+function initAuthModal() {
+  const authLink = $('#signin-link');
+  const authModal = $('#auth-modal');
+  const authOverlay = $('#auth-overlay');
+  const authClose = $('#auth-close');
+  const authForm = $('#auth-form');
+
+  function openAuth() {
+    authModal?.classList.add('open');
+    authOverlay?.classList.add('open');
+  }
+  function closeAuth() {
+    authModal?.classList.remove('open');
+    authOverlay?.classList.remove('open');
+  }
+
+  authLink?.addEventListener('click', e => { e.preventDefault(); openAuth(); });
+  authClose?.addEventListener('click', closeAuth);
+  authOverlay?.addEventListener('click', closeAuth);
+
+  authForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    authLink.innerHTML = 'Hello, User<span class="nav-sub">Account &amp; Lists</span>';
+    showToast('🎉 Successfully signed in!');
+    closeAuth();
+  });
+}
+
+function initCheckoutModal() {
+  const checkoutBtn = $('#checkout-btn');
+  const checkoutModal = $('#checkout-modal');
+  const checkoutOverlay = $('#checkout-overlay');
+  const checkoutClose = $('#checkout-close');
+
+  function openCheckout() {
+    if (cart.count === 0) { showToast('🛒 Your cart is empty!'); return; }
+    checkoutModal?.classList.add('open');
+    checkoutOverlay?.classList.add('open');
+    closeCartDrawer();
+  }
+  function closeCheckout() {
+    checkoutModal?.classList.remove('open');
+    checkoutOverlay?.classList.remove('open');
+  }
+
+  checkoutBtn?.addEventListener('click', e => { e.preventDefault(); openCheckout(); });
+  checkoutClose?.addEventListener('click', closeCheckout);
+  checkoutOverlay?.addEventListener('click', closeCheckout);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1107,8 +1160,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();    // new
   initMobileNav();       // new
   initCardQtyStepper();  // new
+  initAuthModal();       // completion phase
+  initCheckoutModal();   // completion phase
 });
-
 // Increment 1
 
 // Increment 2

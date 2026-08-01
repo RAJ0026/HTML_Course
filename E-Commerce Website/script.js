@@ -1133,6 +1133,28 @@ function initCheckoutModal() {
   checkoutBtn?.addEventListener('click', e => { e.preventDefault(); openCheckout(); });
   checkoutClose?.addEventListener('click', closeCheckout);
   checkoutOverlay?.addEventListener('click', closeCheckout);
+
+  const checkoutForm = $('#checkout-form');
+  checkoutForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!checkoutForm.checkValidity()) {
+      showToast('⚠️ Please fill out all fields correctly.');
+      return;
+    }
+    closeCheckout();
+    $('#order-overlay')?.classList.add('open');
+    $('#order-modal')?.classList.add('open');
+    $('#order-items-count').textContent = `${cart.count} items`;
+    $('#order-total-display').textContent = `$${cart.subtotal.toFixed(2)}`;
+    cart.clear();
+    closeCartDrawer();
+  });
+  
+  // Update original order modal handlers
+  $('#order-continue')?.addEventListener('click', () => {
+    $('#order-overlay')?.classList.remove('open');
+    $('#order-modal')?.classList.remove('open');
+  });
 }
 
 /* ============================================================

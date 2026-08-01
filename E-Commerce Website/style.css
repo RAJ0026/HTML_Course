@@ -2380,6 +2380,40 @@ body.dark-mode .dark-mode-btn {
 .auth-divider span { background: var(--card-bg); padding: 0 10px; font-size: 0.75rem; color: #767676; position: relative; z-index: 2; }
 .auth-register-btn { width: 100%; padding: 0.6rem; background: #e7e9ec; border: 1px solid #adb1b8; border-radius: 3px; cursor: pointer; font-size: 0.85rem; }
 
+.checkout-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.checkout-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+.checkout-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+.checkout-form .form-group.half {
+  flex: 1;
+}
+.checkout-form input:invalid:focus {
+  border-color: #e53935;
+  box-shadow: 0 0 0 3px rgba(229,57,53,0.2);
+}
+.checkout-modal {
+  max-width: 500px;
+}
+.checkout-submit-btn {
+  background: #f0c14b;
+  border-color: #a88734 #9c7e31 #846a29;
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+.checkout-submit-btn:hover {
+  background: #f4d078;
+}
+
 /* Increment 1 */
 
 /* Increment 2 */

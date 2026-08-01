@@ -586,6 +586,29 @@
 
     <script src="script.js"></script>
 
+    <!-- Auth Modal -->
+    <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
+    <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">
+        <button class="modal-close" id="auth-close" aria-label="Close sign in">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Sign-In</h2>
+            <form class="auth-form" id="auth-form" novalidate>
+                <div class="form-group">
+                    <label for="auth-email">Email or mobile phone number</label>
+                    <input type="email" id="auth-email" required />
+                </div>
+                <div class="form-group" id="auth-password-group">
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" required />
+                </div>
+                <button type="submit" class="auth-submit-btn">Continue</button>
+            </form>
+            <p class="auth-terms">By continuing, you agree to Amazon Clone's Conditions of Use and Privacy Notice.</p>
+            <div class="auth-divider"><span>New to Amazon Clone?</span></div>
+            <button class="auth-register-btn" id="auth-register-btn">Create your Amazon account</button>
+        </div>
+    </div>
+
     <!-- Order Success Modal -->
     <div class="order-overlay" id="order-overlay" aria-hidden="true"></div>
     <div class="order-modal" id="order-modal" role="dialog" aria-modal="true" aria-label="Order placed successfully">

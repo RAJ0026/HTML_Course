@@ -1108,3 +1108,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();       // new
   initCardQtyStepper();  // new
 });
+
+// Increment 1

@@ -586,6 +586,20 @@
 
     <script src="script.js"></script>
 
+    <!-- Orders Modal -->
+    <div class="orders-overlay" id="orders-overlay" aria-hidden="true"></div>
+    <div class="orders-modal auth-modal" id="orders-list-modal" role="dialog" aria-modal="true" aria-label="Your Orders">
+        <button class="modal-close" id="orders-close" aria-label="Close orders">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Your Orders</h2>
+            <div class="orders-empty" style="text-align:center; padding: 2rem 0; color: #555;">
+                <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 1rem; color: #ccc;"></i>
+                <p>Looks like you haven't placed an order yet.</p>
+                <button class="auth-submit-btn" id="start-shopping-btn" style="margin-top:1.5rem;">Start Shopping</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

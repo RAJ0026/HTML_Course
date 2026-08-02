@@ -2417,6 +2417,26 @@ body.dark-mode .dark-mode-btn {
   background: #f4d078;
 }
 
+/* ============================================================
+   Final Polish & Enhancements (Chunk 20)
+   ============================================================ */
+.auth-submit-btn, .checkout-submit-btn, .cs-option-btn, .btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.auth-submit-btn:active, .checkout-submit-btn:active, .cs-option-btn:active {
+  transform: scale(0.98);
+}
+input[type="text"], input[type="email"], input[type="password"] {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.modal-close:hover {
+  color: var(--primary);
+  transform: rotate(90deg);
+}
+.modal-close {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
 /* Increment 1 */
 
 /* Increment 2 */

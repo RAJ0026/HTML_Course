@@ -626,6 +626,36 @@
         </div>
     </div>
 
+    <!-- Language Selector Modal -->
+    <div class="lang-overlay" id="lang-overlay" aria-hidden="true"></div>
+    <div class="lang-modal auth-modal" id="lang-modal" role="dialog" aria-modal="true" aria-label="Language Settings">
+        <button class="modal-close" id="lang-close" aria-label="Close language selector">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Language Settings</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1rem;">
+                Select the language you prefer for browsing, shopping, and communications.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+                <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                    <input type="radio" name="lang" value="en" checked> English - EN
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                    <input type="radio" name="lang" value="es"> Español - ES
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                    <input type="radio" name="lang" value="zh"> 中文 (简体) - ZH
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                    <input type="radio" name="lang" value="de"> Deutsch - DE
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                    <input type="radio" name="lang" value="pt"> Português - PT
+                </label>
+            </div>
+            <button class="auth-submit-btn" id="lang-save-btn">Save Changes</button>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

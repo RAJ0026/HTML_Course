@@ -600,6 +600,32 @@
         </div>
     </div>
 
+    <!-- Address Selector Modal -->
+    <div class="address-overlay" id="address-overlay" aria-hidden="true"></div>
+    <div class="address-modal auth-modal" id="address-modal" role="dialog" aria-modal="true" aria-label="Choose your location">
+        <button class="modal-close" id="address-close" aria-label="Close address selector">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Choose your location</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1rem;">
+                Delivery options and delivery speeds may vary for different locations.
+            </p>
+            <button class="auth-submit-btn" style="margin-bottom: 1rem;">Sign in to see your addresses</button>
+            <div class="auth-divider"><span>or enter a US zip code</span></div>
+            <div style="display:flex; gap:0.5rem; margin-bottom:1rem;">
+                <input type="text" placeholder="Zip Code" style="flex:1; padding:0.5rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
+                <button style="padding:0.5rem 1rem; background:#e7e9ec; border:1px solid #adb1b8; border-radius:3px; cursor:pointer;">Apply</button>
+            </div>
+            <div class="auth-divider"><span>or</span></div>
+            <select style="width:100%; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; margin-top:0.5rem; outline:none; background:#f0f2f2; cursor:pointer;">
+                <option value="IN" selected>India</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+            </select>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

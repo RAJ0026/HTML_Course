@@ -1253,6 +1253,31 @@ function initLangModal() {
   });
 }
 
+function initCSModal() {
+  const csLink = $('#nav-cs');
+  const csModal = $('#cs-modal');
+  const csOverlay = $('#cs-overlay');
+  const csClose = $('#cs-close');
+  const csOptions = $$('.cs-option-btn');
+
+  function openCS() {
+    csModal?.classList.add('open');
+    csOverlay?.classList.add('open');
+  }
+  function closeCS() {
+    csModal?.classList.remove('open');
+    csOverlay?.classList.remove('open');
+  }
+
+  csLink?.addEventListener('click', e => { e.preventDefault(); openCS(); });
+  csClose?.addEventListener('click', closeCS);
+  csOverlay?.addEventListener('click', closeCS);
+  csOptions.forEach(btn => btn.addEventListener('click', () => {
+    showToast('📞 Connecting you to an agent...');
+    closeCS();
+  }));
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1284,6 +1309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrdersModal();     // completion phase
   initAddressModal();    // completion phase
   initLangModal();       // completion phase
+  initCSModal();         // completion phase
 });
 // Increment 1
 

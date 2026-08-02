@@ -656,6 +656,29 @@
         </div>
     </div>
 
+    <!-- Customer Service Modal -->
+    <div class="cs-overlay" id="cs-overlay" aria-hidden="true"></div>
+    <div class="cs-modal auth-modal" id="cs-modal" role="dialog" aria-modal="true" aria-label="Customer Service">
+        <button class="modal-close" id="cs-close" aria-label="Close customer service">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Customer Service</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1.5rem;">
+                Welcome to Amazon Customer Service. What would you like help with today?
+            </p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;">
+                <button class="cs-option-btn"><i class="fa-solid fa-box"></i><br>A delivery, order or return</button>
+                <button class="cs-option-btn"><i class="fa-solid fa-credit-card"></i><br>Payment, charges or gift cards</button>
+                <button class="cs-option-btn"><i class="fa-solid fa-user-lock"></i><br>Login, address, security & privacy</button>
+                <button class="cs-option-btn"><i class="fa-solid fa-desktop"></i><br>Memberships, subscriptions or communications</button>
+            </div>
+            <div class="auth-divider"><span>or search our help library</span></div>
+            <div style="display:flex; gap:0.5rem;">
+                <input type="text" placeholder="Search for answers..." style="flex:1; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
+                <button class="auth-submit-btn" style="width:auto; padding:0.6rem 1rem; margin:0;">Search</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

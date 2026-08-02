@@ -1205,6 +1205,54 @@ function initOrdersModal() {
   });
 }
 
+function initAddressModal() {
+  const addressLink = $('#nav-address');
+  const addressModal = $('#address-modal');
+  const addressOverlay = $('#address-overlay');
+  const addressClose = $('#address-close');
+
+  function openAddress() {
+    addressModal?.classList.add('open');
+    addressOverlay?.classList.add('open');
+  }
+  function closeAddress() {
+    addressModal?.classList.remove('open');
+    addressOverlay?.classList.remove('open');
+  }
+
+  addressLink?.addEventListener('click', e => { e.preventDefault(); openAddress(); });
+  addressClose?.addEventListener('click', closeAddress);
+  addressOverlay?.addEventListener('click', closeAddress);
+}
+
+function initLangModal() {
+  const langLink = $('#nav-lang');
+  const langModal = $('#lang-modal');
+  const langOverlay = $('#lang-overlay');
+  const langClose = $('#lang-close');
+  const langSaveBtn = $('#lang-save-btn');
+
+  function openLang() {
+    langModal?.classList.add('open');
+    langOverlay?.classList.add('open');
+  }
+  function closeLang() {
+    langModal?.classList.remove('open');
+    langOverlay?.classList.remove('open');
+  }
+
+  langLink?.addEventListener('click', e => { e.preventDefault(); openLang(); });
+  langClose?.addEventListener('click', closeLang);
+  langOverlay?.addEventListener('click', closeLang);
+
+  langSaveBtn?.addEventListener('click', () => {
+    const selected = document.querySelector('input[name="lang"]:checked').value;
+    langLink.innerHTML = `<img src="https://flagcdn.com/w20/${selected === 'en' ? 'us' : (selected === 'es' ? 'es' : (selected === 'zh' ? 'cn' : (selected === 'de' ? 'de' : 'pt')))}.png" alt="${selected} flag" style="width:16px; margin-right:4px;"> <b>${selected.toUpperCase()}</b> <i class="fa-solid fa-caret-down"></i>`;
+    showToast('🌐 Language updated successfully!');
+    closeLang();
+  });
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1234,6 +1282,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCheckoutModal();   // completion phase
   initDarkMode();        // completion phase
   initOrdersModal();     // completion phase
+  initAddressModal();    // completion phase
+  initLangModal();       // completion phase
 });
 // Increment 1
 

@@ -1278,6 +1278,26 @@ function initCSModal() {
   }));
 }
 
+function initSellModal() {
+  const sellLink = $('#nav-sell');
+  const sellModal = $('#sell-modal');
+  const sellOverlay = $('#sell-overlay');
+  const sellClose = $('#sell-close');
+
+  function openSell() {
+    sellModal?.classList.add('open');
+    sellOverlay?.classList.add('open');
+  }
+  function closeSell() {
+    sellModal?.classList.remove('open');
+    sellOverlay?.classList.remove('open');
+  }
+
+  sellLink?.addEventListener('click', e => { e.preventDefault(); openSell(); });
+  sellClose?.addEventListener('click', closeSell);
+  sellOverlay?.addEventListener('click', closeSell);
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1310,6 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAddressModal();    // completion phase
   initLangModal();       // completion phase
   initCSModal();         // completion phase
+  initSellModal();       // completion phase
 });
 // Increment 1
 

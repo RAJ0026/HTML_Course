@@ -1150,6 +1150,17 @@ function initCheckoutModal() {
     closeCartDrawer();
   });
   
+  const promoBtn = $('#chk-promo-btn');
+  const promoInput = $('#chk-promo');
+  promoBtn?.addEventListener('click', () => {
+    if (promoInput && promoInput.value.trim() !== '') {
+      showToast(`🎟️ Promo code '${promoInput.value}' applied successfully!`);
+      promoInput.value = '';
+    } else {
+      showToast('⚠️ Please enter a valid promo code.');
+    }
+  });
+
   // Update original order modal handlers
   $('#order-continue')?.addEventListener('click', () => {
     $('#order-overlay')?.classList.remove('open');

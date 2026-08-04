@@ -1318,6 +1318,26 @@ function initGCModal() {
   gcOverlay?.addEventListener('click', closeGC);
 }
 
+function initRegModal() {
+  const regLink = $('#nav-registry');
+  const regModal = $('#reg-modal');
+  const regOverlay = $('#reg-overlay');
+  const regClose = $('#reg-close');
+
+  function openReg() {
+    regModal?.classList.add('open');
+    regOverlay?.classList.add('open');
+  }
+  function closeReg() {
+    regModal?.classList.remove('open');
+    regOverlay?.classList.remove('open');
+  }
+
+  regLink?.addEventListener('click', e => { e.preventDefault(); openReg(); });
+  regClose?.addEventListener('click', closeReg);
+  regOverlay?.addEventListener('click', closeReg);
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1352,6 +1372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCSModal();         // completion phase
   initSellModal();       // completion phase
   initGCModal();         // completion phase
+  initRegModal();        // completion phase
 });
 // Increment 1
 

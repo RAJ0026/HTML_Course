@@ -24,6 +24,7 @@
             <li><a href="#" class="top-nav-link">Fashion</a></li>
             <li><a href="#" class="top-nav-link">Home & Kitchen</a></li>
             <li><a href="#" class="top-nav-link">Kindle</a></li>
+            <li><a href="#" class="top-nav-link" id="nav-registry">Registry</a></li>
             <li><a href="#" class="top-nav-link" id="nav-gc">Gift Cards</a></li>
             <li><a href="#" class="top-nav-link">Deals</a></li>
         </ul>
@@ -720,6 +721,28 @@
             <div style="display:flex; gap:0.5rem; margin-top:1rem;">
                 <input type="text" placeholder="Enter claim code..." style="flex:1; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
                 <button class="auth-submit-btn" style="width:auto; padding:0.6rem 1rem; margin:0;">Redeem</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registry Modal -->
+    <div class="reg-overlay" id="reg-overlay" aria-hidden="true"></div>
+    <div class="reg-modal auth-modal" id="reg-modal" role="dialog" aria-modal="true" aria-label="Registry">
+        <button class="modal-close" id="reg-close" aria-label="Close registry modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Gift Registry</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1.5rem;">
+                Create, manage, or find a registry for any occasion.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1.5rem;">
+                <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111;">Wedding Registry</button>
+                <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111;">Baby Registry</button>
+                <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111;">Custom Gift List</button>
+            </div>
+            <div class="auth-divider"><span>Find a registry</span></div>
+            <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                <input type="text" placeholder="Registrant name..." style="flex:1; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
+                <button class="auth-submit-btn" style="width:auto; padding:0.6rem 1rem; margin:0;">Search</button>
             </div>
         </div>
     </div>

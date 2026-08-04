@@ -768,6 +768,27 @@
         </div>
     </div>
 
+    <!-- Wishlist Modal -->
+    <div class="wishlist-overlay" id="wishlist-overlay" aria-hidden="true"></div>
+    <div class="wishlist-modal auth-modal" id="wishlist-modal" role="dialog" aria-modal="true" aria-label="Your Wishlist">
+        <button class="modal-close" id="wishlist-close" aria-label="Close wishlist modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Your Lists</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1.5rem;">
+                Keep track of items you want to buy later.
+            </p>
+            <div style="background: #f7fafa; border: 1px solid #d5d9d9; border-radius: 8px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem;">
+                <p style="font-size: 0.85rem; color: #333; margin-bottom: 1rem;">No lists created yet.</p>
+                <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                    <input type="text" placeholder="e.g. Birthday list" style="flex:1; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
+                    <button class="auth-submit-btn" style="width:auto; padding:0.6rem 1rem; margin:0;">Create List</button>
+                </div>
+            </div>
+            <div class="auth-divider"><span>Discover more</span></div>
+            <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111; margin-top: 1rem;">Find a List or Registry</button>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

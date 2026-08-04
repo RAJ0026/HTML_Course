@@ -702,6 +702,28 @@
         </div>
     </div>
 
+    <!-- Gift Cards Modal -->
+    <div class="gc-overlay" id="gc-overlay" aria-hidden="true"></div>
+    <div class="gc-modal auth-modal" id="gc-modal" role="dialog" aria-modal="true" aria-label="Gift Cards">
+        <button class="modal-close" id="gc-close" aria-label="Close gift cards modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Amazon Gift Cards</h2>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 1.5rem;">
+                The perfect gift for any occasion. Choose from physical, eGift, or print-at-home cards.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1.5rem;">
+                <button class="auth-submit-btn" style="background:#f0c14b; border-color:#a88734 #9c7e31 #846a29;">eGift Cards</button>
+                <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111;">Physical Gift Cards</button>
+                <button class="auth-submit-btn" style="background:#f3f3f3; border-color:#a6a6a6; color:#111;">Corporate Gift Cards</button>
+            </div>
+            <div class="auth-divider"><span>Already have a gift card?</span></div>
+            <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                <input type="text" placeholder="Enter claim code..." style="flex:1; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; outline:none;" />
+                <button class="auth-submit-btn" style="width:auto; padding:0.6rem 1rem; margin:0;">Redeem</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Auth Modal -->
     <div class="auth-overlay" id="auth-overlay" aria-hidden="true"></div>
     <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Sign In">

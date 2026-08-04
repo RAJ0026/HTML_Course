@@ -1389,6 +1389,21 @@ function initWishlistModal() {
   wlOverlay?.addEventListener('click', closeWL);
 }
 
+function initNewsletter() {
+  const form = $('#newsletter-form');
+  const input = $('#newsletter-email');
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (input && input.checkValidity() && input.value.trim() !== '') {
+      showToast('✉️ Thanks for subscribing! You will receive our next newsletter.');
+      input.value = '';
+    } else {
+      showToast('⚠️ Please enter a valid email address.');
+    }
+  });
+}
+
 /* ============================================================
    Boot
    ============================================================ */

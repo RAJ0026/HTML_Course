@@ -330,6 +330,22 @@ function initQuickView() {
   });
   $('#modal-close')?.addEventListener('click', closeQuickView);
   $('#modal-overlay')?.addEventListener('click', closeQuickView);
+
+  const loadReviewsBtn = $('#modal-load-reviews');
+  loadReviewsBtn?.addEventListener('click', () => {
+    const list = $('#modal-reviews-list');
+    if (!list) return;
+    const newReview = document.createElement('div');
+    newReview.className = 'review-item';
+    newReview.style.cssText = 'margin-bottom: 0.8rem; border-bottom: 1px dashed #ddd; padding-bottom: 0.5rem;';
+    newReview.innerHTML = `
+        <div style="color: #de7921; margin-bottom: 0.2rem;">★★★★☆</div>
+        <strong style="display: block; margin-bottom: 0.2rem;">Good, but could be better</strong>
+        <p style="margin: 0; color: #555;">Works well for the most part, but shipping took longer than expected.</p>
+    `;
+    list.appendChild(newReview);
+    list.scrollTop = list.scrollHeight;
+  });
 }
 
 /* ============================================================

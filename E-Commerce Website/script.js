@@ -1298,6 +1298,26 @@ function initSellModal() {
   sellOverlay?.addEventListener('click', closeSell);
 }
 
+function initGCModal() {
+  const gcLink = $('#nav-gc');
+  const gcModal = $('#gc-modal');
+  const gcOverlay = $('#gc-overlay');
+  const gcClose = $('#gc-close');
+
+  function openGC() {
+    gcModal?.classList.add('open');
+    gcOverlay?.classList.add('open');
+  }
+  function closeGC() {
+    gcModal?.classList.remove('open');
+    gcOverlay?.classList.remove('open');
+  }
+
+  gcLink?.addEventListener('click', e => { e.preventDefault(); openGC(); });
+  gcClose?.addEventListener('click', closeGC);
+  gcOverlay?.addEventListener('click', closeGC);
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1331,6 +1351,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangModal();       // completion phase
   initCSModal();         // completion phase
   initSellModal();       // completion phase
+  initGCModal();         // completion phase
 });
 // Increment 1
 

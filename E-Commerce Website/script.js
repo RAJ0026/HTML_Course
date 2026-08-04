@@ -1358,6 +1358,26 @@ function initHistoryModal() {
   historyOverlay?.addEventListener('click', closeHistory);
 }
 
+function initWishlistModal() {
+  const wlLink = $('#wishlist-header-btn');
+  const wlModal = $('#wishlist-modal');
+  const wlOverlay = $('#wishlist-overlay');
+  const wlClose = $('#wishlist-close');
+
+  function openWL() {
+    wlModal?.classList.add('open');
+    wlOverlay?.classList.add('open');
+  }
+  function closeWL() {
+    wlModal?.classList.remove('open');
+    wlOverlay?.classList.remove('open');
+  }
+
+  wlLink?.addEventListener('click', e => { e.preventDefault(); openWL(); });
+  wlClose?.addEventListener('click', closeWL);
+  wlOverlay?.addEventListener('click', closeWL);
+}
+
 /* ============================================================
    Boot
    ============================================================ */
@@ -1394,6 +1414,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGCModal();         // completion phase
   initRegModal();        // completion phase
   initHistoryModal();    // completion phase
+  initWishlistModal();   // completion phase
 });
 // Increment 1
 

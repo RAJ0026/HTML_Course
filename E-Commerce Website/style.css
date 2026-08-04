@@ -2351,20 +2351,20 @@ body.dark-mode .dark-mode-btn {
 /* ============================================================
    Auth & Checkout Modals (Completion Phase)
    ============================================================ */
-.auth-overlay, .checkout-overlay, .orders-overlay, .address-overlay, .lang-overlay, .cs-overlay, .sell-overlay, .gc-overlay, .reg-overlay, .history-overlay {
+.auth-overlay, .checkout-overlay, .orders-overlay, .address-overlay, .lang-overlay, .cs-overlay, .sell-overlay, .gc-overlay, .reg-overlay, .history-overlay, .wishlist-overlay {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.6); z-index: 10000;
   opacity: 0; pointer-events: none; transition: opacity var(--transition);
 }
-.auth-overlay.open, .checkout-overlay.open, .orders-overlay.open, .address-overlay.open, .lang-overlay.open, .cs-overlay.open, .sell-overlay.open, .gc-overlay.open, .reg-overlay.open, .history-overlay.open { opacity: 1; pointer-events: auto; }
-.auth-modal, .checkout-modal, .orders-modal, .address-modal, .lang-modal, .cs-modal, .sell-modal, .gc-modal, .reg-modal, .history-modal {
+.auth-overlay.open, .checkout-overlay.open, .orders-overlay.open, .address-overlay.open, .lang-overlay.open, .cs-overlay.open, .sell-overlay.open, .gc-overlay.open, .reg-overlay.open, .history-overlay.open, .wishlist-overlay.open { opacity: 1; pointer-events: auto; }
+.auth-modal, .checkout-modal, .orders-modal, .address-modal, .lang-modal, .cs-modal, .sell-modal, .gc-modal, .reg-modal, .history-modal, .wishlist-modal {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -45%);
   background: var(--card-bg); width: 100%; max-width: 400px;
   border-radius: var(--radius); padding: 2rem; z-index: 10001;
   opacity: 0; pointer-events: none; transition: all var(--transition);
   box-shadow: var(--shadow-lg);
 }
-.auth-modal.open, .checkout-modal.open, .orders-modal.open, .address-modal.open, .lang-modal.open, .cs-modal.open, .sell-modal.open, .gc-modal.open, .reg-modal.open, .history-modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
+.auth-modal.open, .checkout-modal.open, .orders-modal.open, .address-modal.open, .lang-modal.open, .cs-modal.open, .sell-modal.open, .gc-modal.open, .reg-modal.open, .history-modal.open, .wishlist-modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
 .auth-title, .checkout-title { font-size: 1.6rem; margin-bottom: 1rem; font-weight: 500; }
 .auth-form .form-group, .checkout-form .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .auth-form label, .checkout-form label { font-size: 0.85rem; font-weight: 600; }

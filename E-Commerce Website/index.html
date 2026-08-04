@@ -618,13 +618,16 @@
                 <button style="padding:0.5rem 1rem; background:#e7e9ec; border:1px solid #adb1b8; border-radius:3px; cursor:pointer;">Apply</button>
             </div>
             <div class="auth-divider"><span>or</span></div>
-            <select style="width:100%; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; margin-top:0.5rem; outline:none; background:#f0f2f2; cursor:pointer;">
+            <select id="address-select" style="width:100%; padding:0.6rem; border:1px solid #a6a6a6; border-radius:3px; margin-top:0.5rem; outline:none; background:#f0f2f2; cursor:pointer;">
                 <option value="IN" selected>India</option>
                 <option value="US">United States</option>
                 <option value="UK">United Kingdom</option>
                 <option value="CA">Canada</option>
                 <option value="AU">Australia</option>
             </select>
+            <div style="margin-top: 1rem; text-align: center;">
+                <button type="button" id="auto-detect-btn" style="background: none; border: none; color: #007185; cursor: pointer; text-decoration: none; font-size: 0.85rem;"><i class="fa-solid fa-location-crosshairs"></i> Auto-detect my location</button>
+            </div>
         </div>
     </div>
 

@@ -1234,6 +1234,18 @@ function initAddressModal() {
   addressLink?.addEventListener('click', e => { e.preventDefault(); openAddress(); });
   addressClose?.addEventListener('click', closeAddress);
   addressOverlay?.addEventListener('click', closeAddress);
+
+  const autoDetectBtn = $('#auto-detect-btn');
+  const addressSelect = $('#address-select');
+  autoDetectBtn?.addEventListener('click', () => {
+    showToast('📍 Detecting your location...');
+    setTimeout(() => {
+      // simulate location detect to US
+      if (addressSelect) addressSelect.value = 'US';
+      showToast('✅ Location set to United States.');
+      setTimeout(closeAddress, 1000);
+    }, 1500);
+  });
 }
 
 function initLangModal() {

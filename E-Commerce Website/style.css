@@ -2559,3 +2559,26 @@ input[type="text"], input[type="email"], input[type="password"] {
 .profile-links a:hover {
   background: #f7fafa;
 }
+
+/* ============================================================
+   Rich Search Autocomplete (Sprint 4)
+   ============================================================ */
+.search-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-dropdown .search-thumb {
+  width: 30px; height: 30px; object-fit: contain;
+  border-radius: 4px; background: #fff;
+}
+.search-dropdown .search-cat {
+  font-size: 0.75rem;
+  color: #007185;
+  margin-left: auto;
+  font-style: italic;
+}
+.search-dropdown .search-match {
+  font-weight: bold;
+  color: #111;
+}

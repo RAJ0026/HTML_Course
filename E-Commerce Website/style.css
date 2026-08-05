@@ -2473,9 +2473,65 @@ input[type="text"], input[type="email"], input[type="password"] {
 /* Increment 16 */
 
 /* Increment 17 */
+/* Increment 1 */
+
+/* Increment 2 */
+
+/* Increment 3 */
+
+/* Increment 4 */
+
+/* Increment 5 */
+
+/* Increment 6 */
+
+/* Increment 7 */
+
+/* Increment 8 */
+
+/* Increment 9 */
+
+/* Increment 10 */
+
+/* Increment 11 */
+
+/* Increment 12 */
+
+/* Increment 13 */
+
+/* Increment 14 */
+
+/* Increment 15 */
+
+/* Increment 16 */
+
+/* Increment 17 */
 
 /* Increment 18 */
 
 /* Increment 19 */
 
 /* Increment 20 */
+
+/* ============================================================
+   Product Reviews Modal (Sprint 4)
+   ============================================================ */
+.reviews-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6); z-index: 1000; opacity: 0; visibility: hidden;
+  transition: opacity var(--transition);
+}
+.reviews-modal {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.95);
+  background: var(--bg); width: 90%; max-width: 500px;
+  border-radius: var(--radius); z-index: 1001; opacity: 0; visibility: hidden;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.reviews-overlay.open { opacity: 1; visibility: visible; }
+.reviews-modal.open { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+
+.review-item-full { margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+.review-item-full .stars { color: #de7921; font-size: 1.1rem; margin-bottom: 0.2rem; }
+.review-item-full .title { font-weight: bold; margin-bottom: 0.2rem; color: #0f1111; }
+.review-item-full .author { font-size: 0.8rem; color: #555; margin-bottom: 0.5rem; }
+.review-item-full .text { font-size: 0.9rem; color: #333; line-height: 1.4; }

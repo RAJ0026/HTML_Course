@@ -1570,6 +1570,35 @@ function initPromoBanner() {
 }
 
 /* ============================================================
+   About Us Modal
+   ============================================================ */
+function initAboutModal() {
+  const aboutLink = $('#footer-about-link');
+  const aboutModal = $('#about-modal');
+  const aboutOverlay = $('#about-overlay');
+  const aboutClose = $('#about-close');
+  const aboutOk = $('#about-ok');
+  
+  if (!aboutLink || !aboutModal) return;
+  
+  function openAbout() {
+    aboutModal.classList.add('open');
+    aboutOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAbout() {
+    aboutModal.classList.remove('open');
+    aboutOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  
+  aboutLink.addEventListener('click', e => { e.preventDefault(); openAbout(); });
+  aboutClose?.addEventListener('click', closeAbout);
+  aboutOk?.addEventListener('click', closeAbout);
+  aboutOverlay?.addEventListener('click', closeAbout);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1610,6 +1639,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProfileModal();    // Sprint 4
   initRecommendedCarousel(); // Sprint 4
   initPromoBanner();     // Sprint 4
+  initAboutModal();      // Sprint 4
 
   // E-Commerce Website Project - 100% Completed
   // All 40 incremental commits successfully pushed.

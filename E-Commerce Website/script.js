@@ -110,14 +110,24 @@ cart._sync = function() { _origSync(); saveCart(); };
 /* ============================================================
    Toast Notification
    ============================================================ */
-let toastTimer = null;
+let toastCount = 0;
 function showToast(msg) {
-  const toast = $('#cart-toast');
-  if (!toast) return;
+  const container = $('#toast-container');
+  if (!container) return;
+  
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.id = `toast-${++toastCount}`;
   toast.textContent = msg;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+  
+  container.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.classList.add('hide');
+    toast.addEventListener('animationend', () => {
+      if (toast.parentElement) toast.remove();
+    });
+  }, 3000);
 }
 
 /* ============================================================

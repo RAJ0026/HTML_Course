@@ -879,8 +879,23 @@
         </div>
         <p class="order-modal-note">A confirmation email has been sent to your registered address.</p>
     </div>
+    <!-- Product Reviews Modal -->
+    <div class="reviews-overlay" id="reviews-overlay" aria-hidden="true"></div>
+    <div class="reviews-modal auth-modal" id="reviews-modal" role="dialog" aria-modal="true" aria-label="Product Reviews">
+        <button class="modal-close" id="reviews-close" aria-label="Close reviews modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">All Customer Reviews</h2>
+            <div class="reviews-stats" style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #ddd;">
+                <div style="font-size: 2rem; color: #de7921; font-weight: bold;">4.6</div>
+                <div style="color: #555; font-size: 0.9rem;">out of 5 stars</div>
+                <div style="color: #007185; font-size: 0.85rem; margin-top: 0.3rem;">12,453 global ratings</div>
+            </div>
+            <div id="full-reviews-list" style="max-height: 350px; overflow-y: auto;">
+                <!-- Reviews injected via JS -->
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
 <!-- Increment 1 -->
 

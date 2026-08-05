@@ -617,7 +617,7 @@
             <div class="footer-col">
                 <h4>Get to Know Us</h4>
                 <ul>
-                    <li><a href="#">About Amazon</a></li>
+                    <li><a href="#" id="footer-about-link">About Amazon</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Press Releases</a></li>
                     <li><a href="#">Investor Relations</a></li>
@@ -975,6 +975,28 @@
                 <a href="#" style="color: #111; text-decoration: none; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"><i class="fa-solid fa-location-dot" style="width: 25px; color: #555;"></i> Your Addresses</a>
             </div>
             <button class="auth-submit-btn" style="margin-top: 1.5rem; background: #e7e9ec; border-color: #adb1b8;">Sign Out</button>
+        </div>
+    </div>
+    
+    <!-- About Us Modal -->
+    <div class="about-overlay" id="about-overlay" aria-hidden="true"></div>
+    <div class="about-modal auth-modal" id="about-modal" role="dialog" aria-modal="true" aria-label="About Us">
+        <button class="modal-close" id="about-close" aria-label="Close about modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">About Us</h2>
+            <div style="font-size: 0.95rem; line-height: 1.5; color: #333; margin-top: 1rem;">
+                <p style="margin-bottom: 0.8rem;"><strong>Welcome to our E-Commerce Demo!</strong></p>
+                <p style="margin-bottom: 0.8rem;">This project is a fully responsive, front-end clone built using Vanilla HTML, CSS, and JavaScript. It serves as a learning sandbox for modern web development techniques without relying on heavy frameworks.</p>
+                <p>Features include:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li>Dynamic cart logic with localStorage persistence</li>
+                    <li>Interactive quick-view modals</li>
+                    <li>Theme toggling and custom CSS variables</li>
+                    <li>Accessible keyboard navigation</li>
+                </ul>
+                <p>We hope you enjoy exploring the code!</p>
+            </div>
+            <button class="auth-submit-btn" id="about-ok" style="margin-top: 1.5rem; background: #e7e9ec; border-color: #adb1b8;">Got it</button>
         </div>
     </div>
 </body>

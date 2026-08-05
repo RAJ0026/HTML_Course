@@ -28,6 +28,7 @@
             <li><a href="#" class="top-nav-link" id="nav-gc">Gift Cards</a></li>
             <li><a href="#" class="top-nav-link" id="nav-history">Browsing History</a></li>
             <li><a href="#" class="top-nav-link">Deals</a></li>
+            <li><a href="#" class="top-nav-link" id="nav-profile"><i class="fa-solid fa-user"></i> Profile</a></li>
         </ul>
     </nav>
     <!-- Mobile Nav Overlay -->
@@ -893,6 +894,30 @@
             <div id="full-reviews-list" style="max-height: 350px; overflow-y: auto;">
                 <!-- Reviews injected via JS -->
             </div>
+        </div>
+    </div>
+    <!-- User Profile Modal -->
+    <div class="profile-overlay" id="profile-overlay" aria-hidden="true"></div>
+    <div class="profile-modal auth-modal" id="profile-modal" role="dialog" aria-modal="true" aria-label="User Profile">
+        <button class="modal-close" id="profile-close" aria-label="Close profile modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Your Profile</h2>
+            <div class="profile-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="profile-avatar" style="width: 60px; height: 60px; background: #e7e9ec; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #555;">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <strong style="font-size: 1.1rem; display: block;">Hello, Guest</strong>
+                    <span style="color: #007185; font-size: 0.85rem; cursor: pointer;">Manage profile</span>
+                </div>
+            </div>
+            <div class="profile-links" style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem;">
+                <a href="#" style="color: #111; text-decoration: none; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"><i class="fa-solid fa-box" style="width: 25px; color: #555;"></i> Your Orders</a>
+                <a href="#" style="color: #111; text-decoration: none; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"><i class="fa-solid fa-shield-halved" style="width: 25px; color: #555;"></i> Login & Security</a>
+                <a href="#" style="color: #111; text-decoration: none; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"><i class="fa-solid fa-credit-card" style="width: 25px; color: #555;"></i> Your Payments</a>
+                <a href="#" style="color: #111; text-decoration: none; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"><i class="fa-solid fa-location-dot" style="width: 25px; color: #555;"></i> Your Addresses</a>
+            </div>
+            <button class="auth-submit-btn" style="margin-top: 1.5rem; background: #e7e9ec; border-color: #adb1b8;">Sign Out</button>
         </div>
     </div>
 </body>

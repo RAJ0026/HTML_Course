@@ -2606,3 +2606,13 @@ input[type="text"], input[type="email"], input[type="password"] {
 .theme-switch .slider.round:before { border-radius: 50%; }
 .slider-icon-sun { color: #f39c12; font-size: 0.75rem; z-index: 1; }
 .slider-icon-moon { color: #f1c40f; font-size: 0.75rem; z-index: 1; }
+
+/* ============================================================
+   Accessibility (Sprint 4)
+   ============================================================ */
+.skip-link {
+  position: absolute; top: -40px; left: 0; background: #de7921; color: #fff;
+  padding: 8px; z-index: 9999; text-decoration: none; font-weight: bold;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }

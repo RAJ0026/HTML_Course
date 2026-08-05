@@ -458,6 +458,48 @@
 
     </main>
 
+    <!-- Recommended Carousel (Sprint 4) -->
+    <section class="deals-section" aria-labelledby="recommended-heading" style="background: #fff; margin-top: 1rem; border-top: 1px solid #ddd;">
+        <h2 id="recommended-heading" class="section-title">Recommended for You</h2>
+        <div class="carousel-container" style="position:relative;">
+            <button class="carousel-btn deals-prev" id="rec-prev" aria-label="Previous recommended" style="display:none;">&#10094;</button>
+            <div class="deals-carousel-wrapper" id="rec-wrapper">
+                <div class="deals-track" id="rec-track">
+                    <!-- Cards will be populated by JS -->
+                    <article class="deal-card">
+                        <img src="https://picsum.photos/180/180?random=101" alt="Smart Watch" loading="lazy" />
+                        <h4>Smart Watch Series 7</h4>
+                        <div class="deal-stars">★★★★☆</div>
+                        <div class="deal-prices"><span class="price">$199.99</span></div>
+                        <button class="add-to-cart deal-btn">Add to Cart</button>
+                    </article>
+                    <article class="deal-card">
+                        <img src="https://picsum.photos/180/180?random=102" alt="Noise Cancelling Headphones" loading="lazy" />
+                        <h4>Noise Cancelling Headphones</h4>
+                        <div class="deal-stars">★★★★★</div>
+                        <div class="deal-prices"><span class="price">$249.99</span></div>
+                        <button class="add-to-cart deal-btn">Add to Cart</button>
+                    </article>
+                    <article class="deal-card">
+                        <img src="https://picsum.photos/180/180?random=103" alt="Mechanical Keyboard" loading="lazy" />
+                        <h4>Mechanical Keyboard RGB</h4>
+                        <div class="deal-stars">★★★★½</div>
+                        <div class="deal-prices"><span class="price">$89.99</span></div>
+                        <button class="add-to-cart deal-btn">Add to Cart</button>
+                    </article>
+                    <article class="deal-card">
+                        <img src="https://picsum.photos/180/180?random=104" alt="Ergonomic Mouse" loading="lazy" />
+                        <h4>Ergonomic Wireless Mouse</h4>
+                        <div class="deal-stars">★★★★☆</div>
+                        <div class="deal-prices"><span class="price">$39.99</span></div>
+                        <button class="add-to-cart deal-btn">Add to Cart</button>
+                    </article>
+                </div>
+            </div>
+            <button class="carousel-btn deals-next" id="rec-next" aria-label="Next recommended">&#10095;</button>
+        </div>
+    </section>
+
     <!-- Cart Toast Notification -->
     <div class="cart-toast" id="cart-toast" role="status" aria-live="polite"></div>
 

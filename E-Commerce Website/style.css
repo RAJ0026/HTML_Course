@@ -2626,3 +2626,36 @@ textarea:focus-visible {
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.3);
 }
+
+/* ============================================================
+   Top Promo Banner (Sprint 4)
+   ============================================================ */
+.top-promo-banner {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #111;
+  transition: height 0.3s, padding 0.3s, opacity 0.3s;
+  overflow: hidden;
+}
+.top-promo-banner.hidden {
+  height: 0; padding: 0 16px; opacity: 0; border: none;
+}
+.promo-content {
+  display: flex; gap: 12px; align-items: center; justify-content: center; width: 100%;
+}
+.promo-badge {
+  background: #cc0c39; color: white; padding: 2px 6px; border-radius: 3px; font-weight: bold; font-size: 0.75rem;
+}
+.promo-link {
+  color: #007185; text-decoration: none; font-weight: bold; margin-left: 10px;
+}
+.promo-link:hover { text-decoration: underline; color: #c45500; }
+.promo-close {
+  background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #555;
+}
+.promo-close:hover { color: #111; }

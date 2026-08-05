@@ -333,18 +333,8 @@ function initQuickView() {
 
   const loadReviewsBtn = $('#modal-load-reviews');
   loadReviewsBtn?.addEventListener('click', () => {
-    const list = $('#modal-reviews-list');
-    if (!list) return;
-    const newReview = document.createElement('div');
-    newReview.className = 'review-item';
-    newReview.style.cssText = 'margin-bottom: 0.8rem; border-bottom: 1px dashed #ddd; padding-bottom: 0.5rem;';
-    newReview.innerHTML = `
-        <div style="color: #de7921; margin-bottom: 0.2rem;">★★★★☆</div>
-        <strong style="display: block; margin-bottom: 0.2rem;">Good, but could be better</strong>
-        <p style="margin: 0; color: #555;">Works well for the most part, but shipping took longer than expected.</p>
-    `;
-    list.appendChild(newReview);
-    list.scrollTop = list.scrollHeight;
+    closeQuickView();
+    if (window.openFullReviews) window.openFullReviews();
   });
 }
 
@@ -1433,6 +1423,56 @@ function initNewsletter() {
 }
 
 /* ============================================================
+   Product Reviews Modal
+   ============================================================ */
+function initReviewsModal() {
+  const reviewsModal = $('#reviews-modal');
+  const reviewsOverlay = $('#reviews-overlay');
+  const reviewsClose = $('#reviews-close');
+  const list = $('#full-reviews-list');
+
+  function openReviews() {
+    reviewsModal?.classList.add('open');
+    reviewsOverlay?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    
+    // Inject mock reviews
+    if (list && list.children.length === 0) {
+      const mockReviews = [
+        { stars: '★★★★★', title: 'Great product, definitely recommend!', author: 'Verified Purchaser', text: 'This met all my expectations and then some. The quality is fantastic for the price.' },
+        { stars: '★★★★☆', title: 'Good value', author: 'Amazon Customer', text: 'Works well, but packaging was slightly damaged.' },
+        { stars: '★★★★★', title: 'Five Stars', author: 'Jane D.', text: 'Absolutely love this! Bought it for my husband and he uses it every day.' },
+        { stars: '★★★☆☆', title: 'It is okay', author: 'Mike R.', text: 'Does what it says, but feels a bit cheap.' },
+        { stars: '★★★★★', title: 'Best purchase of the year', author: 'Sarah W.', text: 'I have tried many alternatives but this one is the best by far.' }
+      ];
+      mockReviews.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review-item-full';
+        div.innerHTML = `
+          <div class="stars">${r.stars}</div>
+          <div class="title">${r.title}</div>
+          <div class="author">${r.author}</div>
+          <div class="text">${r.text}</div>
+        `;
+        list.appendChild(div);
+      });
+    }
+  }
+
+  function closeReviews() {
+    reviewsModal?.classList.remove('open');
+    reviewsOverlay?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  reviewsClose?.addEventListener('click', closeReviews);
+  reviewsOverlay?.addEventListener('click', closeReviews);
+
+  // Expose for Quick View to call
+  window.openFullReviews = openReviews;
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1469,6 +1509,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRegModal();        // completion phase
   initHistoryModal();    // completion phase
   initWishlistModal();   // completion phase
+  initReviewsModal();    // Sprint 4
 
   // E-Commerce Website Project - 100% Completed
   // All 40 incremental commits successfully pushed.

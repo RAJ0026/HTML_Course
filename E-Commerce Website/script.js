@@ -507,6 +507,40 @@ function initDealsCarousel() {
 }
 
 /* ============================================================
+   Recommended Carousel
+   ============================================================ */
+function initRecommendedCarousel() {
+  const track = $('#rec-track');
+  const prevBtn = $('#rec-prev');
+  const nextBtn = $('#rec-next');
+  if (!track) return;
+
+  const cards = $$('.deal-card', track);
+  const cardWidth = 200 + 16;   // card flex-basis + gap
+  let offset = 0;
+
+  function getMax() {
+    return Math.max(0, cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth));
+  }
+
+  function update() {
+    const max = getMax();
+    offset = Math.min(offset, max);
+    track.style.transform = `translateX(-${offset * cardWidth}px)`;
+    prevBtn.disabled = offset === 0;
+    nextBtn.disabled = offset >= max;
+    prevBtn.style.opacity = prevBtn.disabled ? '0.35' : '1';
+    nextBtn.style.opacity = nextBtn.disabled ? '0.35' : '1';
+  }
+
+  prevBtn?.addEventListener('click', () => { if (offset > 0) { offset--; update(); } });
+  nextBtn?.addEventListener('click', () => { if (offset < getMax()) { offset++; update(); } });
+
+  update();
+  window.addEventListener('resize', update);
+}
+
+/* ============================================================
    Back-to-Top Button
    ============================================================ */
 function initBackToTop() {
@@ -1543,6 +1577,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWishlistModal();   // completion phase
   initReviewsModal();    // Sprint 4
   initProfileModal();    // Sprint 4
+  initRecommendedCarousel(); // Sprint 4
 
   // E-Commerce Website Project - 100% Completed
   // All 40 incremental commits successfully pushed.

@@ -2535,3 +2535,27 @@ input[type="text"], input[type="email"], input[type="password"] {
 .review-item-full .title { font-weight: bold; margin-bottom: 0.2rem; color: #0f1111; }
 .review-item-full .author { font-size: 0.8rem; color: #555; margin-bottom: 0.5rem; }
 .review-item-full .text { font-size: 0.9rem; color: #333; line-height: 1.4; }
+
+/* ============================================================
+   User Profile Modal (Sprint 4)
+   ============================================================ */
+.profile-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6); z-index: 1000; opacity: 0; visibility: hidden;
+  transition: opacity var(--transition);
+}
+.profile-modal {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.95);
+  background: var(--bg); width: 90%; max-width: 400px;
+  border-radius: var(--radius); z-index: 1001; opacity: 0; visibility: hidden;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.profile-overlay.open { opacity: 1; visibility: visible; }
+.profile-modal.open { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+
+.profile-links a {
+  transition: background 0.2s;
+}
+.profile-links a:hover {
+  background: #f7fafa;
+}

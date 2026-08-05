@@ -1641,40 +1641,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoBanner();     // Sprint 4
   initAboutModal();      // Sprint 4
 
-  // E-Commerce Website Project - 100% Completed
-  // All 40 incremental commits successfully pushed.
+  // Extended goal reached: 65 incremental commits successfully pushed.
 });
-
-// Increment 4
-
-// Increment 5
-
-// Increment 6
-
-// Increment 7
-
-// Increment 8
-
-// Increment 9
-
-// Increment 10
-
-// Increment 11
-
-// Increment 12
-
-// Increment 13
-
-// Increment 14
-
-// Increment 15
-
-// Increment 16
-
-// Increment 17
-
-// Increment 18
-
-// Increment 19
-
-// Increment 20

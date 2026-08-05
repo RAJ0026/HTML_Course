@@ -1541,6 +1541,25 @@ function initProfileModal() {
 }
 
 /* ============================================================
+   Top Promo Banner
+   ============================================================ */
+function initPromoBanner() {
+  const banner = $('#top-promo-banner');
+  const closeBtn = $('#promo-close');
+  if (!banner || !closeBtn) return;
+  
+  if (sessionStorage.getItem('promoDismissed')) {
+    banner.classList.add('hidden');
+    return;
+  }
+  
+  closeBtn.addEventListener('click', () => {
+    banner.classList.add('hidden');
+    sessionStorage.setItem('promoDismissed', 'true');
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1580,6 +1599,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsModal();    // Sprint 4
   initProfileModal();    // Sprint 4
   initRecommendedCarousel(); // Sprint 4
+  initPromoBanner();     // Sprint 4
 
   // E-Commerce Website Project - 100% Completed
   // All 40 incremental commits successfully pushed.

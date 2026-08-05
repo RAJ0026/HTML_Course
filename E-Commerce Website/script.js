@@ -1473,6 +1473,38 @@ function initReviewsModal() {
 }
 
 /* ============================================================
+   Profile Modal
+   ============================================================ */
+function initProfileModal() {
+  const profileLink = $('#nav-profile');
+  const profileModal = $('#profile-modal');
+  const profileOverlay = $('#profile-overlay');
+  const profileClose = $('#profile-close');
+  
+  function openProfile() {
+    profileModal?.classList.add('open');
+    profileOverlay?.classList.add('open');
+  }
+  function closeProfile() {
+    profileModal?.classList.remove('open');
+    profileOverlay?.classList.remove('open');
+  }
+  
+  profileLink?.addEventListener('click', e => { e.preventDefault(); openProfile(); });
+  profileClose?.addEventListener('click', closeProfile);
+  profileOverlay?.addEventListener('click', closeProfile);
+  
+  // Intercept profile links
+  $$('.profile-links a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      showToast(`Redirecting to ${link.textContent.trim()}...`);
+      closeProfile();
+    });
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1510,6 +1542,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHistoryModal();    // completion phase
   initWishlistModal();   // completion phase
   initReviewsModal();    // Sprint 4
+  initProfileModal();    // Sprint 4
 
   // E-Commerce Website Project - 100% Completed
   // All 40 incremental commits successfully pushed.

@@ -361,7 +361,11 @@ function initSearch() {
     suggestions.forEach(p => {
       const li = document.createElement('li');
       li.setAttribute('role', 'option');
-      li.innerHTML = `<i class="fa-solid fa-magnifying-glass suggestion-icon"></i> ${p.name}`;
+      li.innerHTML = `
+        <img src="${p.img}" alt="" class="search-thumb" />
+        <span class="search-match">${p.name}</span>
+        <span class="search-cat">in All Departments</span>
+      `;
       li.addEventListener('mousedown', () => {
         input.value = p.name;
         dropdown.classList.remove('open');

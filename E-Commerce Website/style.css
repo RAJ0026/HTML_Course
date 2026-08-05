@@ -2616,3 +2616,13 @@ input[type="text"], input[type="email"], input[type="password"] {
   transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
+
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+select:focus-visible, 
+textarea:focus-visible {
+  outline: 3px solid #ff9900 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.3);
+}

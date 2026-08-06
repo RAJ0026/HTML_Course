@@ -2752,3 +2752,46 @@ textarea:focus-visible {
   .shop-layout { flex-direction: column; }
   .shop-sidebar { flex: 1 1 auto; width: 100%; position: static; }
 }
+
+/* ============================================================
+   Pagination (Sprint 5)
+   ============================================================ */
+.pagination-nav {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.pagination-list {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+  padding: 0;
+}
+.page-btn {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+.page-btn:hover:not([disabled]) {
+  background: #f3f3f3;
+  border-color: #adb1b8;
+}
+.page-btn.active {
+  background: #ff9900;
+  color: #111;
+  border-color: #ff9900;
+  font-weight: bold;
+}
+.page-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.page-ellipsis {
+  padding: 8px 12px;
+  color: var(--text-light);
+}

@@ -1049,5 +1049,24 @@
             <button class="cookie-btn cookie-decline" id="cookie-decline">Decline</button>
         </div>
     </div>
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chat-widget">
+        <button class="chat-toggle" id="chat-toggle" aria-label="Open live chat">
+            <i class="fa-solid fa-comment-dots"></i>
+        </button>
+        <div class="chat-window" id="chat-window" aria-hidden="true">
+            <div class="chat-header">
+                <h3>Customer Support</h3>
+                <button class="chat-close" id="chat-close" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="chat-msg bot-msg">Hi there! How can we help you today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message..." aria-label="Chat message">
+                <button id="chat-send" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

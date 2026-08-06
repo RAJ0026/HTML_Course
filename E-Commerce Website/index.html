@@ -205,8 +205,33 @@
                         </select>
                     </div>
                 </div>
+                </div>
             </div>
-            <div class="product-grid" id="product-grid">
+            
+            <div class="shop-layout">
+                <!-- Shop Sidebar (Filters) -->
+                <aside class="shop-sidebar" id="shop-sidebar">
+                    <div class="filter-group">
+                        <h3>Customer Reviews</h3>
+                        <ul class="filter-list">
+                            <li><a href="#" data-rating="4"><span class="stars">★★★★☆</span> & Up</a></li>
+                            <li><a href="#" data-rating="3"><span class="stars">★★★☆☆</span> & Up</a></li>
+                            <li><a href="#" data-rating="2"><span class="stars">★★☆☆☆</span> & Up</a></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Price</h3>
+                        <ul class="filter-list">
+                            <li><a href="#" data-price="under-25">Under $25</a></li>
+                            <li><a href="#" data-price="25-50">$25 to $50</a></li>
+                            <li><a href="#" data-price="50-100">$50 to $100</a></li>
+                            <li><a href="#" data-price="over-100">$100 & Above</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="product-grid">
 
                 <article class="product-card" data-id="1" data-name="Echo Dot (5th Gen)" data-price="29.99"
                     data-img="https://picsum.photos/200/200?random=1" data-stock="in-stock"
@@ -365,6 +390,7 @@
                     </div>
                 </article>
 
+                </div>
             </div>
         </section>
 

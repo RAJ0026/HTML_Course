@@ -1672,6 +1672,35 @@ function initPagination() {
 }
 
 /* ============================================================
+   Cookie Consent Banner (Sprint 5)
+   ============================================================ */
+function initCookieBanner() {
+  const banner = $('#cookie-banner');
+  const acceptBtn = $('#cookie-accept');
+  const declineBtn = $('#cookie-decline');
+  
+  if (!banner || !acceptBtn || !declineBtn) return;
+  
+  const cookiePref = localStorage.getItem('cookieConsent');
+  if (!cookiePref) {
+    // Show banner after a short delay
+    setTimeout(() => {
+      banner.classList.add('show');
+    }, 1000);
+  }
+  
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.classList.remove('show');
+  });
+  
+  declineBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    banner.classList.remove('show');
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1715,6 +1744,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutModal();      // Sprint 4
   initSidebarFilters();  // Sprint 5
   initPagination();      // Sprint 5
+  initCookieBanner();    // Sprint 5
 
   // Extended goal reached: 83 incremental commits running.
 });

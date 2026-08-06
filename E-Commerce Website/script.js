@@ -1759,6 +1759,40 @@ function initLiveChat() {
 }
 
 /* ============================================================
+   FAQ Accordion (Sprint 5)
+   ============================================================ */
+function initFAQ() {
+  const faqQuestions = $$('.faq-question');
+  
+  faqQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling;
+      
+      // Close all others
+      faqQuestions.forEach(otherBtn => {
+        if (otherBtn !== btn) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherBtn.nextElementSibling.style.maxHeight = null;
+          otherBtn.nextElementSibling.setAttribute('aria-hidden', 'true');
+        }
+      });
+      
+      // Toggle current
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+        answer.setAttribute('aria-hidden', 'true');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1804,6 +1838,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPagination();      // Sprint 5
   initCookieBanner();    // Sprint 5
   initLiveChat();        // Sprint 5
+  initFAQ();             // Sprint 5
 
   // Extended goal reached: 83 incremental commits running.
 });

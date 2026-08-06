@@ -1701,6 +1701,56 @@ function initCookieBanner() {
 }
 
 /* ============================================================
+   Live Chat Widget (Sprint 5)
+   ============================================================ */
+function initLiveChat() {
+  const chatToggle = $('#chat-toggle');
+  const chatWindow = $('#chat-window');
+  const chatClose = $('#chat-close');
+  const chatInput = $('#chat-input');
+  const chatSend = $('#chat-send');
+  const chatBody = $('#chat-body');
+  
+  if (!chatToggle || !chatWindow) return;
+  
+  chatToggle.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+  });
+  
+  chatClose.addEventListener('click', () => {
+    chatWindow.classList.remove('open');
+  });
+  
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    
+    // Add user message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user-msg';
+    userMsg.textContent = text;
+    chatBody.appendChild(userMsg);
+    
+    chatInput.value = '';
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    // Simulate bot response
+    setTimeout(() => {
+      const botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot-msg';
+      botMsg.textContent = 'Thanks for reaching out! A representative will be with you shortly.';
+      chatBody.appendChild(botMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 1000);
+  }
+  
+  chatSend?.addEventListener('click', sendMessage);
+  chatInput?.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1745,6 +1795,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebarFilters();  // Sprint 5
   initPagination();      // Sprint 5
   initCookieBanner();    // Sprint 5
+  initLiveChat();        // Sprint 5
 
   // Extended goal reached: 83 incremental commits running.
 });

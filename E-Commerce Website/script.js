@@ -877,12 +877,33 @@ function initNewsletter() {
     btn.classList.add('subscribed');
     btn.disabled = true;
     input.disabled = true;
-    showToast('📧 Thanks for subscribing!');
+    
+    // Show Modal
+    const modal = $('#newsletter-modal');
+    const overlay = $('#newsletter-modal-overlay');
+    if (modal && overlay) {
+      modal.classList.add('show');
+      overlay.classList.add('show');
+    }
   });
 
   input?.addEventListener('input', () => {
     input.style.borderColor = '';
   });
+
+  // Modal close logic
+  const modal = $('#newsletter-modal');
+  const overlay = $('#newsletter-modal-overlay');
+  const closeBtn = $('#newsletter-close');
+  const okBtn = $('#newsletter-ok');
+  
+  function closeNewsModal() {
+    modal?.classList.remove('show');
+    overlay?.classList.remove('show');
+  }
+  closeBtn?.addEventListener('click', closeNewsModal);
+  okBtn?.addEventListener('click', closeNewsModal);
+  overlay?.addEventListener('click', closeNewsModal);
 }
 
 /* ============================================================
@@ -1453,20 +1474,7 @@ function initWishlistModal() {
   wlOverlay?.addEventListener('click', closeWL);
 }
 
-function initNewsletter() {
-  const form = $('#newsletter-form');
-  const input = $('#newsletter-email');
-  
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (input && input.checkValidity() && input.value.trim() !== '') {
-      showToast('✉️ Thanks for subscribing! You will receive our next newsletter.');
-      input.value = '';
-    } else {
-      showToast('⚠️ Please enter a valid email address.');
-    }
-  });
-}
+
 
 /* ============================================================
    Product Reviews Modal

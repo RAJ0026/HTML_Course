@@ -2698,3 +2698,57 @@ textarea:focus-visible {
 .about-modal.open {
   opacity: 1; transform: translate(-50%, -50%); pointer-events: auto;
 }
+
+/* ============================================================
+   Shop Layout & Sidebar (Sprint 5)
+   ============================================================ */
+.shop-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+.shop-sidebar {
+  flex: 0 0 220px;
+  background: var(--bg-main);
+  padding: 15px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  position: sticky;
+  top: 130px;
+}
+.filter-group h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.filter-list li {
+  margin-bottom: 8px;
+}
+.filter-list a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.filter-list a:hover {
+  color: #c45500;
+}
+.filter-list .stars {
+  color: #ffa41c;
+}
+/* Ensure the grid takes the rest of the space */
+.shop-layout .product-grid {
+  flex: 1;
+}
+@media (max-width: 768px) {
+  .shop-layout { flex-direction: column; }
+  .shop-sidebar { flex: 1 1 auto; width: 100%; position: static; }
+}

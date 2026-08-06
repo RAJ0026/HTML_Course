@@ -2946,3 +2946,29 @@ textarea:focus-visible {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* ============================================================
+   Newsletter Success Modal (Sprint 5)
+   ============================================================ */
+.newsletter-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none;
+}
+.newsletter-modal-overlay.show { display: block; }
+
+.newsletter-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 400px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.newsletter-modal.show { display: block; }
+.newsletter-modal .auth-body { text-align: center; padding: 30px; }
+.newsletter-modal .fa-envelope-circle-check { font-size: 3.5rem; color: #007185; margin-bottom: 15px; }
+.newsletter-modal p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; line-height: 1.4; }

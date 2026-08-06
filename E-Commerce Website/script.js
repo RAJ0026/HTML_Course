@@ -1629,6 +1629,49 @@ function initSidebarFilters() {
 }
 
 /* ============================================================
+   Pagination Logic (Sprint 5)
+   ============================================================ */
+function initPagination() {
+  const pageBtns = $$('.pagination-list .page-btn');
+  const prevBtn = $('.page-prev');
+  const nextBtn = $('.page-next');
+  
+  if (!pageBtns.length) return;
+  
+  let currentPage = 1;
+  const maxPage = 10;
+  
+  function updatePagination() {
+    pageBtns.forEach(btn => btn.classList.remove('active'));
+    
+    // Find the number button that matches currentPage
+    const activeBtn = Array.from(pageBtns).find(b => b.textContent == currentPage);
+    if (activeBtn) activeBtn.classList.add('active');
+    
+    // Disable prev/next if at boundaries
+    if (prevBtn) prevBtn.disabled = (currentPage === 1);
+    if (nextBtn) nextBtn.disabled = (currentPage === maxPage);
+  }
+  
+  pageBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('page-prev')) {
+        if (currentPage > 1) currentPage--;
+      } else if (btn.classList.contains('page-next')) {
+        if (currentPage < maxPage) currentPage++;
+      } else {
+        const pageNum = parseInt(btn.textContent);
+        if (!isNaN(pageNum)) currentPage = pageNum;
+      }
+      
+      updatePagination();
+      showToast(`Navigating to Page ${currentPage}`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1671,6 +1714,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoBanner();     // Sprint 4
   initAboutModal();      // Sprint 4
   initSidebarFilters();  // Sprint 5
+  initPagination();      // Sprint 5
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -2972,3 +2972,57 @@ textarea:focus-visible {
 .newsletter-modal .auth-body { text-align: center; padding: 30px; }
 .newsletter-modal .fa-envelope-circle-check { font-size: 3.5rem; color: #007185; margin-bottom: 15px; }
 .newsletter-modal p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; line-height: 1.4; }
+
+/* ============================================================
+   FAQ Section (Sprint 5)
+   ============================================================ */
+.faq-section {
+  padding: 40px 20px;
+  background: var(--bg-light);
+}
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faq-item {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.faq-question:hover { background: #f9f9f9; }
+.faq-icon { transition: transform 0.3s; color: var(--text-light); }
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-answer-inner {
+  padding: 0 20px 20px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}

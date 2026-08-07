@@ -1793,6 +1793,38 @@ function initFAQ() {
 }
 
 /* ============================================================
+   Size Guide Modal (Sprint 6)
+   ============================================================ */
+function initSizeGuide() {
+  const modal = $('#size-guide-modal');
+  const overlay = $('#size-guide-overlay');
+  const closeBtn = $('#size-guide-close');
+  const okBtn = $('#size-guide-ok');
+  
+  // Example triggers (e.g., inside product cards or quick view)
+  const triggers = $$('.size-guide-trigger');
+  
+  function openSizeGuide() {
+    modal?.classList.add('show');
+    overlay?.classList.add('show');
+  }
+  
+  function closeSizeGuide() {
+    modal?.classList.remove('show');
+    overlay?.classList.remove('show');
+  }
+  
+  triggers.forEach(btn => btn.addEventListener('click', e => {
+    e.preventDefault();
+    openSizeGuide();
+  }));
+  
+  closeBtn?.addEventListener('click', closeSizeGuide);
+  okBtn?.addEventListener('click', closeSizeGuide);
+  overlay?.addEventListener('click', closeSizeGuide);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1839,6 +1871,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBanner();    // Sprint 5
   initLiveChat();        // Sprint 5
   initFAQ();             // Sprint 5
+  initSizeGuide();       // Sprint 6
 
   // Extended goal reached: 83 incremental commits running.
 });

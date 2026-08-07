@@ -3026,3 +3026,43 @@ textarea:focus-visible {
   color: var(--text-main);
   line-height: 1.5;
 }
+
+/* ============================================================
+   Trust Badges (Sprint 6)
+   ============================================================ */
+.trust-badges-section {
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border-color);
+  padding: 30px 20px;
+}
+.trust-badges-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+.trust-badge i {
+  font-size: 2rem;
+  color: #ff9900;
+}
+.trust-text {
+  display: flex;
+  flex-direction: column;
+}
+.trust-text strong {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 3px;
+}
+.trust-text span {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}

@@ -3098,3 +3098,22 @@ textarea:focus-visible {
   background: var(--bg-light);
   font-weight: 600;
 }
+
+/* ============================================================
+   Scroll Progress Bar (Sprint 6)
+   ============================================================ */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 10005; /* Above header */
+}
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #ff9900;
+  transition: width 0.1s ease-out;
+}

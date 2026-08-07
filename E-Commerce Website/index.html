@@ -1157,5 +1157,32 @@
             <button class="auth-submit-btn" id="newsletter-ok">Continue Shopping</button>
         </div>
     </div>
+    <!-- Size Guide Modal (Sprint 6) -->
+    <div class="size-guide-overlay" id="size-guide-overlay" aria-hidden="true"></div>
+    <div class="size-guide-modal auth-modal" id="size-guide-modal" role="dialog" aria-modal="true" aria-label="Size Guide">
+        <button class="modal-close" id="size-guide-close" aria-label="Close modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Size Guide</h2>
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem; color: #555;">Use this chart to find your perfect fit.</p>
+            </div>
+            <table class="size-guide-table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9rem;">
+                <thead>
+                    <tr style="background: #f3f3f3;">
+                        <th style="padding: 10px; border: 1px solid #ddd;">Size</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Chest (in)</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Waist (in)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 8px; border: 1px solid #ddd;">S</td><td style="padding: 8px; border: 1px solid #ddd;">34-36</td><td style="padding: 8px; border: 1px solid #ddd;">28-30</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid #ddd;">M</td><td style="padding: 8px; border: 1px solid #ddd;">38-40</td><td style="padding: 8px; border: 1px solid #ddd;">32-34</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid #ddd;">L</td><td style="padding: 8px; border: 1px solid #ddd;">42-44</td><td style="padding: 8px; border: 1px solid #ddd;">36-38</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid #ddd;">XL</td><td style="padding: 8px; border: 1px solid #ddd;">46-48</td><td style="padding: 8px; border: 1px solid #ddd;">40-42</td></tr>
+                </tbody>
+            </table>
+            <button class="auth-submit-btn" id="size-guide-ok" style="margin-top: 20px;">Close Guide</button>
+        </div>
+    </div>
 </body>
 </html>

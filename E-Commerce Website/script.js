@@ -1825,6 +1825,22 @@ function initSizeGuide() {
 }
 
 /* ============================================================
+   Scroll Progress Bar (Sprint 6)
+   ============================================================ */
+function initScrollProgress() {
+  const progressBar = $('#scroll-progress-bar');
+  if (!progressBar) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (scrollHeight <= 0) return;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1872,6 +1888,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveChat();        // Sprint 5
   initFAQ();             // Sprint 5
   initSizeGuide();       // Sprint 6
+  initScrollProgress();  // Sprint 6
 
   // Extended goal reached: 83 incremental commits running.
 });

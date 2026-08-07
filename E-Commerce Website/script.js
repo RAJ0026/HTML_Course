@@ -1841,6 +1841,49 @@ function initScrollProgress() {
 }
 
 /* ============================================================
+   Share Product Modal (Sprint 6)
+   ============================================================ */
+function initShareModal() {
+  const modal = $('#share-modal');
+  const overlay = $('#share-modal-overlay');
+  const closeBtn = $('#share-modal-close');
+  const copyBtn = $('#copy-link-btn');
+  const copyFeedback = $('#copy-feedback');
+  const shareInput = $('#share-link-input');
+  
+  // Example triggers
+  const triggers = $$('.share-trigger');
+  
+  function openShare() {
+    modal?.classList.add('show');
+    overlay?.classList.add('show');
+    if (copyFeedback) copyFeedback.style.display = 'none';
+  }
+  
+  function closeShare() {
+    modal?.classList.remove('show');
+    overlay?.classList.remove('show');
+  }
+  
+  triggers.forEach(btn => btn.addEventListener('click', e => {
+    e.preventDefault();
+    openShare();
+  }));
+  
+  closeBtn?.addEventListener('click', closeShare);
+  overlay?.addEventListener('click', closeShare);
+  
+  copyBtn?.addEventListener('click', () => {
+    if (!shareInput) return;
+    shareInput.select();
+    shareInput.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(shareInput.value).then(() => {
+      if (copyFeedback) copyFeedback.style.display = 'block';
+    });
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1889,6 +1932,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();             // Sprint 5
   initSizeGuide();       // Sprint 6
   initScrollProgress();  // Sprint 6
+  initShareModal();      // Sprint 6
 
   // Extended goal reached: 83 incremental commits running.
 });

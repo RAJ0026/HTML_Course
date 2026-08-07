@@ -3117,3 +3117,25 @@ textarea:focus-visible {
   background: #ff9900;
   transition: width 0.1s ease-out;
 }
+
+/* ============================================================
+   Share Product Modal (Sprint 6)
+   ============================================================ */
+.share-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none;
+}
+.share-modal-overlay.show { display: block; }
+.share-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 400px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.share-modal.show { display: block; }

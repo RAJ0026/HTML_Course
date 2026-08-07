@@ -1189,5 +1189,25 @@
             <button class="auth-submit-btn" id="size-guide-ok" style="margin-top: 20px;">Close Guide</button>
         </div>
     </div>
+    <!-- Share Product Modal (Sprint 6) -->
+    <div class="share-modal-overlay" id="share-modal-overlay" aria-hidden="true"></div>
+    <div class="share-modal auth-modal" id="share-modal" role="dialog" aria-modal="true" aria-label="Share Product">
+        <button class="modal-close" id="share-modal-close" aria-label="Close share modal">&times;</button>
+        <div class="auth-body" style="text-align: center;">
+            <h2 class="auth-title">Share this Product</h2>
+            <p style="color: #555; margin-bottom: 1.5rem;">Let your friends know about this great find!</p>
+            <div class="share-icons" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                <button class="share-btn" style="background: #3b5998; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"><i class="fa-brands fa-facebook-f"></i></button>
+                <button class="share-btn" style="background: #1da1f2; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"><i class="fa-brands fa-twitter"></i></button>
+                <button class="share-btn" style="background: #25d366; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"><i class="fa-brands fa-whatsapp"></i></button>
+                <button class="share-btn" style="background: #0077b5; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"><i class="fa-brands fa-linkedin-in"></i></button>
+            </div>
+            <div style="display: flex; align-items: center; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                <input type="text" id="share-link-input" value="https://amazon-clone.demo/product/123" readonly style="flex: 1; border: none; padding: 10px; font-size: 0.9rem; color: #555; outline: none; background: #f9f9f9;" />
+                <button id="copy-link-btn" style="background: #007185; color: #fff; border: none; padding: 10px 15px; cursor: pointer; font-weight: 600;">Copy</button>
+            </div>
+            <p id="copy-feedback" style="color: #28a745; font-size: 0.85rem; margin-top: 10px; display: none;">Link copied to clipboard!</p>
+        </div>
+    </div>
 </body>
 </html>

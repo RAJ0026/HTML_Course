@@ -3066,3 +3066,35 @@ textarea:focus-visible {
   font-size: 0.85rem;
   color: var(--text-light);
 }
+
+/* ============================================================
+   Size Guide Modal (Sprint 6)
+   ============================================================ */
+.size-guide-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none;
+}
+.size-guide-overlay.show { display: block; }
+
+.size-guide-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 500px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.size-guide-modal.show { display: block; }
+.size-guide-modal .auth-body { padding: 30px; }
+.size-guide-table th, .size-guide-table td {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+}
+.size-guide-table th {
+  background: var(--bg-light);
+  font-weight: 600;
+}

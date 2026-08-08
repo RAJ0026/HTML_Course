@@ -1925,6 +1925,53 @@ function initExitIntent() {
 }
 
 /* ============================================================
+   Floating Action Button (Sprint 7)
+   ============================================================ */
+function initFAB() {
+  const fabMain = $('#fab-main');
+  const fabMenu = $('#fab-menu');
+  
+  if (!fabMain || !fabMenu) return;
+  
+  fabMain.addEventListener('click', () => {
+    const isExpanded = fabMain.getAttribute('aria-expanded') === 'true';
+    fabMain.setAttribute('aria-expanded', !isExpanded);
+    fabMenu.setAttribute('aria-hidden', isExpanded);
+  });
+  
+  // Close FAB menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!fabMain.contains(e.target) && !fabMenu.contains(e.target)) {
+      fabMain.setAttribute('aria-expanded', 'false');
+      fabMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+  
+  // Action buttons
+  $$('.fab-action').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-action');
+      if (action === 'theme') {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('amazon_clone_theme', isDark ? 'dark' : 'light');
+      } else if (action === 'support') {
+        const liveChat = $('.live-chat-window');
+        if (liveChat) {
+          liveChat.classList.add('show');
+          $('.live-chat-toggle')?.classList.add('hidden');
+        }
+      } else if (action === 'offers') {
+        $('#promo-banner')?.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      fabMain.setAttribute('aria-expanded', 'false');
+      fabMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1975,6 +2022,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();  // Sprint 6
   initShareModal();      // Sprint 6
   initExitIntent();      // Sprint 7
+  initFAB();             // Sprint 7
 
   // Extended goal reached: 83 incremental commits running.
 });

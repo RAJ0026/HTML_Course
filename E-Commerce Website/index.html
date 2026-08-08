@@ -1209,5 +1209,20 @@
             <p id="copy-feedback" style="color: #28a745; font-size: 0.85rem; margin-top: 10px; display: none;">Link copied to clipboard!</p>
         </div>
     </div>
+    <!-- Exit Intent Popup (Sprint 7) -->
+    <div class="exit-intent-overlay" id="exit-intent-overlay" aria-hidden="true"></div>
+    <div class="exit-intent-modal auth-modal" id="exit-intent-modal" role="dialog" aria-modal="true" aria-label="Wait, don't leave!">
+        <button class="modal-close" id="exit-intent-close" aria-label="Close popup">&times;</button>
+        <div class="auth-body" style="text-align: center; padding: 2rem;">
+            <i class="fa-solid fa-gift" style="font-size: 3rem; color: #ff9900; margin-bottom: 1rem;"></i>
+            <h2 class="auth-title" style="margin-bottom: 0.5rem;">Wait, Don't Go!</h2>
+            <p style="color: #555; margin-bottom: 1.5rem;">Before you leave, grab an extra <strong>10% off</strong> your entire order today. Just use the code below at checkout.</p>
+            <div style="background: #f3f3f3; padding: 15px; border: 2px dashed #ccc; font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; color: #111; margin-bottom: 20px;">
+                SAVE10NOW
+            </div>
+            <button class="auth-submit-btn" id="exit-intent-shop" style="background: #ff9900; border-color: #a88734 #9c7e31 #846a29; color: #111;">Continue Shopping</button>
+            <p style="margin-top: 15px; font-size: 0.85rem;"><a href="#" id="exit-intent-no" style="color: #007185; text-decoration: none;">No thanks, I'll pay full price</a></p>
+        </div>
+    </div>
 </body>
 </html>

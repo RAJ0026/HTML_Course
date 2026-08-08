@@ -1884,6 +1884,47 @@ function initShareModal() {
 }
 
 /* ============================================================
+   Exit Intent Popup (Sprint 7)
+   ============================================================ */
+function initExitIntent() {
+  const modal = $('#exit-intent-modal');
+  const overlay = $('#exit-intent-overlay');
+  const closeBtn = $('#exit-intent-close');
+  const shopBtn = $('#exit-intent-shop');
+  const noBtn = $('#exit-intent-no');
+  
+  if (!modal || !overlay) return;
+  
+  // Check if already shown
+  if (localStorage.getItem('amazon_clone_exit_intent')) return;
+  
+  let hasShown = false;
+  
+  const mouseOutHandler = (e) => {
+    if (e.clientY < 50 && e.relatedTarget === null && !hasShown) {
+      modal.classList.add('show');
+      overlay.classList.add('show');
+      hasShown = true;
+      localStorage.setItem('amazon_clone_exit_intent', 'true');
+      document.removeEventListener('mouseout', mouseOutHandler);
+    }
+  };
+  
+  document.addEventListener('mouseout', mouseOutHandler);
+  
+  const closeModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  };
+  
+  closeBtn?.addEventListener('click', closeModal);
+  shopBtn?.addEventListener('click', closeModal);
+  noBtn?.addEventListener('click', closeModal);
+  overlay?.addEventListener('click', closeModal);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1933,6 +1974,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSizeGuide();       // Sprint 6
   initScrollProgress();  // Sprint 6
   initShareModal();      // Sprint 6
+  initExitIntent();      // Sprint 7
 
   // Extended goal reached: 83 incremental commits running.
 });

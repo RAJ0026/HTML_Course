@@ -878,6 +878,8 @@ function initNewsletter() {
     btn.disabled = true;
     input.disabled = true;
     
+    fireConfetti(); // Sprint 7
+    
     // Show Modal
     const modal = $('#newsletter-modal');
     const overlay = $('#newsletter-modal-overlay');
@@ -1969,6 +1971,27 @@ function initFAB() {
       fabMenu.setAttribute('aria-hidden', 'true');
     });
   });
+}
+
+/* ============================================================
+   Confetti Animation (Sprint 7)
+   ============================================================ */
+function fireConfetti() {
+  const colors = ['#ff9900', '#007185', '#e53935', '#4caf50', '#2196f3'];
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+    document.body.appendChild(confetti);
+    
+    // Clean up
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
 }
 
 /* ============================================================

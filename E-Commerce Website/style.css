@@ -3161,3 +3161,58 @@ textarea:focus-visible {
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 .exit-intent-modal.show { display: block; }
+
+/* ============================================================
+   Floating Action Button (Sprint 7)
+   ============================================================ */
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px; /* positioned on the left so it doesn't collide with live chat or back to top */
+  z-index: 999;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 15px;
+}
+.fab-main {
+  width: 55px; height: 55px;
+  border-radius: 50%;
+  background: var(--amazon-orange);
+  color: #111;
+  border: none;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: transform 0.3s;
+}
+.fab-main[aria-expanded="true"] { transform: rotate(45deg); }
+.fab-menu {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+.fab-menu[aria-hidden="false"] {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.fab-action {
+  width: 45px; height: 45px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-size: 1.2rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.fab-action:hover {
+  background: #f0f2f2;
+  transform: scale(1.1);
+}

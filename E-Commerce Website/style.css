@@ -3139,3 +3139,25 @@ textarea:focus-visible {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 .share-modal.show { display: block; }
+
+/* ============================================================
+   Exit Intent Popup (Sprint 7)
+   ============================================================ */
+.exit-intent-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+  display: none;
+}
+.exit-intent-overlay.show { display: block; }
+.exit-intent-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 450px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.exit-intent-modal.show { display: block; }

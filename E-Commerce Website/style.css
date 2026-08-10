@@ -3272,3 +3272,48 @@ textarea:focus-visible {
   text-align: left;
 }
 .compare-table th { background: var(--bg-light); font-weight: bold; }
+
+/* ============================================================
+   Recent Searches Dropdown (Sprint 8)
+   ============================================================ */
+.recent-searches-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  border-radius: 0 0 4px 4px;
+}
+.recent-searches-dropdown[aria-hidden="false"] {
+  display: block;
+}
+.rs-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--bg-light);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.rs-clear-btn {
+  background: none; border: none; color: #007185;
+  cursor: pointer; font-size: 0.85rem;
+}
+.rs-clear-btn:hover { text-decoration: underline; color: #c45500; }
+.rs-list { list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; }
+.rs-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rs-list li:hover { background: #f3f3f3; }
+.rs-list li i { color: #888; }

@@ -1277,5 +1277,24 @@
     </div>
     <!-- Notification Toast System (Sprint 8) -->
     <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <!-- Store Locator Modal (Sprint 8) -->
+    <div class="store-locator-overlay" id="store-locator-overlay" aria-hidden="true"></div>
+    <div class="store-locator-modal auth-modal" id="store-locator-modal" role="dialog" aria-modal="true" aria-label="Find a Store">
+        <button class="modal-close" id="store-locator-close" aria-label="Close store locator">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Find a Store Near You</h2>
+            <div style="display:flex; gap:10px; margin-bottom: 20px;">
+                <input type="text" placeholder="Zip code or City" style="flex:1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+                <button style="padding: 10px 20px; background: var(--amazon-orange); border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Search</button>
+            </div>
+            <ul class="store-list" style="list-style:none; padding:0; margin:0; max-height:200px; overflow-y:auto;">
+                <li style="padding: 10px; border-bottom: 1px solid #eee;">
+                    <h4 style="margin:0 0 5px 0;">Amazon Go - Seattle</h4>
+                    <p style="margin:0; font-size:0.85rem; color:#555;">2131 7th Ave, Seattle, WA 98121</p>
+                    <p style="margin:0; font-size:0.85rem; color:#28a745;">Open until 9:00 PM</p>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

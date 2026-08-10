@@ -2028,6 +2028,68 @@ function initCompareModal() {
 }
 
 /* ============================================================
+   Recent Searches Dropdown (Sprint 8)
+   ============================================================ */
+function initRecentSearches() {
+  const searchInput = $('#search-input');
+  const searchDropdown = $('#recent-searches-dropdown');
+  const rsList = $('#rs-list');
+  const clearBtn = $('#rs-clear-btn');
+  
+  if (!searchInput || !searchDropdown || !rsList) return;
+  
+  let searches = JSON.parse(localStorage.getItem('amazon_clone_recent_searches')) || [
+    'Wireless Headphones', 'Gaming Mouse', 'Mechanical Keyboard'
+  ];
+  
+  function renderSearches() {
+    rsList.innerHTML = '';
+    if (searches.length === 0) {
+      rsList.innerHTML = '<li style="color:#888; justify-content:center;">No recent searches</li>';
+      return;
+    }
+    searches.forEach(term => {
+      const li = document.createElement('li');
+      li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+      li.addEventListener('click', () => {
+        searchInput.value = term;
+        searchDropdown.setAttribute('aria-hidden', 'true');
+        // trigger search logic here if needed
+      });
+      rsList.appendChild(li);
+    });
+  }
+  
+  searchInput.addEventListener('focus', () => {
+    if (searchInput.value.trim() === '') {
+      renderSearches();
+      searchDropdown.setAttribute('aria-hidden', 'false');
+    }
+  });
+  
+  searchInput.addEventListener('input', () => {
+    if (searchInput.value.trim() !== '') {
+      searchDropdown.setAttribute('aria-hidden', 'true');
+    } else {
+      renderSearches();
+      searchDropdown.setAttribute('aria-hidden', 'false');
+    }
+  });
+  
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+      searchDropdown.setAttribute('aria-hidden', 'true');
+    }
+  });
+  
+  clearBtn?.addEventListener('click', () => {
+    searches = [];
+    localStorage.setItem('amazon_clone_recent_searches', JSON.stringify(searches));
+    renderSearches();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2080,6 +2142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initExitIntent();      // Sprint 7
   initFAB();             // Sprint 7
   initCompareModal();    // Sprint 8
+  initRecentSearches();  // Sprint 8
 
   // Extended goal reached: 83 incremental commits running.
 });

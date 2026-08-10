@@ -1995,6 +1995,39 @@ function fireConfetti() {
 }
 
 /* ============================================================
+   Product Comparison Modal (Sprint 8)
+   ============================================================ */
+function initCompareModal() {
+  const modal = $('#compare-modal');
+  const overlay = $('#compare-modal-overlay');
+  const closeBtn = $('#compare-modal-close');
+  
+  if (!modal || !overlay) return;
+  
+  function openCompare() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeCompare() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  // Attach to any compare buttons (e.g. in product cards)
+  const compareBtns = $$('.compare-btn');
+  compareBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCompare();
+    });
+  });
+  
+  closeBtn?.addEventListener('click', closeCompare);
+  overlay?.addEventListener('click', closeCompare);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2046,6 +2079,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initShareModal();      // Sprint 6
   initExitIntent();      // Sprint 7
   initFAB();             // Sprint 7
+  initCompareModal();    // Sprint 8
 
   // Extended goal reached: 83 incremental commits running.
 });

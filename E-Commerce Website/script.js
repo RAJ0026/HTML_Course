@@ -2089,6 +2089,49 @@ function initRecentSearches() {
   });
 }
 
+
+
+/* ============================================================
+   Notification Toast System (Sprint 8)
+   ============================================================ */
+function showToast(message, type = 'success') {
+  const container = $('#toast-container');
+  if (!container) return;
+  
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  
+  let icon = 'fa-check-circle';
+  if (type === 'error') icon = 'fa-circle-xmark';
+  if (type === 'info') icon = 'fa-circle-info';
+  
+  toast.innerHTML = `
+    <div>
+      <i class="fa-solid ${icon} toast-icon"></i>
+      <span>${message}</span>
+    </div>
+    <button class="toast-close" aria-label="Close notification">&times;</button>
+  `;
+  
+  container.appendChild(toast);
+  
+  const closeBtn = toast.querySelector('.toast-close');
+  closeBtn.addEventListener('click', () => {
+    toast.classList.add('hide');
+    setTimeout(() => toast.remove(), 300);
+  });
+  
+  setTimeout(() => {
+    if (toast.parentElement) {
+      toast.classList.add('hide');
+      setTimeout(() => toast.remove(), 300);
+    }
+  }, 4000);
+}
+
+// Expose globally if needed
+window.showToast = showToast;
+
 /* ============================================================
    Boot
    ============================================================ */

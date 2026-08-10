@@ -1242,5 +1242,30 @@
             <p style="margin-top: 15px; font-size: 0.85rem;"><a href="#" id="exit-intent-no" style="color: #007185; text-decoration: none;">No thanks, I'll pay full price</a></p>
         </div>
     </div>
+    <!-- Product Comparison Modal (Sprint 8) -->
+    <div class="compare-modal-overlay" id="compare-modal-overlay" aria-hidden="true"></div>
+    <div class="compare-modal auth-modal" id="compare-modal" role="dialog" aria-modal="true" aria-label="Product Comparison">
+        <button class="modal-close" id="compare-modal-close" aria-label="Close comparison">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Compare Products</h2>
+            <div class="compare-table-container">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Current Product</th>
+                            <th>Similar Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Brand</td><td>AmazonBasics</td><td>Sony</td></tr>
+                        <tr><td>Rating</td><td>4.5/5</td><td>4.8/5</td></tr>
+                        <tr><td>Price</td><td>$19.99</td><td>$29.99</td></tr>
+                        <tr><td>Warranty</td><td>1 Year</td><td>2 Years</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

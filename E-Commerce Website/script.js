@@ -2196,6 +2196,30 @@ function initFeedbackModal() {
 }
 
 /* ============================================================
+   Recently Viewed Items (Sprint 9)
+   ============================================================ */
+function initRecentlyViewed() {
+  const grid = $('#recently-viewed-grid');
+  if (!grid) return;
+  
+  // Mock data for recently viewed items
+  const items = [
+    { name: '4K Ultra HD Smart TV', price: '$399.99', img: 'https://picsum.photos/180/180?random=105' },
+    { name: 'Noise Cancelling Headphones', price: '$199.99', img: 'https://picsum.photos/180/180?random=106' },
+    { name: 'Smart Home Hub', price: '$49.99', img: 'https://picsum.photos/180/180?random=107' },
+    { name: 'Fitness Tracker Watch', price: '$129.99', img: 'https://picsum.photos/180/180?random=108' }
+  ];
+  
+  grid.innerHTML = items.map(item => `
+    <article class="rv-card">
+      <img src="${item.img}" alt="${item.name}" loading="lazy" />
+      <h4 title="${item.name}">${item.name}</h4>
+      <span class="price">${item.price}</span>
+    </article>
+  `).join('');
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2251,6 +2275,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRecentSearches();  // Sprint 8
   initStoreLocator();    // Sprint 9
   initFeedbackModal();   // Sprint 9
+  initRecentlyViewed();  // Sprint 9
 
   // Extended goal reached: 83 incremental commits running.
 });

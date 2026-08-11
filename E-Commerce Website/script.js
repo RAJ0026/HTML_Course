@@ -2133,6 +2133,33 @@ function showToast(message, type = 'success') {
 window.showToast = showToast;
 
 /* ============================================================
+   Store Locator Modal (Sprint 9)
+   ============================================================ */
+function initStoreLocator() {
+  const modal = $('#store-locator-modal');
+  const overlay = $('#store-locator-overlay');
+  const closeBtn = $('#store-locator-close');
+  
+  if (!modal || !overlay) return;
+  
+  function openLocator() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLocator() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  // Attach to footer link (we can mock one or just expose it globally)
+  window.openStoreLocator = openLocator;
+  
+  closeBtn?.addEventListener('click', closeLocator);
+  overlay?.addEventListener('click', closeLocator);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2186,6 +2213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAB();             // Sprint 7
   initCompareModal();    // Sprint 8
   initRecentSearches();  // Sprint 8
+  initStoreLocator();    // Sprint 9
 
   // Extended goal reached: 83 incremental commits running.
 });

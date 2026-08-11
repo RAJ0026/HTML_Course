@@ -1329,5 +1329,36 @@
             </form>
         </div>
     </div>
+    <!-- Cookie Consent Settings Modal (Sprint 9) -->
+    <div class="cookie-settings-overlay" id="cookie-settings-overlay" aria-hidden="true"></div>
+    <div class="cookie-settings-modal auth-modal" id="cookie-settings-modal" role="dialog" aria-modal="true" aria-label="Cookie Settings">
+        <button class="modal-close" id="cookie-settings-close" aria-label="Close cookie settings">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Cookie Preferences</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;">Manage your cookie settings. Necessary cookies cannot be disabled.</p>
+            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <label style="display:flex; justify-content:space-between; font-weight:bold;">
+                    <span>Necessary Cookies</span>
+                    <input type="checkbox" checked disabled />
+                </label>
+                <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Required for the website to function.</p>
+            </div>
+            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <label style="display:flex; justify-content:space-between; font-weight:bold;">
+                    <span>Analytics Cookies</span>
+                    <input type="checkbox" id="cookie-analytics" checked />
+                </label>
+                <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Help us understand how you use our site.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display:flex; justify-content:space-between; font-weight:bold;">
+                    <span>Marketing Cookies</span>
+                    <input type="checkbox" id="cookie-marketing" checked />
+                </label>
+                <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Used to deliver relevant advertisements.</p>
+            </div>
+            <button class="auth-submit-btn" id="save-cookie-settings">Save Preferences</button>
+        </div>
+    </div>
 </body>
 </html>

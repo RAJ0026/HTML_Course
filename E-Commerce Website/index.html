@@ -1360,5 +1360,23 @@
             <button class="auth-submit-btn" id="save-cookie-settings">Save Preferences</button>
         </div>
     </div>
+    <!-- Back in Stock Alert Modal (Sprint 9) -->
+    <div class="bis-overlay" id="bis-overlay" aria-hidden="true"></div>
+    <div class="bis-modal auth-modal" id="bis-modal" role="dialog" aria-modal="true" aria-label="Back in Stock Alert">
+        <button class="modal-close" id="bis-close" aria-label="Close back in stock modal">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Notify Me When Available</h2>
+            <p style="color:#555; font-size:0.9rem; margin-bottom:15px;">
+                Leave your email address and we'll send you an alert when this item is back in stock.
+            </p>
+            <form id="bis-form">
+                <div class="auth-group">
+                    <label for="bis-email">Email Address</label>
+                    <input type="email" id="bis-email" class="auth-input" required placeholder="Enter your email" />
+                </div>
+                <button type="submit" class="auth-submit-btn">Notify Me</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

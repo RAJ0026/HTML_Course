@@ -2220,6 +2220,40 @@ function initRecentlyViewed() {
 }
 
 /* ============================================================
+   Cookie Consent Settings Modal (Sprint 9)
+   ============================================================ */
+function initCookieSettingsModal() {
+  const modal = $('#cookie-settings-modal');
+  const overlay = $('#cookie-settings-overlay');
+  const closeBtn = $('#cookie-settings-close');
+  const saveBtn = $('#save-cookie-settings');
+  
+  if (!modal || !overlay) return;
+  
+  function openSettings() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeSettings() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openCookieSettings = openSettings;
+  
+  closeBtn?.addEventListener('click', closeSettings);
+  overlay?.addEventListener('click', closeSettings);
+  
+  saveBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Cookie preferences saved successfully.');
+    }
+    closeSettings();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2276,6 +2310,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStoreLocator();    // Sprint 9
   initFeedbackModal();   // Sprint 9
   initRecentlyViewed();  // Sprint 9
+  initCookieSettingsModal(); // Sprint 9
 
   // Extended goal reached: 83 incremental commits running.
 });

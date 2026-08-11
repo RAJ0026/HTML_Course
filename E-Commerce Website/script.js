@@ -2160,6 +2160,42 @@ function initStoreLocator() {
 }
 
 /* ============================================================
+   Customer Feedback Modal (Sprint 9)
+   ============================================================ */
+function initFeedbackModal() {
+  const modal = $('#feedback-modal');
+  const overlay = $('#feedback-overlay');
+  const closeBtn = $('#feedback-close');
+  const form = $('#feedback-form');
+  
+  if (!modal || !overlay) return;
+  
+  function openFeedback() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeFeedback() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+    form?.reset();
+  }
+  
+  window.openFeedbackForm = openFeedback;
+  
+  closeBtn?.addEventListener('click', closeFeedback);
+  overlay?.addEventListener('click', closeFeedback);
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (window.showToast) {
+      showToast('Thank you for your feedback!');
+    }
+    closeFeedback();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2214,6 +2250,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCompareModal();    // Sprint 8
   initRecentSearches();  // Sprint 8
   initStoreLocator();    // Sprint 9
+  initFeedbackModal();   // Sprint 9
 
   // Extended goal reached: 83 incremental commits running.
 });

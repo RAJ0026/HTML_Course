@@ -3437,3 +3437,25 @@ textarea:focus-visible {
   overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 }
 .rv-card .price { color: #B12704; font-weight: bold; }
+
+/* ============================================================
+   Cookie Consent Settings Modal (Sprint 9)
+   ============================================================ */
+.cookie-settings-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none;
+}
+.cookie-settings-overlay.show { display: block; }
+.cookie-settings-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 500px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.cookie-settings-modal.show { display: block; }

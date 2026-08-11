@@ -1296,5 +1296,30 @@
             </ul>
         </div>
     </div>
+    <!-- Customer Feedback Form Modal (Sprint 9) -->
+    <div class="feedback-overlay" id="feedback-overlay" aria-hidden="true"></div>
+    <div class="feedback-modal auth-modal" id="feedback-modal" role="dialog" aria-modal="true" aria-label="Customer Feedback">
+        <button class="modal-close" id="feedback-close" aria-label="Close feedback form">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">We Value Your Feedback</h2>
+            <p style="color: #555; margin-bottom: 15px; font-size: 0.9rem;">Please let us know how we can improve your shopping experience.</p>
+            <form id="feedback-form">
+                <div class="auth-group">
+                    <label for="feedback-type">Feedback Type</label>
+                    <select id="feedback-type" class="auth-input" required>
+                        <option value="">Select an option</option>
+                        <option value="bug">Report a Bug</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="general">General Comment</option>
+                    </select>
+                </div>
+                <div class="auth-group">
+                    <label for="feedback-message">Message</label>
+                    <textarea id="feedback-message" class="auth-input" rows="4" required placeholder="Your message here..."></textarea>
+                </div>
+                <button type="submit" class="auth-submit-btn">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

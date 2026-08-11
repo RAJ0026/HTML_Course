@@ -2254,6 +2254,42 @@ function initCookieSettingsModal() {
 }
 
 /* ============================================================
+   Back in Stock Alert Modal (Sprint 9)
+   ============================================================ */
+function initBisModal() {
+  const modal = $('#bis-modal');
+  const overlay = $('#bis-overlay');
+  const closeBtn = $('#bis-close');
+  const form = $('#bis-form');
+  
+  if (!modal || !overlay) return;
+  
+  function openBis() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeBis() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+    form?.reset();
+  }
+  
+  window.openBisModal = openBis;
+  
+  closeBtn?.addEventListener('click', closeBis);
+  overlay?.addEventListener('click', closeBis);
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (window.showToast) {
+      showToast("We'll email you when it's back in stock.");
+    }
+    closeBis();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2311,6 +2347,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeedbackModal();   // Sprint 9
   initRecentlyViewed();  // Sprint 9
   initCookieSettingsModal(); // Sprint 9
+  initBisModal();        // Sprint 9
 
   // Extended goal reached: 83 incremental commits running.
 });

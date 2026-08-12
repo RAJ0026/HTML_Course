@@ -2397,6 +2397,35 @@ function initA11yModal() {
 }
 
 /* ============================================================
+   Notification Center (Sprint 10)
+   ============================================================ */
+function initNotificationCenter() {
+  const notifBtn = $('#notification-btn');
+  const notifDropdown = $('#notification-dropdown');
+  const markReadBtn = $('#notif-mark-read');
+  const countBadge = $('#notification-count');
+  
+  if (!notifBtn || !notifDropdown) return;
+  
+  notifBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    notifDropdown.classList.toggle('show');
+  });
+  
+  document.addEventListener('click', (e) => {
+    if (!notifBtn.contains(e.target) && !notifDropdown.contains(e.target)) {
+      notifDropdown.classList.remove('show');
+    }
+  });
+  
+  markReadBtn?.addEventListener('click', () => {
+    const unreadItems = $$('.notif-item.unread');
+    unreadItems.forEach(item => item.classList.remove('unread'));
+    if (countBadge) countBadge.textContent = '0';
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2458,6 +2487,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReturnPolicyModal(); // Sprint 10
   initPaymentModal();    // Sprint 10
   initA11yModal();       // Sprint 10
+  initNotificationCenter(); // Sprint 10
 
   // Extended goal reached: 83 incremental commits running.
 });

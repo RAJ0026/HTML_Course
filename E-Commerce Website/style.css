@@ -3525,3 +3525,40 @@ textarea:focus-visible {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 .payment-modal.show { display: block; }
+
+/* ============================================================
+   Accessibility Settings Modal (Sprint 10)
+   ============================================================ */
+.accessibility-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none;
+}
+.accessibility-overlay.show { display: block; }
+.accessibility-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-main);
+  width: 90%; max-width: 400px;
+  border-radius: 8px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.accessibility-modal.show { display: block; }
+
+body.high-contrast {
+  --bg-main: #000;
+  --text-main: #fff;
+  --amazon-blue: #00ffff;
+  --amazon-orange: #ff00ff;
+  --link-color: #00ffff;
+  --border-color: #fff;
+}
+body.reduce-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+body.text-large { font-size: 1.1rem; }
+body.text-xlarge { font-size: 1.25rem; }

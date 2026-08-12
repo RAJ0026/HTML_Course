@@ -2324,6 +2324,34 @@ function initReturnPolicyModal() {
 }
 
 /* ============================================================
+   Payment Options Modal (Sprint 10)
+   ============================================================ */
+function initPaymentModal() {
+  const modal = $('#payment-modal');
+  const overlay = $('#payment-overlay');
+  const closeBtn = $('#payment-close');
+  const gotItBtn = $('#payment-got-it');
+  
+  if (!modal || !overlay) return;
+  
+  function openPayment() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closePayment() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPaymentOptions = openPayment;
+  
+  closeBtn?.addEventListener('click', closePayment);
+  overlay?.addEventListener('click', closePayment);
+  gotItBtn?.addEventListener('click', closePayment);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2383,6 +2411,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieSettingsModal(); // Sprint 9
   initBisModal();        // Sprint 9
   initReturnPolicyModal(); // Sprint 10
+  initPaymentModal();    // Sprint 10
 
   // Extended goal reached: 83 incremental commits running.
 });

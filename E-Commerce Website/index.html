@@ -1413,5 +1413,37 @@
             <button class="auth-submit-btn" id="payment-got-it">Got It</button>
         </div>
     </div>
+    <!-- Accessibility Settings Modal (Sprint 10) -->
+    <div class="accessibility-overlay" id="accessibility-overlay" aria-hidden="true"></div>
+    <div class="accessibility-modal auth-modal" id="accessibility-modal" role="dialog" aria-modal="true" aria-label="Accessibility Settings">
+        <button class="modal-close" id="accessibility-close" aria-label="Close accessibility settings">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Accessibility Options</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">Customize your browsing experience.</p>
+            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <label style="display:flex; justify-content:space-between; font-weight:bold; cursor:pointer;">
+                    <span>High Contrast Mode</span>
+                    <input type="checkbox" id="a11y-contrast" />
+                </label>
+            </div>
+            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <label style="display:flex; justify-content:space-between; font-weight:bold; cursor:pointer;">
+                    <span>Reduce Animations</span>
+                    <input type="checkbox" id="a11y-animations" />
+                </label>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display:flex; flex-direction:column; gap:5px; font-weight:bold;">
+                    <span>Text Size</span>
+                    <select id="a11y-text-size" class="auth-input">
+                        <option value="normal">Normal</option>
+                        <option value="large">Large</option>
+                        <option value="xlarge">Extra Large</option>
+                    </select>
+                </label>
+            </div>
+            <button class="auth-submit-btn" id="save-a11y-settings">Save Preferences</button>
+        </div>
+    </div>
 </body>
 </html>

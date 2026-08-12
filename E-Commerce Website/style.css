@@ -3562,3 +3562,38 @@ body.reduce-animations * {
 }
 body.text-large { font-size: 1.1rem; }
 body.text-xlarge { font-size: 1.25rem; }
+
+/* ============================================================
+   Notification Center (Sprint 10)
+   ============================================================ */
+.notification-btn { position: relative; }
+.notification-count {
+  position: absolute; top: 0; right: -5px;
+  background: var(--amazon-orange); color: #fff;
+  font-size: 0.7rem; font-weight: bold;
+  padding: 1px 5px; border-radius: 10px;
+}
+.notification-dropdown {
+  position: absolute; top: 60px; right: 10px;
+  background: var(--bg-main); width: 300px;
+  border: 1px solid #ddd; border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  display: none;
+}
+.notification-dropdown.show { display: block; }
+.notif-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px; border-bottom: 1px solid #ddd;
+  background: #f9f9f9;
+}
+.notif-header h4 { font-size: 1rem; margin: 0; }
+.notif-mark-read {
+  background: none; border: none; color: var(--link-color);
+  font-size: 0.8rem; cursor: pointer; padding: 0;
+}
+.notif-mark-read:hover { text-decoration: underline; }
+.notif-list { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow-y: auto; }
+.notif-item { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.9rem; cursor: pointer; }
+.notif-item:hover { background: #f0f0f0; }
+.notif-item.unread { font-weight: bold; background: #fffdf5; }

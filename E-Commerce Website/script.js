@@ -2426,6 +2426,41 @@ function initNotificationCenter() {
 }
 
 /* ============================================================
+   Gift Wrap Options Modal (Sprint 10)
+   ============================================================ */
+function initGiftWrapModal() {
+  const modal = $('#giftwrap-modal');
+  const overlay = $('#giftwrap-overlay');
+  const closeBtn = $('#giftwrap-close');
+  const form = $('#giftwrap-form');
+  
+  if (!modal || !overlay) return;
+  
+  function openGiftWrap() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeGiftWrap() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openGiftWrapOptions = openGiftWrap;
+  
+  closeBtn?.addEventListener('click', closeGiftWrap);
+  overlay?.addEventListener('click', closeGiftWrap);
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (window.showToast) {
+      showToast('Gift wrap options saved to your cart.');
+    }
+    closeGiftWrap();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2488,6 +2523,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPaymentModal();    // Sprint 10
   initA11yModal();       // Sprint 10
   initNotificationCenter(); // Sprint 10
+  initGiftWrapModal();   // Sprint 10
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -1395,5 +1395,23 @@
             <button class="auth-submit-btn" id="start-return-btn">Start a Return</button>
         </div>
     </div>
+    <!-- Payment Options Modal (Sprint 10) -->
+    <div class="payment-overlay" id="payment-overlay" aria-hidden="true"></div>
+    <div class="payment-modal auth-modal" id="payment-modal" role="dialog" aria-modal="true" aria-label="Payment Options">
+        <button class="modal-close" id="payment-close" aria-label="Close payment options">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Accepted Payment Methods</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">We accept all major credit cards and digital wallets.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-visa" style="font-size: 24px; color: #1a1f71;"></i> Visa</div>
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-mastercard" style="font-size: 24px; color: #eb001b;"></i> Mastercard</div>
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-amex" style="font-size: 24px; color: #2e77bc;"></i> Amex</div>
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-paypal" style="font-size: 24px; color: #003087;"></i> PayPal</div>
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-apple-pay" style="font-size: 24px; color: #000;"></i> Apple Pay</div>
+                <div style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center;"><i class="fa-brands fa-cc-amazon-pay" style="font-size: 24px; color: #f90;"></i> Amazon Pay</div>
+            </div>
+            <button class="auth-submit-btn" id="payment-got-it">Got It</button>
+        </div>
+    </div>
 </body>
 </html>

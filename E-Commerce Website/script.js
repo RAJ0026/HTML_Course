@@ -2290,6 +2290,40 @@ function initBisModal() {
 }
 
 /* ============================================================
+   Return Policy Modal (Sprint 10)
+   ============================================================ */
+function initReturnPolicyModal() {
+  const modal = $('#return-modal');
+  const overlay = $('#return-overlay');
+  const closeBtn = $('#return-close');
+  const startBtn = $('#start-return-btn');
+  
+  if (!modal || !overlay) return;
+  
+  function openReturn() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeReturn() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openReturnPolicy = openReturn;
+  
+  closeBtn?.addEventListener('click', closeReturn);
+  overlay?.addEventListener('click', closeReturn);
+  
+  startBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Return Center...');
+    }
+    closeReturn();
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2348,6 +2382,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRecentlyViewed();  // Sprint 9
   initCookieSettingsModal(); // Sprint 9
   initBisModal();        // Sprint 9
+  initReturnPolicyModal(); // Sprint 10
 
   // Extended goal reached: 83 incremental commits running.
 });

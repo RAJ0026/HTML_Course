@@ -1461,5 +1461,27 @@
             <button class="auth-submit-btn" id="save-a11y-settings">Save Preferences</button>
         </div>
     </div>
+    <!-- Gift Wrap Options Modal (Sprint 10) -->
+    <div class="giftwrap-overlay" id="giftwrap-overlay" aria-hidden="true"></div>
+    <div class="giftwrap-modal auth-modal" id="giftwrap-modal" role="dialog" aria-modal="true" aria-label="Gift Wrap Options">
+        <button class="modal-close" id="giftwrap-close" aria-label="Close gift wrap options">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Gift Wrap Options</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">Add a special touch to your order.</p>
+            <form id="giftwrap-form">
+                <div style="margin-bottom: 15px;">
+                    <label style="display:flex; justify-content:space-between; font-weight:bold; cursor:pointer;">
+                        <span>Include Gift Box ($5.00)</span>
+                        <input type="checkbox" id="gift-box-cb" />
+                    </label>
+                </div>
+                <div class="auth-group">
+                    <label for="gift-message">Gift Message (Optional)</label>
+                    <textarea id="gift-message" class="auth-input" rows="3" placeholder="Write a message..."></textarea>
+                </div>
+                <button type="submit" class="auth-submit-btn">Save Options</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

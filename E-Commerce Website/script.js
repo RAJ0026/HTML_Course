@@ -2461,6 +2461,34 @@ function initGiftWrapModal() {
 }
 
 /* ============================================================
+   Warranty Info Modal (Sprint 11)
+   ============================================================ */
+function initWarrantyModal() {
+  const modal = $('#warranty-modal');
+  const overlay = $('#warranty-overlay');
+  const closeBtn = $('#warranty-close');
+  const gotItBtn = $('#warranty-got-it');
+  
+  if (!modal || !overlay) return;
+  
+  function openWarranty() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeWarranty() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openWarrantyInfo = openWarranty;
+  
+  closeBtn?.addEventListener('click', closeWarranty);
+  overlay?.addEventListener('click', closeWarranty);
+  gotItBtn?.addEventListener('click', closeWarranty);
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2524,6 +2552,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initA11yModal();       // Sprint 10
   initNotificationCenter(); // Sprint 10
   initGiftWrapModal();   // Sprint 10
+  initWarrantyModal();   // Sprint 11
 
   // Extended goal reached: 83 incremental commits running.
 });

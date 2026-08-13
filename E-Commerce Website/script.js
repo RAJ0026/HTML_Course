@@ -2658,6 +2658,40 @@ function initTradeInModal() {
 }
 
 /* ============================================================
+   Protection Plan Modal (Sprint 12)
+   ============================================================ */
+function initProtectionModal() {
+  const modal = $('#protection-modal');
+  const overlay = $('#protection-overlay');
+  const closeBtn = $('#protection-close');
+  const addBtn = $('#add-protection');
+  
+  if (!modal || !overlay) return;
+  
+  function openProtection() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeProtection() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openProtectionPlan = openProtection;
+  
+  closeBtn?.addEventListener('click', closeProtection);
+  overlay?.addEventListener('click', closeProtection);
+  
+  addBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Protection Plan details...');
+    }
+    setTimeout(closeProtection, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2726,6 +2760,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReferralModal();   // Sprint 11
   initVideoModal();      // Sprint 11
   initTradeInModal();    // Sprint 12
+  initProtectionModal(); // Sprint 12
 
   // Extended goal reached: 83 incremental commits running.
 });

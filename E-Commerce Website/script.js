@@ -2624,6 +2624,40 @@ function initVideoModal() {
 }
 
 /* ============================================================
+   Trade-In Modal (Sprint 12)
+   ============================================================ */
+function initTradeInModal() {
+  const modal = $('#trade-in-modal');
+  const overlay = $('#trade-in-overlay');
+  const closeBtn = $('#trade-in-close');
+  const startBtn = $('#start-trade-in');
+  
+  if (!modal || !overlay) return;
+  
+  function openTradeIn() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeTradeIn() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openTradeInProgram = openTradeIn;
+  
+  closeBtn?.addEventListener('click', closeTradeIn);
+  overlay?.addEventListener('click', closeTradeIn);
+  
+  startBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Trade-In portal...');
+    }
+    setTimeout(closeTradeIn, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2691,6 +2725,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFinancingModal();  // Sprint 11
   initReferralModal();   // Sprint 11
   initVideoModal();      // Sprint 11
+  initTradeInModal();    // Sprint 12
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -1500,5 +1500,31 @@
             <button class="auth-submit-btn" id="warranty-got-it">Acknowledge</button>
         </div>
     </div>
+    <!-- Financing Modal (Sprint 11) -->
+    <div class="financing-overlay" id="financing-overlay" aria-hidden="true"></div>
+    <div class="financing-modal auth-modal" id="financing-modal" role="dialog" aria-modal="true" aria-label="Financing Options">
+        <button class="modal-close" id="financing-close" aria-label="Close financing options">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Flexible Financing</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">Buy now, pay later with 0% APR for up to 12 months.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                <div style="padding: 15px; border: 1px solid var(--amazon-orange); border-radius: 4px; display: flex; justify-content: space-between; align-items: center; background: #fffdf5;">
+                    <div>
+                        <h4 style="margin:0 0 5px 0;">Affirm</h4>
+                        <span style="font-size: 0.8rem; color: #777;">Starting at $25/mo</span>
+                    </div>
+                    <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8rem;" id="apply-affirm">Apply</button>
+                </div>
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="margin:0 0 5px 0;">Klarna</h4>
+                        <span style="font-size: 0.8rem; color: #777;">4 interest-free payments</span>
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" id="apply-klarna">Apply</button>
+                </div>
+            </div>
+            <button class="auth-submit-btn" id="financing-close-btn">Close</button>
+        </div>
+    </div>
 </body>
 </html>

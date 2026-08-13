@@ -1542,5 +1542,22 @@
             <button class="auth-submit-btn" id="copy-referral-btn">Copy Link</button>
         </div>
     </div>
+    <!-- Video Consultation Modal (Sprint 11) -->
+    <div class="video-overlay" id="video-overlay" aria-hidden="true"></div>
+    <div class="video-modal auth-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Video Consultation">
+        <button class="modal-close" id="video-close" aria-label="Close video consultation">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Chat with an Expert</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">Need help choosing? Connect via video call with our tech experts.</p>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Tech Expert" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;" />
+                <h4 style="margin: 0;">Sarah J.</h4>
+                <span style="font-size: 0.8rem; color: var(--amazon-orange);">Available Now</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 10px;" id="start-video-call">
+                <i class="fa-solid fa-video"></i> Start Video Call
+            </button>
+        </div>
+    </div>
 </body>
 </html>

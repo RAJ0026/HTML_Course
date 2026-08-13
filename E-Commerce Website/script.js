@@ -2566,6 +2566,40 @@ function initReferralModal() {
 }
 
 /* ============================================================
+   Video Consultation Modal (Sprint 11)
+   ============================================================ */
+function initVideoModal() {
+  const modal = $('#video-modal');
+  const overlay = $('#video-overlay');
+  const closeBtn = $('#video-close');
+  const startCallBtn = $('#start-video-call');
+  
+  if (!modal || !overlay) return;
+  
+  function openVideo() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeVideo() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openVideoConsultation = openVideo;
+  
+  closeBtn?.addEventListener('click', closeVideo);
+  overlay?.addEventListener('click', closeVideo);
+  
+  startCallBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Connecting to a tech expert...');
+    }
+    setTimeout(closeVideo, 1500);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2632,6 +2666,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWarrantyModal();   // Sprint 11
   initFinancingModal();  // Sprint 11
   initReferralModal();   // Sprint 11
+  initVideoModal();      // Sprint 11
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -2646,6 +2646,12 @@ function initTradeInModal() {
   
   window.openTradeInProgram = openTradeIn;
   
+  const footerTradeInBtn = $('#footer-trade-in');
+  footerTradeInBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openTradeIn();
+  });
+  
   closeBtn?.addEventListener('click', closeTradeIn);
   overlay?.addEventListener('click', closeTradeIn);
   
@@ -2679,6 +2685,12 @@ function initProtectionModal() {
   }
   
   window.openProtectionPlan = openProtection;
+  
+  const footerProtectionBtn = $('#footer-protection');
+  footerProtectionBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openProtection();
+  });
   
   closeBtn?.addEventListener('click', closeProtection);
   overlay?.addEventListener('click', closeProtection);

@@ -2483,6 +2483,12 @@ function initWarrantyModal() {
   
   window.openWarrantyInfo = openWarranty;
   
+  const footerWarrantyBtn = $('#footer-warranty');
+  footerWarrantyBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openWarranty();
+  });
+  
   closeBtn?.addEventListener('click', closeWarranty);
   overlay?.addEventListener('click', closeWarranty);
   gotItBtn?.addEventListener('click', closeWarranty);
@@ -2512,6 +2518,12 @@ function initFinancingModal() {
   }
   
   window.openFinancingOptions = openFinancing;
+  
+  const footerFinancingBtn = $('#footer-financing');
+  footerFinancingBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openFinancing();
+  });
   
   closeBtn?.addEventListener('click', closeFinancing);
   closeBtnBottom?.addEventListener('click', closeFinancing);
@@ -2552,6 +2564,12 @@ function initReferralModal() {
   
   window.openReferralModal = openReferral;
   
+  const footerReferralBtn = $('#footer-referral');
+  footerReferralBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openReferral();
+  });
+  
   closeBtn?.addEventListener('click', closeReferral);
   overlay?.addEventListener('click', closeReferral);
   
@@ -2587,6 +2605,12 @@ function initVideoModal() {
   }
   
   window.openVideoConsultation = openVideo;
+  
+  const footerVideoBtn = $('#footer-video');
+  footerVideoBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openVideo();
+  });
   
   closeBtn?.addEventListener('click', closeVideo);
   overlay?.addEventListener('click', closeVideo);

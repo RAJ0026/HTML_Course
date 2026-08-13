@@ -2529,6 +2529,43 @@ function initFinancingModal() {
 }
 
 /* ============================================================
+   Refer a Friend Modal (Sprint 11)
+   ============================================================ */
+function initReferralModal() {
+  const modal = $('#referral-modal');
+  const overlay = $('#referral-overlay');
+  const closeBtn = $('#referral-close');
+  const copyBtn = $('#copy-referral-btn');
+  const linkInput = $('#referral-link');
+  
+  if (!modal || !overlay) return;
+  
+  function openReferral() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeReferral() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openReferralModal = openReferral;
+  
+  closeBtn?.addEventListener('click', closeReferral);
+  overlay?.addEventListener('click', closeReferral);
+  
+  copyBtn?.addEventListener('click', () => {
+    if (!linkInput) return;
+    linkInput.select();
+    document.execCommand('copy');
+    if (window.showToast) {
+      showToast('Referral link copied to clipboard!');
+    }
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2594,6 +2631,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGiftWrapModal();   // Sprint 10
   initWarrantyModal();   // Sprint 11
   initFinancingModal();  // Sprint 11
+  initReferralModal();   // Sprint 11
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -2489,6 +2489,46 @@ function initWarrantyModal() {
 }
 
 /* ============================================================
+   Financing Modal (Sprint 11)
+   ============================================================ */
+function initFinancingModal() {
+  const modal = $('#financing-modal');
+  const overlay = $('#financing-overlay');
+  const closeBtn = $('#financing-close');
+  const closeBtnBottom = $('#financing-close-btn');
+  const applyAffirm = $('#apply-affirm');
+  const applyKlarna = $('#apply-klarna');
+  
+  if (!modal || !overlay) return;
+  
+  function openFinancing() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeFinancing() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openFinancingOptions = openFinancing;
+  
+  closeBtn?.addEventListener('click', closeFinancing);
+  closeBtnBottom?.addEventListener('click', closeFinancing);
+  overlay?.addEventListener('click', closeFinancing);
+  
+  const handleApply = (provider) => {
+    if (window.showToast) {
+      showToast(`Redirecting to ${provider}...`);
+    }
+    setTimeout(closeFinancing, 1000);
+  };
+  
+  applyAffirm?.addEventListener('click', () => handleApply('Affirm'));
+  applyKlarna?.addEventListener('click', () => handleApply('Klarna'));
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2553,6 +2593,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNotificationCenter(); // Sprint 10
   initGiftWrapModal();   // Sprint 10
   initWarrantyModal();   // Sprint 11
+  initFinancingModal();  // Sprint 11
 
   // Extended goal reached: 83 incremental commits running.
 });

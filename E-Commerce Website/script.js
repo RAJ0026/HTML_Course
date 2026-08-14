@@ -2772,6 +2772,40 @@ function initCareersModal() {
 }
 
 /* ============================================================
+   Investor Relations Modal (Sprint 13)
+   ============================================================ */
+function initInvestorModal() {
+  const modal = $('#investor-modal');
+  const overlay = $('#investor-overlay');
+  const closeBtn = $('#investor-close');
+  const viewBtn = $('#view-reports');
+  
+  if (!modal || !overlay) return;
+  
+  function openInvestor() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeInvestor() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openInvestorRelations = openInvestor;
+  
+  closeBtn?.addEventListener('click', closeInvestor);
+  overlay?.addEventListener('click', closeInvestor);
+  
+  viewBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Loading Financial Reports...');
+    }
+    setTimeout(closeInvestor, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2843,6 +2877,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProtectionModal(); // Sprint 12
   initSubscribeModal();  // Sprint 13
   initCareersModal();    // Sprint 13
+  initInvestorModal();   // Sprint 13
 
   // Extended goal reached: 83 incremental commits running.
 });

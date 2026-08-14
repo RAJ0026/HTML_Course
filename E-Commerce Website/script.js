@@ -2726,6 +2726,12 @@ function initSubscribeModal() {
   
   window.openSubscribeSave = openSns;
   
+  const footerSnsBtn = $('#footer-sns');
+  footerSnsBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openSns();
+  });
+  
   closeBtn?.addEventListener('click', closeSns);
   overlay?.addEventListener('click', closeSns);
   
@@ -2760,6 +2766,12 @@ function initCareersModal() {
   
   window.openCareersPortal = openCareers;
   
+  const footerCareersBtn = $('#footer-careers');
+  footerCareersBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openCareers();
+  });
+  
   closeBtn?.addEventListener('click', closeCareers);
   overlay?.addEventListener('click', closeCareers);
   
@@ -2793,6 +2805,12 @@ function initInvestorModal() {
   }
   
   window.openInvestorRelations = openInvestor;
+  
+  const footerInvestorBtn = $('#footer-investor');
+  footerInvestorBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openInvestor();
+  });
   
   closeBtn?.addEventListener('click', closeInvestor);
   overlay?.addEventListener('click', closeInvestor);

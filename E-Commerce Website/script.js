@@ -2704,6 +2704,40 @@ function initProtectionModal() {
 }
 
 /* ============================================================
+   Subscribe & Save Modal (Sprint 13)
+   ============================================================ */
+function initSubscribeModal() {
+  const modal = $('#sns-modal');
+  const overlay = $('#sns-overlay');
+  const closeBtn = $('#sns-close');
+  const startBtn = $('#start-sns');
+  
+  if (!modal || !overlay) return;
+  
+  function openSns() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeSns() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openSubscribeSave = openSns;
+  
+  closeBtn?.addEventListener('click', closeSns);
+  overlay?.addEventListener('click', closeSns);
+  
+  startBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Loading eligible items...');
+    }
+    setTimeout(closeSns, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2773,6 +2807,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();      // Sprint 11
   initTradeInModal();    // Sprint 12
   initProtectionModal(); // Sprint 12
+  initSubscribeModal();  // Sprint 13
 
   // Extended goal reached: 83 incremental commits running.
 });

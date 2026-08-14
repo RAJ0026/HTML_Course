@@ -2738,6 +2738,40 @@ function initSubscribeModal() {
 }
 
 /* ============================================================
+   Careers Modal (Sprint 13)
+   ============================================================ */
+function initCareersModal() {
+  const modal = $('#careers-modal');
+  const overlay = $('#careers-overlay');
+  const closeBtn = $('#careers-close');
+  const exploreBtn = $('#explore-jobs');
+  
+  if (!modal || !overlay) return;
+  
+  function openCareers() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeCareers() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openCareersPortal = openCareers;
+  
+  closeBtn?.addEventListener('click', closeCareers);
+  overlay?.addEventListener('click', closeCareers);
+  
+  exploreBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Careers...');
+    }
+    setTimeout(closeCareers, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2808,6 +2842,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTradeInModal();    // Sprint 12
   initProtectionModal(); // Sprint 12
   initSubscribeModal();  // Sprint 13
+  initCareersModal();    // Sprint 13
 
   // Extended goal reached: 83 incremental commits running.
 });

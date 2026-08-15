@@ -2926,6 +2926,40 @@ function initFreshModal() {
 }
 
 /* ============================================================
+   Amazon Devices Modal (Sprint 14)
+   ============================================================ */
+function initDevicesModal() {
+  const modal = $('#devices-modal');
+  const overlay = $('#devices-overlay');
+  const closeBtn = $('#devices-close');
+  const shopBtn = $('#shop-devices');
+  
+  if (!modal || !overlay) return;
+  
+  function openDevices() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeDevices() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openDevices = openDevices;
+  
+  closeBtn?.addEventListener('click', closeDevices);
+  overlay?.addEventListener('click', closeDevices);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Devices...');
+    }
+    setTimeout(closeDevices, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3001,6 +3035,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPrimeModal();      // Sprint 14
   initPharmacyModal();   // Sprint 14
   initFreshModal();      // Sprint 14
+  initDevicesModal();    // Sprint 14
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -2960,6 +2960,40 @@ function initDevicesModal() {
 }
 
 /* ============================================================
+   Amazon Music Modal (Sprint 14)
+   ============================================================ */
+function initMusicModal() {
+  const modal = $('#music-modal');
+  const overlay = $('#music-overlay');
+  const closeBtn = $('#music-close');
+  const listenBtn = $('#listen-music');
+  
+  if (!modal || !overlay) return;
+  
+  function openMusic() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeMusic() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openMusic = openMusic;
+  
+  closeBtn?.addEventListener('click', closeMusic);
+  overlay?.addEventListener('click', closeMusic);
+  
+  listenBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Music...');
+    }
+    setTimeout(closeMusic, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3036,6 +3070,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPharmacyModal();   // Sprint 14
   initFreshModal();      // Sprint 14
   initDevicesModal();    // Sprint 14
+  initMusicModal();      // Sprint 14
 
   // Extended goal reached: 83 incremental commits running.
 });

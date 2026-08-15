@@ -2824,6 +2824,40 @@ function initInvestorModal() {
 }
 
 /* ============================================================
+   Prime Membership Modal (Sprint 14)
+   ============================================================ */
+function initPrimeModal() {
+  const modal = $('#prime-modal');
+  const overlay = $('#prime-overlay');
+  const closeBtn = $('#prime-close');
+  const joinBtn = $('#join-prime');
+  
+  if (!modal || !overlay) return;
+  
+  function openPrime() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closePrime() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPrimeMembership = openPrime;
+  
+  closeBtn?.addEventListener('click', closePrime);
+  overlay?.addEventListener('click', closePrime);
+  
+  joinBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Prime signup...');
+    }
+    setTimeout(closePrime, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2896,6 +2930,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSubscribeModal();  // Sprint 13
   initCareersModal();    // Sprint 13
   initInvestorModal();   // Sprint 13
+  initPrimeModal();      // Sprint 14
 
   // Extended goal reached: 83 incremental commits running.
 });

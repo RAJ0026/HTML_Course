@@ -2994,6 +2994,40 @@ function initMusicModal() {
 }
 
 /* ============================================================
+   Prime Video Modal (Sprint 14)
+   ============================================================ */
+function initPVideoModal() {
+  const modal = $('#pvideo-modal');
+  const overlay = $('#pvideo-overlay');
+  const closeBtn = $('#pvideo-close');
+  const watchBtn = $('#watch-video');
+  
+  if (!modal || !overlay) return;
+  
+  function openVideo() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeVideo() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPrimeVideo = openVideo;
+  
+  closeBtn?.addEventListener('click', closeVideo);
+  overlay?.addEventListener('click', closeVideo);
+  
+  watchBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Prime Video...');
+    }
+    setTimeout(closeVideo, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3071,6 +3105,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFreshModal();      // Sprint 14
   initDevicesModal();    // Sprint 14
   initMusicModal();      // Sprint 14
+  initPVideoModal();     // Sprint 14
 
   // Extended goal reached: 83 incremental commits running.
 });

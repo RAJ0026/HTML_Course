@@ -1765,5 +1765,23 @@
             <button class="btn btn-primary" style="width: 100%;" id="watch-video">Start Watching</button>
         </div>
     </div>
+    <!-- Amazon Pay Modal (Sprint 15) -->
+    <div class="apay-overlay" id="apay-overlay" aria-hidden="true"></div>
+    <div class="apay-modal auth-modal" id="apay-modal" role="dialog" aria-modal="true" aria-label="Amazon Pay">
+        <button class="modal-close" id="apay-close" aria-label="Close Amazon Pay">&times;</button>
+        <div class="auth-body">
+            <h2 class="auth-title">Amazon Pay</h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.5rem;">The fast, familiar, and secure way to pay.</p>
+            <div style="background: #f7fafa; border: 1px solid #d5d9d9; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                <h4 style="margin: 0 0 10px 0; font-size: 0.95rem;">Benefits:</h4>
+                <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; color: #333; line-height: 1.6;">
+                    <li>Use your Amazon credentials to pay anywhere.</li>
+                    <li>Secure transactions backed by A-to-z Guarantee.</li>
+                    <li>Manage all payments in one place.</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" id="setup-apay">Set Up Amazon Pay</button>
+        </div>
+    </div>
 </body>
 </html>

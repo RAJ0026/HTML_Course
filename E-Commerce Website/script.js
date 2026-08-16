@@ -3028,6 +3028,40 @@ function initPVideoModal() {
 }
 
 /* ============================================================
+   Amazon Pay Modal (Sprint 15)
+   ============================================================ */
+function initAPayModal() {
+  const modal = $('#apay-modal');
+  const overlay = $('#apay-overlay');
+  const closeBtn = $('#apay-close');
+  const setupBtn = $('#setup-apay');
+  
+  if (!modal || !overlay) return;
+  
+  function openAPay() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAPay() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAmazonPay = openAPay;
+  
+  closeBtn?.addEventListener('click', closeAPay);
+  overlay?.addEventListener('click', closeAPay);
+  
+  setupBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Pay setup...');
+    }
+    setTimeout(closeAPay, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3106,6 +3140,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDevicesModal();    // Sprint 14
   initMusicModal();      // Sprint 14
   initPVideoModal();     // Sprint 14
+  initAPayModal();       // Sprint 15
 
   // Extended goal reached: 83 incremental commits running.
 });

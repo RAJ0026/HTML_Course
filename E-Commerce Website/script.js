@@ -3130,6 +3130,40 @@ function initLaunchpadModal() {
 }
 
 /* ============================================================
+   Amazon Outlet Modal (Sprint 15)
+   ============================================================ */
+function initOutletModal() {
+  const modal = $('#outlet-modal');
+  const overlay = $('#outlet-overlay');
+  const closeBtn = $('#outlet-close');
+  const shopBtn = $('#shop-outlet');
+  
+  if (!modal || !overlay) return;
+  
+  function openOutlet() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeOutlet() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openOutlet = openOutlet;
+  
+  closeBtn?.addEventListener('click', closeOutlet);
+  overlay?.addEventListener('click', closeOutlet);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Outlet...');
+    }
+    setTimeout(closeOutlet, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3211,6 +3245,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAPayModal();       // Sprint 15
   initBusinessModal();   // Sprint 15
   initLaunchpadModal();  // Sprint 15
+  initOutletModal();     // Sprint 15
 
   // Extended goal reached: 83 incremental commits running.
 });

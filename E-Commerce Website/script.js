@@ -3096,6 +3096,40 @@ function initBusinessModal() {
 }
 
 /* ============================================================
+   Amazon Launchpad Modal (Sprint 15)
+   ============================================================ */
+function initLaunchpadModal() {
+  const modal = $('#launchpad-modal');
+  const overlay = $('#launchpad-overlay');
+  const closeBtn = $('#launchpad-close');
+  const exploreBtn = $('#explore-launchpad');
+  
+  if (!modal || !overlay) return;
+  
+  function openLaunchpad() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLaunchpad() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openLaunchpad = openLaunchpad;
+  
+  closeBtn?.addEventListener('click', closeLaunchpad);
+  overlay?.addEventListener('click', closeLaunchpad);
+  
+  exploreBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Launchpad...');
+    }
+    setTimeout(closeLaunchpad, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3176,6 +3210,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPVideoModal();     // Sprint 14
   initAPayModal();       // Sprint 15
   initBusinessModal();   // Sprint 15
+  initLaunchpadModal();  // Sprint 15
 
   // Extended goal reached: 83 incremental commits running.
 });

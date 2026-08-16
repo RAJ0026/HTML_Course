@@ -3164,6 +3164,40 @@ function initOutletModal() {
 }
 
 /* ============================================================
+   Amazon Warehouse Modal (Sprint 15)
+   ============================================================ */
+function initWarehouseModal() {
+  const modal = $('#warehouse-modal');
+  const overlay = $('#warehouse-overlay');
+  const closeBtn = $('#warehouse-close');
+  const shopBtn = $('#shop-warehouse');
+  
+  if (!modal || !overlay) return;
+  
+  function openWarehouse() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeWarehouse() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openWarehouse = openWarehouse;
+  
+  closeBtn?.addEventListener('click', closeWarehouse);
+  overlay?.addEventListener('click', closeWarehouse);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Warehouse...');
+    }
+    setTimeout(closeWarehouse, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3246,6 +3280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBusinessModal();   // Sprint 15
   initLaunchpadModal();  // Sprint 15
   initOutletModal();     // Sprint 15
+  initWarehouseModal();  // Sprint 15
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -3062,6 +3062,40 @@ function initAPayModal() {
 }
 
 /* ============================================================
+   Amazon Business Modal (Sprint 15)
+   ============================================================ */
+function initBusinessModal() {
+  const modal = $('#business-modal');
+  const overlay = $('#business-overlay');
+  const closeBtn = $('#business-close');
+  const joinBtn = $('#join-business');
+  
+  if (!modal || !overlay) return;
+  
+  function openBusiness() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeBusiness() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAmazonBusiness = openBusiness;
+  
+  closeBtn?.addEventListener('click', closeBusiness);
+  overlay?.addEventListener('click', closeBusiness);
+  
+  joinBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Business registration...');
+    }
+    setTimeout(closeBusiness, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3141,6 +3175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMusicModal();      // Sprint 14
   initPVideoModal();     // Sprint 14
   initAPayModal();       // Sprint 15
+  initBusinessModal();   // Sprint 15
 
   // Extended goal reached: 83 incremental commits running.
 });

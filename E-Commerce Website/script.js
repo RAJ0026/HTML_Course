@@ -3300,6 +3300,40 @@ function initIgniteModal() {
 }
 
 /* ============================================================
+   Amazon Live Modal (Sprint 16)
+   ============================================================ */
+function initLiveModal() {
+  const modal = $('#live-modal');
+  const overlay = $('#live-overlay');
+  const closeBtn = $('#live-close');
+  const watchBtn = $('#watch-live');
+  
+  if (!modal || !overlay) return;
+  
+  function openLive() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLive() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openLive = openLive;
+  
+  closeBtn?.addEventListener('click', closeLive);
+  overlay?.addEventListener('click', closeLive);
+  
+  watchBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Live...');
+    }
+    setTimeout(closeLive, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3386,6 +3420,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoinsModal();      // Sprint 16
   initExploreModal();    // Sprint 16
   initIgniteModal();     // Sprint 16
+  initLiveModal();       // Sprint 16
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -3504,6 +3504,40 @@ function initLunaModal() {
 }
 
 /* ============================================================
+   Amazon Halo Modal (Sprint 18)
+   ============================================================ */
+function initHaloModal() {
+  const modal = $('#halo-modal');
+  const overlay = $('#halo-overlay');
+  const closeBtn = $('#halo-close');
+  const shopBtn = $('#shop-halo');
+  
+  if (!modal || !overlay) return;
+  
+  function openHalo() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeHalo() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openHalo = openHalo;
+  
+  closeBtn?.addEventListener('click', closeHalo);
+  overlay?.addEventListener('click', closeHalo);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Halo...');
+    }
+    setTimeout(closeHalo, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3596,6 +3630,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBasicsModal();     // Sprint 17
   initClinicModal();     // Sprint 17
   initLunaModal();       // Sprint 17
+  initHaloModal();       // Sprint 18
 
   // Extended goal reached: 83 incremental commits running.
 });

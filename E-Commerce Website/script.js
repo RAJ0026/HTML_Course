@@ -3436,6 +3436,40 @@ function initBasicsModal() {
 }
 
 /* ============================================================
+   Amazon Clinic Modal (Sprint 17)
+   ============================================================ */
+function initClinicModal() {
+  const modal = $('#clinic-modal');
+  const overlay = $('#clinic-overlay');
+  const closeBtn = $('#clinic-close');
+  const visitBtn = $('#visit-clinic');
+  
+  if (!modal || !overlay) return;
+  
+  function openClinic() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeClinic() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openClinic = openClinic;
+  
+  closeBtn?.addEventListener('click', closeClinic);
+  overlay?.addEventListener('click', closeClinic);
+  
+  visitBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Clinic...');
+    }
+    setTimeout(closeClinic, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3526,6 +3560,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRenewedModal();    // Sprint 16
   initElementsModal();   // Sprint 17
   initBasicsModal();     // Sprint 17
+  initClinicModal();     // Sprint 17
 
   // Extended goal reached: 83 incremental commits running.
 });

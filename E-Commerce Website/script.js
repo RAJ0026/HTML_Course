@@ -3470,6 +3470,40 @@ function initClinicModal() {
 }
 
 /* ============================================================
+   Amazon Luna Modal (Sprint 17)
+   ============================================================ */
+function initLunaModal() {
+  const modal = $('#luna-modal');
+  const overlay = $('#luna-overlay');
+  const closeBtn = $('#luna-close');
+  const playBtn = $('#play-luna');
+  
+  if (!modal || !overlay) return;
+  
+  function openLuna() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLuna() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openLuna = openLuna;
+  
+  closeBtn?.addEventListener('click', closeLuna);
+  overlay?.addEventListener('click', closeLuna);
+  
+  playBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Luna...');
+    }
+    setTimeout(closeLuna, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3561,6 +3595,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initElementsModal();   // Sprint 17
   initBasicsModal();     // Sprint 17
   initClinicModal();     // Sprint 17
+  initLunaModal();       // Sprint 17
 
   // Extended goal reached: 83 incremental commits running.
 });

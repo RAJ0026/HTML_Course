@@ -3708,6 +3708,40 @@ function initLockerModal() {
 }
 
 /* ============================================================
+   Amazon Hub Modal (Sprint 19)
+   ============================================================ */
+function initHubModal() {
+  const modal = $('#hub-modal');
+  const overlay = $('#hub-overlay');
+  const closeBtn = $('#hub-close');
+  const shopBtn = $('#shop-hub');
+  
+  if (!modal || !overlay) return;
+  
+  function openHub() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeHub() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openHub = openHub;
+  
+  closeBtn?.addEventListener('click', closeHub);
+  overlay?.addEventListener('click', closeHub);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Finding Amazon Hub...');
+    }
+    setTimeout(closeHub, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3806,6 +3840,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOneModal();        // Sprint 18
   initDayModal();        // Sprint 19
   initLockerModal();     // Sprint 19
+  initHubModal();        // Sprint 19
 
   // Extended goal reached: 83 incremental commits running.
 });

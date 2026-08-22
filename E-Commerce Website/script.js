@@ -3640,6 +3640,40 @@ function initOneModal() {
 }
 
 /* ============================================================
+   Amazon Day Modal (Sprint 19)
+   ============================================================ */
+function initDayModal() {
+  const modal = $('#day-modal');
+  const overlay = $('#day-overlay');
+  const closeBtn = $('#day-close');
+  const shopBtn = $('#shop-day');
+  
+  if (!modal || !overlay) return;
+  
+  function openDay() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeDay() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openDay = openDay;
+  
+  closeBtn?.addEventListener('click', closeDay);
+  overlay?.addEventListener('click', closeDay);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Setting Amazon Day...');
+    }
+    setTimeout(closeDay, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3736,6 +3770,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAstroModal();      // Sprint 18
   initKeyModal();        // Sprint 18
   initOneModal();        // Sprint 18
+  initDayModal();        // Sprint 19
 
   // Extended goal reached: 83 incremental commits running.
 });

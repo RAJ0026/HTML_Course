@@ -3674,6 +3674,40 @@ function initDayModal() {
 }
 
 /* ============================================================
+   Amazon Locker Modal (Sprint 19)
+   ============================================================ */
+function initLockerModal() {
+  const modal = $('#locker-modal');
+  const overlay = $('#locker-overlay');
+  const closeBtn = $('#locker-close');
+  const shopBtn = $('#shop-locker');
+  
+  if (!modal || !overlay) return;
+  
+  function openLocker() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLocker() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openLocker = openLocker;
+  
+  closeBtn?.addEventListener('click', closeLocker);
+  overlay?.addEventListener('click', closeLocker);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Finding Amazon Locker...');
+    }
+    setTimeout(closeLocker, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3771,6 +3805,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initKeyModal();        // Sprint 18
   initOneModal();        // Sprint 18
   initDayModal();        // Sprint 19
+  initLockerModal();     // Sprint 19
 
   // Extended goal reached: 83 incremental commits running.
 });

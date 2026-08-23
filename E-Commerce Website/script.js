@@ -3878,6 +3878,40 @@ function initVendorModal() {
 }
 
 /* ============================================================
+   Amazon Merch Modal (Sprint 20)
+   ============================================================ */
+function initMerchModal() {
+  const modal = $('#merch-modal');
+  const overlay = $('#merch-overlay');
+  const closeBtn = $('#merch-close');
+  const shopBtn = $('#shop-merch');
+  
+  if (!modal || !overlay) return;
+  
+  function openMerch() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeMerch() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openMerch = openMerch;
+  
+  closeBtn?.addEventListener('click', closeMerch);
+  overlay?.addEventListener('click', closeMerch);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Starting Merch on Demand...');
+    }
+    setTimeout(closeMerch, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3981,6 +4015,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAssociatesModal(); // Sprint 20
   initSellerModal();     // Sprint 20
   initVendorModal();     // Sprint 20
+  initMerchModal();      // Sprint 20
 
   // Extended goal reached: 83 incremental commits running.
 });

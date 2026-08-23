@@ -3946,6 +3946,40 @@ function initKDPModal() {
 }
 
 /* ============================================================
+   Amazon ACX Modal (Sprint 21)
+   ============================================================ */
+function initACXModal() {
+  const modal = $('#acx-modal');
+  const overlay = $('#acx-overlay');
+  const closeBtn = $('#acx-close');
+  const shopBtn = $('#shop-acx');
+  
+  if (!modal || !overlay) return;
+  
+  function openACX() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeACX() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openACX = openACX;
+  
+  closeBtn?.addEventListener('click', closeACX);
+  overlay?.addEventListener('click', closeACX);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to ACX...');
+    }
+    setTimeout(closeACX, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4051,6 +4085,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVendorModal();     // Sprint 20
   initMerchModal();      // Sprint 20
   initKDPModal();        // Sprint 21
+  initACXModal();        // Sprint 21
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -3912,6 +3912,40 @@ function initMerchModal() {
 }
 
 /* ============================================================
+   Amazon KDP Modal (Sprint 21)
+   ============================================================ */
+function initKDPModal() {
+  const modal = $('#kdp-modal');
+  const overlay = $('#kdp-overlay');
+  const closeBtn = $('#kdp-close');
+  const shopBtn = $('#shop-kdp');
+  
+  if (!modal || !overlay) return;
+  
+  function openKDP() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeKDP() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openKDP = openKDP;
+  
+  closeBtn?.addEventListener('click', closeKDP);
+  overlay?.addEventListener('click', closeKDP);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to KDP Publishing...');
+    }
+    setTimeout(closeKDP, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4016,6 +4050,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSellerModal();     // Sprint 20
   initVendorModal();     // Sprint 20
   initMerchModal();      // Sprint 20
+  initKDPModal();        // Sprint 21
 
   // Extended goal reached: 83 incremental commits running.
 });

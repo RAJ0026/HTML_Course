@@ -3980,6 +3980,40 @@ function initACXModal() {
 }
 
 /* ============================================================
+   Amazon Appstore Modal (Sprint 21)
+   ============================================================ */
+function initAppstoreModal() {
+  const modal = $('#appstore-modal');
+  const overlay = $('#appstore-overlay');
+  const closeBtn = $('#appstore-close');
+  const shopBtn = $('#shop-appstore');
+  
+  if (!modal || !overlay) return;
+  
+  function openAppstore() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAppstore() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAppstore = openAppstore;
+  
+  closeBtn?.addEventListener('click', closeAppstore);
+  overlay?.addEventListener('click', closeAppstore);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Appstore Developer Console...');
+    }
+    setTimeout(closeAppstore, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4086,6 +4120,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMerchModal();      // Sprint 20
   initKDPModal();        // Sprint 21
   initACXModal();        // Sprint 21
+  initAppstoreModal();   // Sprint 21
 
   // Extended goal reached: 83 incremental commits running.
 });

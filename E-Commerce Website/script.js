@@ -3844,6 +3844,40 @@ function initSellerModal() {
 }
 
 /* ============================================================
+   Amazon Vendor Modal (Sprint 20)
+   ============================================================ */
+function initVendorModal() {
+  const modal = $('#vendor-modal');
+  const overlay = $('#vendor-overlay');
+  const closeBtn = $('#vendor-close');
+  const shopBtn = $('#shop-vendor');
+  
+  if (!modal || !overlay) return;
+  
+  function openVendor() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeVendor() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openVendor = openVendor;
+  
+  closeBtn?.addEventListener('click', closeVendor);
+  overlay?.addEventListener('click', closeVendor);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Vendor Central...');
+    }
+    setTimeout(closeVendor, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -3946,6 +3980,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFlexModal();       // Sprint 19
   initAssociatesModal(); // Sprint 20
   initSellerModal();     // Sprint 20
+  initVendorModal();     // Sprint 20
 
   // Extended goal reached: 83 incremental commits running.
 });

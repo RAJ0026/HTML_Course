@@ -4150,6 +4150,40 @@ function initScienceModal() {
 }
 
 /* ============================================================
+   Amazon Supply Chain Modal (Sprint 22)
+   ============================================================ */
+function initSupplyModal() {
+  const modal = $('#supply-modal');
+  const overlay = $('#supply-overlay');
+  const closeBtn = $('#supply-close');
+  const shopBtn = $('#shop-supply');
+  
+  if (!modal || !overlay) return;
+  
+  function openSupply() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeSupply() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openSupply = openSupply;
+  
+  closeBtn?.addEventListener('click', closeSupply);
+  overlay?.addEventListener('click', closeSupply);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Supply Chain...');
+    }
+    setTimeout(closeSupply, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4261,6 +4295,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStudiosModal();    // Sprint 22
   initGamesModal();      // Sprint 22
   initScienceModal();    // Sprint 22
+  initSupplyModal();     // Sprint 22
 
   // Extended goal reached: 83 incremental commits running.
 });

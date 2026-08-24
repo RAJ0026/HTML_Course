@@ -4014,6 +4014,40 @@ function initAppstoreModal() {
 }
 
 /* ============================================================
+   Amazon Advertising Modal (Sprint 21)
+   ============================================================ */
+function initAdvertisingModal() {
+  const modal = $('#advertising-modal');
+  const overlay = $('#advertising-overlay');
+  const closeBtn = $('#advertising-close');
+  const shopBtn = $('#shop-advertising');
+  
+  if (!modal || !overlay) return;
+  
+  function openAdvertising() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAdvertising() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAdvertising = openAdvertising;
+  
+  closeBtn?.addEventListener('click', closeAdvertising);
+  overlay?.addEventListener('click', closeAdvertising);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Ads...');
+    }
+    setTimeout(closeAdvertising, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4121,6 +4155,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initKDPModal();        // Sprint 21
   initACXModal();        // Sprint 21
   initAppstoreModal();   // Sprint 21
+  initAdvertisingModal(); // Sprint 21
 
   // Extended goal reached: 83 incremental commits running.
 });

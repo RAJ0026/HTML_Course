@@ -4116,6 +4116,40 @@ function initGamesModal() {
 }
 
 /* ============================================================
+   Amazon Science Modal (Sprint 22)
+   ============================================================ */
+function initScienceModal() {
+  const modal = $('#science-modal');
+  const overlay = $('#science-overlay');
+  const closeBtn = $('#science-close');
+  const shopBtn = $('#shop-science');
+  
+  if (!modal || !overlay) return;
+  
+  function openScience() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeScience() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openScience = openScience;
+  
+  closeBtn?.addEventListener('click', closeScience);
+  overlay?.addEventListener('click', closeScience);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Science...');
+    }
+    setTimeout(closeScience, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4226,6 +4260,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdvertisingModal(); // Sprint 21
   initStudiosModal();    // Sprint 22
   initGamesModal();      // Sprint 22
+  initScienceModal();    // Sprint 22
 
   // Extended goal reached: 83 incremental commits running.
 });

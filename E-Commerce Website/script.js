@@ -4082,6 +4082,40 @@ function initStudiosModal() {
 }
 
 /* ============================================================
+   Amazon Games Modal (Sprint 22)
+   ============================================================ */
+function initGamesModal() {
+  const modal = $('#games-modal');
+  const overlay = $('#games-overlay');
+  const closeBtn = $('#games-close');
+  const shopBtn = $('#shop-games');
+  
+  if (!modal || !overlay) return;
+  
+  function openGames() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeGames() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openGames = openGames;
+  
+  closeBtn?.addEventListener('click', closeGames);
+  overlay?.addEventListener('click', closeGames);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Games...');
+    }
+    setTimeout(closeGames, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4191,6 +4225,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAppstoreModal();   // Sprint 21
   initAdvertisingModal(); // Sprint 21
   initStudiosModal();    // Sprint 22
+  initGamesModal();      // Sprint 22
 
   // Extended goal reached: 83 incremental commits running.
 });

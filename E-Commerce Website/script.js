@@ -4388,6 +4388,40 @@ function initSecondChanceModal() {
 }
 
 /* ============================================================
+   Amazon Renewed Refurbished Modal (Sprint 24)
+   ============================================================ */
+function initRenewedRefurbModal() {
+  const modal = $('#renewed-refurb-modal');
+  const overlay = $('#renewed-refurb-overlay');
+  const closeBtn = $('#renewed-refurb-close');
+  const shopBtn = $('#shop-renewed-refurb');
+  
+  if (!modal || !overlay) return;
+  
+  function openRenewedRefurb() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeRenewedRefurb() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openRenewedRefurb = openRenewedRefurb;
+  
+  closeBtn?.addEventListener('click', closeRenewedRefurb);
+  overlay?.addEventListener('click', closeRenewedRefurb);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Renewed...');
+    }
+    setTimeout(closeRenewedRefurb, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4506,6 +4540,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomModal();     // Sprint 23
   initIgniteEduModal();  // Sprint 24
   initSecondChanceModal(); // Sprint 24
+  initRenewedRefurbModal(); // Sprint 24
 
   // Extended goal reached: 83 incremental commits running.
 });

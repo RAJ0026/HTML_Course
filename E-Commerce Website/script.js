@@ -4524,6 +4524,40 @@ function initResetsModal() {
 }
 
 /* ============================================================
+   Amazon Physical Stores Modal (Sprint 25)
+   ============================================================ */
+function initPhysicalStoresModal() {
+  const modal = $('#physical-stores-modal');
+  const overlay = $('#physical-stores-overlay');
+  const closeBtn = $('#physical-stores-close');
+  const shopBtn = $('#shop-physical-stores');
+  
+  if (!modal || !overlay) return;
+  
+  function openPhysicalStores() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closePhysicalStores() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPhysicalStores = openPhysicalStores;
+  
+  closeBtn?.addEventListener('click', closePhysicalStores);
+  overlay?.addEventListener('click', closePhysicalStores);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Physical Stores...');
+    }
+    setTimeout(closePhysicalStores, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4646,6 +4680,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSubBoxesModal();   // Sprint 25
   initAssistantModal();  // Sprint 25
   initResetsModal();     // Sprint 25
+  initPhysicalStoresModal(); // Sprint 25
 
   // Extended goal reached: 83 incremental commits running.
 });

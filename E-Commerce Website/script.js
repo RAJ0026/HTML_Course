@@ -4422,6 +4422,40 @@ function initRenewedRefurbModal() {
 }
 
 /* ============================================================
+   Amazon Subscription Boxes Modal (Sprint 25)
+   ============================================================ */
+function initSubBoxesModal() {
+  const modal = $('#sub-boxes-modal');
+  const overlay = $('#sub-boxes-overlay');
+  const closeBtn = $('#sub-boxes-close');
+  const shopBtn = $('#shop-sub-boxes');
+  
+  if (!modal || !overlay) return;
+  
+  function openSubBoxes() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeSubBoxes() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openSubBoxes = openSubBoxes;
+  
+  closeBtn?.addEventListener('click', closeSubBoxes);
+  overlay?.addEventListener('click', closeSubBoxes);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Subscription Boxes...');
+    }
+    setTimeout(closeSubBoxes, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4541,6 +4575,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initIgniteEduModal();  // Sprint 24
   initSecondChanceModal(); // Sprint 24
   initRenewedRefurbModal(); // Sprint 24
+  initSubBoxesModal();   // Sprint 25
 
   // Extended goal reached: 83 incremental commits running.
 });

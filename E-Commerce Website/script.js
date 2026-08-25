@@ -4490,6 +4490,40 @@ function initAssistantModal() {
 }
 
 /* ============================================================
+   Amazon Resets Modal (Sprint 25)
+   ============================================================ */
+function initResetsModal() {
+  const modal = $('#resets-modal');
+  const overlay = $('#resets-overlay');
+  const closeBtn = $('#resets-close');
+  const shopBtn = $('#shop-resets');
+  
+  if (!modal || !overlay) return;
+  
+  function openResets() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeResets() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openResets = openResets;
+  
+  closeBtn?.addEventListener('click', closeResets);
+  overlay?.addEventListener('click', closeResets);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Resets...');
+    }
+    setTimeout(closeResets, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4611,6 +4645,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRenewedRefurbModal(); // Sprint 24
   initSubBoxesModal();   // Sprint 25
   initAssistantModal();  // Sprint 25
+  initResetsModal();     // Sprint 25
 
   // Extended goal reached: 83 incremental commits running.
 });

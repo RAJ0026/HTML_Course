@@ -4456,6 +4456,40 @@ function initSubBoxesModal() {
 }
 
 /* ============================================================
+   Amazon Assistant Modal (Sprint 25)
+   ============================================================ */
+function initAssistantModal() {
+  const modal = $('#assistant-modal');
+  const overlay = $('#assistant-overlay');
+  const closeBtn = $('#assistant-close');
+  const shopBtn = $('#shop-assistant');
+  
+  if (!modal || !overlay) return;
+  
+  function openAssistant() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAssistant() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAssistant = openAssistant;
+  
+  closeBtn?.addEventListener('click', closeAssistant);
+  overlay?.addEventListener('click', closeAssistant);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Assistant...');
+    }
+    setTimeout(closeAssistant, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4576,6 +4610,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSecondChanceModal(); // Sprint 24
   initRenewedRefurbModal(); // Sprint 24
   initSubBoxesModal();   // Sprint 25
+  initAssistantModal();  // Sprint 25
 
   // Extended goal reached: 83 incremental commits running.
 });

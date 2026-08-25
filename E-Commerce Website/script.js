@@ -4354,6 +4354,40 @@ function initIgniteEduModal() {
 }
 
 /* ============================================================
+   Amazon Second Chance Modal (Sprint 24)
+   ============================================================ */
+function initSecondChanceModal() {
+  const modal = $('#second-chance-modal');
+  const overlay = $('#second-chance-overlay');
+  const closeBtn = $('#second-chance-close');
+  const shopBtn = $('#shop-second-chance');
+  
+  if (!modal || !overlay) return;
+  
+  function openSecondChance() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeSecondChance() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openSecondChance = openSecondChance;
+  
+  closeBtn?.addEventListener('click', closeSecondChance);
+  overlay?.addEventListener('click', closeSecondChance);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Second Chance...');
+    }
+    setTimeout(closeSecondChance, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4471,6 +4505,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLauncheuModal();   // Sprint 23
   initCustomModal();     // Sprint 23
   initIgniteEduModal();  // Sprint 24
+  initSecondChanceModal(); // Sprint 24
 
   // Extended goal reached: 83 incremental commits running.
 });

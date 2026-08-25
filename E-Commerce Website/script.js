@@ -4320,6 +4320,40 @@ function initCustomModal() {
 }
 
 /* ============================================================
+   Amazon Ignite Education Modal (Sprint 24)
+   ============================================================ */
+function initIgniteEduModal() {
+  const modal = $('#ignite-edu-modal');
+  const overlay = $('#ignite-edu-overlay');
+  const closeBtn = $('#ignite-edu-close');
+  const shopBtn = $('#shop-ignite-edu');
+  
+  if (!modal || !overlay) return;
+  
+  function openIgniteEdu() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeIgniteEdu() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openIgniteEdu = openIgniteEdu;
+  
+  closeBtn?.addEventListener('click', closeIgniteEdu);
+  overlay?.addEventListener('click', closeIgniteEdu);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Ignite Education...');
+    }
+    setTimeout(closeIgniteEdu, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4436,6 +4470,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBrandModal();      // Sprint 23
   initLauncheuModal();   // Sprint 23
   initCustomModal();     // Sprint 23
+  initIgniteEduModal();  // Sprint 24
 
   // Extended goal reached: 83 incremental commits running.
 });

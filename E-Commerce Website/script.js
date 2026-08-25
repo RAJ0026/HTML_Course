@@ -4286,6 +4286,40 @@ function initLauncheuModal() {
 }
 
 /* ============================================================
+   Amazon Custom Modal (Sprint 23)
+   ============================================================ */
+function initCustomModal() {
+  const modal = $('#custom-modal');
+  const overlay = $('#custom-overlay');
+  const closeBtn = $('#custom-close');
+  const shopBtn = $('#shop-custom');
+  
+  if (!modal || !overlay) return;
+  
+  function openCustom() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeCustom() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openCustom = openCustom;
+  
+  closeBtn?.addEventListener('click', closeCustom);
+  overlay?.addEventListener('click', closeCustom);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Custom...');
+    }
+    setTimeout(closeCustom, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4401,6 +4435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobalModal();     // Sprint 23
   initBrandModal();      // Sprint 23
   initLauncheuModal();   // Sprint 23
+  initCustomModal();     // Sprint 23
 
   // Extended goal reached: 83 incremental commits running.
 });

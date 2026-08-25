@@ -4218,6 +4218,40 @@ function initGlobalModal() {
 }
 
 /* ============================================================
+   Amazon Brand Registry Modal (Sprint 23)
+   ============================================================ */
+function initBrandModal() {
+  const modal = $('#brand-modal');
+  const overlay = $('#brand-overlay');
+  const closeBtn = $('#brand-close');
+  const shopBtn = $('#shop-brand');
+  
+  if (!modal || !overlay) return;
+  
+  function openBrand() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeBrand() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openBrand = openBrand;
+  
+  closeBtn?.addEventListener('click', closeBrand);
+  overlay?.addEventListener('click', closeBrand);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Brand Registry...');
+    }
+    setTimeout(closeBrand, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4331,6 +4365,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScienceModal();    // Sprint 22
   initSupplyModal();     // Sprint 22
   initGlobalModal();     // Sprint 23
+  initBrandModal();      // Sprint 23
 
   // Extended goal reached: 83 incremental commits running.
 });

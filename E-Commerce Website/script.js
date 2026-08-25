@@ -4252,6 +4252,40 @@ function initBrandModal() {
 }
 
 /* ============================================================
+   Amazon Launchpad Europe Modal (Sprint 23)
+   ============================================================ */
+function initLauncheuModal() {
+  const modal = $('#launcheu-modal');
+  const overlay = $('#launcheu-overlay');
+  const closeBtn = $('#launcheu-close');
+  const shopBtn = $('#shop-launcheu');
+  
+  if (!modal || !overlay) return;
+  
+  function openLauncheu() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeLauncheu() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openLauncheu = openLauncheu;
+  
+  closeBtn?.addEventListener('click', closeLauncheu);
+  overlay?.addEventListener('click', closeLauncheu);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Launchpad EU...');
+    }
+    setTimeout(closeLauncheu, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4366,6 +4400,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSupplyModal();     // Sprint 22
   initGlobalModal();     // Sprint 23
   initBrandModal();      // Sprint 23
+  initLauncheuModal();   // Sprint 23
 
   // Extended goal reached: 83 incremental commits running.
 });

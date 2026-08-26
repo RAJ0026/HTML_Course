@@ -4694,6 +4694,40 @@ function initPharmacyModal() {
 }
 
 /* ============================================================
+   Woot Modal (Sprint 27)
+   ============================================================ */
+function initWootModal() {
+  const modal = $('#woot-modal');
+  const overlay = $('#woot-overlay');
+  const closeBtn = $('#woot-close');
+  const shopBtn = $('#shop-woot');
+  
+  if (!modal || !overlay) return;
+  
+  function openWoot() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeWoot() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openWoot = openWoot;
+  
+  closeBtn?.addEventListener('click', closeWoot);
+  overlay?.addEventListener('click', closeWoot);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Woot...');
+    }
+    setTimeout(closeWoot, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4821,6 +4855,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFreshModal();      // Sprint 26
   initStyleModal();      // Sprint 26
   initPharmacyModal();   // Sprint 26
+  initWootModal();       // Sprint 27
 
   // Extended goal reached: 83 incremental commits running.
 });

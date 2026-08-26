@@ -4660,6 +4660,40 @@ function initStyleModal() {
 }
 
 /* ============================================================
+   Amazon Pharmacy Modal (Sprint 26)
+   ============================================================ */
+function initPharmacyModal() {
+  const modal = $('#pharmacy-modal');
+  const overlay = $('#pharmacy-overlay');
+  const closeBtn = $('#pharmacy-close');
+  const shopBtn = $('#shop-pharmacy');
+  
+  if (!modal || !overlay) return;
+  
+  function openPharmacy() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closePharmacy() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPharmacy = openPharmacy;
+  
+  closeBtn?.addEventListener('click', closePharmacy);
+  overlay?.addEventListener('click', closePharmacy);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Pharmacy...');
+    }
+    setTimeout(closePharmacy, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4786,6 +4820,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGoModal();         // Sprint 26
   initFreshModal();      // Sprint 26
   initStyleModal();      // Sprint 26
+  initPharmacyModal();   // Sprint 26
 
   // Extended goal reached: 83 incremental commits running.
 });

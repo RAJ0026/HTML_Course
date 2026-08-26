@@ -4626,6 +4626,40 @@ function initFreshModal() {
 }
 
 /* ============================================================
+   Amazon Style Modal (Sprint 26)
+   ============================================================ */
+function initStyleModal() {
+  const modal = $('#style-modal');
+  const overlay = $('#style-overlay');
+  const closeBtn = $('#style-close');
+  const shopBtn = $('#shop-style');
+  
+  if (!modal || !overlay) return;
+  
+  function openStyle() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeStyle() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openStyle = openStyle;
+  
+  closeBtn?.addEventListener('click', closeStyle);
+  overlay?.addEventListener('click', closeStyle);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Style...');
+    }
+    setTimeout(closeStyle, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4751,6 +4785,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhysicalStoresModal(); // Sprint 25
   initGoModal();         // Sprint 26
   initFreshModal();      // Sprint 26
+  initStyleModal();      // Sprint 26
 
   // Extended goal reached: 83 incremental commits running.
 });

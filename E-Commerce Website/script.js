@@ -4728,6 +4728,40 @@ function initWootModal() {
 }
 
 /* ============================================================
+   Zappos Modal (Sprint 27)
+   ============================================================ */
+function initZapposModal() {
+  const modal = $('#zappos-modal');
+  const overlay = $('#zappos-overlay');
+  const closeBtn = $('#zappos-close');
+  const shopBtn = $('#shop-zappos');
+  
+  if (!modal || !overlay) return;
+  
+  function openZappos() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeZappos() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openZappos = openZappos;
+  
+  closeBtn?.addEventListener('click', closeZappos);
+  overlay?.addEventListener('click', closeZappos);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Zappos...');
+    }
+    setTimeout(closeZappos, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4856,6 +4890,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStyleModal();      // Sprint 26
   initPharmacyModal();   // Sprint 26
   initWootModal();       // Sprint 27
+  initZapposModal();     // Sprint 27
 
   // Extended goal reached: 83 incremental commits running.
 });

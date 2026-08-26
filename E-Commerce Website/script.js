@@ -4762,6 +4762,40 @@ function initZapposModal() {
 }
 
 /* ============================================================
+   Goodreads Modal (Sprint 27)
+   ============================================================ */
+function initGoodreadsModal() {
+  const modal = $('#goodreads-modal');
+  const overlay = $('#goodreads-overlay');
+  const closeBtn = $('#goodreads-close');
+  const shopBtn = $('#shop-goodreads');
+  
+  if (!modal || !overlay) return;
+  
+  function openGoodreads() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeGoodreads() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openGoodreads = openGoodreads;
+  
+  closeBtn?.addEventListener('click', closeGoodreads);
+  overlay?.addEventListener('click', closeGoodreads);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Goodreads...');
+    }
+    setTimeout(closeGoodreads, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4891,6 +4925,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPharmacyModal();   // Sprint 26
   initWootModal();       // Sprint 27
   initZapposModal();     // Sprint 27
+  initGoodreadsModal();  // Sprint 27
 
   // Extended goal reached: 83 incremental commits running.
 });

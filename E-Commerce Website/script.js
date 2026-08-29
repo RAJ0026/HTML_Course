@@ -4830,6 +4830,40 @@ function initIMDbModal() {
 }
 
 /* ============================================================
+   Ring Modal (Sprint 28)
+   ============================================================ */
+function initRingModal() {
+  const modal = $('#ring-modal');
+  const overlay = $('#ring-overlay');
+  const closeBtn = $('#ring-close');
+  const shopBtn = $('#shop-ring');
+  
+  if (!modal || !overlay) return;
+  
+  function openRing() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeRing() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openRing = openRing;
+  
+  closeBtn?.addEventListener('click', closeRing);
+  overlay?.addEventListener('click', closeRing);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Ring...');
+    }
+    setTimeout(closeRing, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4961,6 +4995,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initZapposModal();     // Sprint 27
   initGoodreadsModal();  // Sprint 27
   initIMDbModal();       // Sprint 27
+  initRingModal();       // Sprint 28
 
   // Extended goal reached: 83 incremental commits running.
 });

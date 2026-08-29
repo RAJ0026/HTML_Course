@@ -4898,6 +4898,40 @@ function initBlinkModal() {
 }
 
 /* ============================================================
+   Eero Modal (Sprint 28)
+   ============================================================ */
+function initEeroModal() {
+  const modal = $('#eero-modal');
+  const overlay = $('#eero-overlay');
+  const closeBtn = $('#eero-close');
+  const shopBtn = $('#shop-eero');
+  
+  if (!modal || !overlay) return;
+  
+  function openEero() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeEero() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openEero = openEero;
+  
+  closeBtn?.addEventListener('click', closeEero);
+  overlay?.addEventListener('click', closeEero);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to eero...');
+    }
+    setTimeout(closeEero, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5031,6 +5065,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initIMDbModal();       // Sprint 27
   initRingModal();       // Sprint 28
   initBlinkModal();      // Sprint 28
+  initEeroModal();       // Sprint 28
 
   // Extended goal reached: 83 incremental commits running.
 });

@@ -4966,6 +4966,40 @@ function initAWSModal() {
 }
 
 /* ============================================================
+   Audible Modal (Sprint 29)
+   ============================================================ */
+function initAudibleModal() {
+  const modal = $('#audible-modal');
+  const overlay = $('#audible-overlay');
+  const closeBtn = $('#audible-close');
+  const shopBtn = $('#shop-audible');
+  
+  if (!modal || !overlay) return;
+  
+  function openAudible() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAudible() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAudible = openAudible;
+  
+  closeBtn?.addEventListener('click', closeAudible);
+  overlay?.addEventListener('click', closeAudible);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Audible...');
+    }
+    setTimeout(closeAudible, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5101,6 +5135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlinkModal();      // Sprint 28
   initEeroModal();       // Sprint 28
   initAWSModal();        // Sprint 28
+  initAudibleModal();    // Sprint 29
 
   // Extended goal reached: 83 incremental commits running.
 });

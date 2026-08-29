@@ -4864,6 +4864,40 @@ function initRingModal() {
 }
 
 /* ============================================================
+   Blink Modal (Sprint 28)
+   ============================================================ */
+function initBlinkModal() {
+  const modal = $('#blink-modal');
+  const overlay = $('#blink-overlay');
+  const closeBtn = $('#blink-close');
+  const shopBtn = $('#shop-blink');
+  
+  if (!modal || !overlay) return;
+  
+  function openBlink() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeBlink() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openBlink = openBlink;
+  
+  closeBtn?.addEventListener('click', closeBlink);
+  overlay?.addEventListener('click', closeBlink);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Blink...');
+    }
+    setTimeout(closeBlink, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4996,6 +5030,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGoodreadsModal();  // Sprint 27
   initIMDbModal();       // Sprint 27
   initRingModal();       // Sprint 28
+  initBlinkModal();      // Sprint 28
 
   // Extended goal reached: 83 incremental commits running.
 });

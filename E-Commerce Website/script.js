@@ -4796,6 +4796,40 @@ function initGoodreadsModal() {
 }
 
 /* ============================================================
+   IMDb Modal (Sprint 27)
+   ============================================================ */
+function initIMDbModal() {
+  const modal = $('#imdb-modal');
+  const overlay = $('#imdb-overlay');
+  const closeBtn = $('#imdb-close');
+  const shopBtn = $('#shop-imdb');
+  
+  if (!modal || !overlay) return;
+  
+  function openIMDb() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeIMDb() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openIMDb = openIMDb;
+  
+  closeBtn?.addEventListener('click', closeIMDb);
+  overlay?.addEventListener('click', closeIMDb);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to IMDb...');
+    }
+    setTimeout(closeIMDb, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -4926,6 +4960,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWootModal();       // Sprint 27
   initZapposModal();     // Sprint 27
   initGoodreadsModal();  // Sprint 27
+  initIMDbModal();       // Sprint 27
 
   // Extended goal reached: 83 incremental commits running.
 });

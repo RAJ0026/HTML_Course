@@ -5000,6 +5000,40 @@ function initAudibleModal() {
 }
 
 /* ============================================================
+   Twitch Modal (Sprint 29)
+   ============================================================ */
+function initTwitchModal() {
+  const modal = $('#twitch-modal');
+  const overlay = $('#twitch-overlay');
+  const closeBtn = $('#twitch-close');
+  const shopBtn = $('#shop-twitch');
+  
+  if (!modal || !overlay) return;
+  
+  function openTwitch() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeTwitch() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openTwitch = openTwitch;
+  
+  closeBtn?.addEventListener('click', closeTwitch);
+  overlay?.addEventListener('click', closeTwitch);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Twitch...');
+    }
+    setTimeout(closeTwitch, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5136,6 +5170,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initEeroModal();       // Sprint 28
   initAWSModal();        // Sprint 28
   initAudibleModal();    // Sprint 29
+  initTwitchModal();     // Sprint 29
 
   // Extended goal reached: 83 incremental commits running.
 });

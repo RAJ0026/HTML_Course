@@ -4932,6 +4932,40 @@ function initEeroModal() {
 }
 
 /* ============================================================
+   AWS Modal (Sprint 28)
+   ============================================================ */
+function initAWSModal() {
+  const modal = $('#aws-modal');
+  const overlay = $('#aws-overlay');
+  const closeBtn = $('#aws-close');
+  const shopBtn = $('#shop-aws');
+  
+  if (!modal || !overlay) return;
+  
+  function openAWS() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAWS() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAWS = openAWS;
+  
+  closeBtn?.addEventListener('click', closeAWS);
+  overlay?.addEventListener('click', closeAWS);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to AWS...');
+    }
+    setTimeout(closeAWS, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5066,6 +5100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRingModal();       // Sprint 28
   initBlinkModal();      // Sprint 28
   initEeroModal();       // Sprint 28
+  initAWSModal();        // Sprint 28
 
   // Extended goal reached: 83 incremental commits running.
 });

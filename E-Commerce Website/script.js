@@ -5034,6 +5034,40 @@ function initTwitchModal() {
 }
 
 /* ============================================================
+   Box Office Mojo Modal (Sprint 29)
+   ============================================================ */
+function initBOMModal() {
+  const modal = $('#bom-modal');
+  const overlay = $('#bom-overlay');
+  const closeBtn = $('#bom-close');
+  const shopBtn = $('#shop-bom');
+  
+  if (!modal || !overlay) return;
+  
+  function openBOM() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeBOM() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openBOM = openBOM;
+  
+  closeBtn?.addEventListener('click', closeBOM);
+  overlay?.addEventListener('click', closeBOM);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Box Office Mojo...');
+    }
+    setTimeout(closeBOM, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5171,6 +5205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAWSModal();        // Sprint 28
   initAudibleModal();    // Sprint 29
   initTwitchModal();     // Sprint 29
+  initBOMModal();        // Sprint 29
 
   // Extended goal reached: 83 incremental commits running.
 });

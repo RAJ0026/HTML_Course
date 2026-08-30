@@ -5170,6 +5170,40 @@ function initShopbopModal() {
 }
 
 /* ============================================================
+   Wondery Modal (Sprint 30)
+   ============================================================ */
+function initWonderyModal() {
+  const modal = $('#wondery-modal');
+  const overlay = $('#wondery-overlay');
+  const closeBtn = $('#wondery-close');
+  const shopBtn = $('#shop-wondery');
+  
+  if (!modal || !overlay) return;
+  
+  function openWondery() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeWondery() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openWondery = openWondery;
+  
+  closeBtn?.addEventListener('click', closeWondery);
+  overlay?.addEventListener('click', closeWondery);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Wondery...');
+    }
+    setTimeout(closeWondery, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5311,6 +5345,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDPReviewModal();   // Sprint 29
   initFabricModal();     // Sprint 30
   initShopbopModal();    // Sprint 30
+  initWonderyModal();    // Sprint 30
 
   // Extended goal reached: 83 incremental commits running.
 });

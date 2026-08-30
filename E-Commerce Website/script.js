@@ -5102,6 +5102,40 @@ function initDPReviewModal() {
 }
 
 /* ============================================================
+   Fabric Modal (Sprint 30)
+   ============================================================ */
+function initFabricModal() {
+  const modal = $('#fabric-modal');
+  const overlay = $('#fabric-overlay');
+  const closeBtn = $('#fabric-close');
+  const shopBtn = $('#shop-fabric');
+  
+  if (!modal || !overlay) return;
+  
+  function openFabric() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeFabric() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openFabric = openFabric;
+  
+  closeBtn?.addEventListener('click', closeFabric);
+  overlay?.addEventListener('click', closeFabric);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Fabric...');
+    }
+    setTimeout(closeFabric, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5241,6 +5275,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTwitchModal();     // Sprint 29
   initBOMModal();        // Sprint 29
   initDPReviewModal();   // Sprint 29
+  initFabricModal();     // Sprint 30
 
   // Extended goal reached: 83 incremental commits running.
 });

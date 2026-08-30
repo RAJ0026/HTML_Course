@@ -5136,6 +5136,40 @@ function initFabricModal() {
 }
 
 /* ============================================================
+   Shopbop Modal (Sprint 30)
+   ============================================================ */
+function initShopbopModal() {
+  const modal = $('#shopbop-modal');
+  const overlay = $('#shopbop-overlay');
+  const closeBtn = $('#shopbop-close');
+  const shopBtn = $('#shop-shopbop');
+  
+  if (!modal || !overlay) return;
+  
+  function openShopbop() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeShopbop() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openShopbop = openShopbop;
+  
+  closeBtn?.addEventListener('click', closeShopbop);
+  overlay?.addEventListener('click', closeShopbop);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Shopbop...');
+    }
+    setTimeout(closeShopbop, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5276,6 +5310,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBOMModal();        // Sprint 29
   initDPReviewModal();   // Sprint 29
   initFabricModal();     // Sprint 30
+  initShopbopModal();    // Sprint 30
 
   // Extended goal reached: 83 incremental commits running.
 });

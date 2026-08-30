@@ -5068,6 +5068,40 @@ function initBOMModal() {
 }
 
 /* ============================================================
+   DPReview Modal (Sprint 29)
+   ============================================================ */
+function initDPReviewModal() {
+  const modal = $('#dpreview-modal');
+  const overlay = $('#dpreview-overlay');
+  const closeBtn = $('#dpreview-close');
+  const shopBtn = $('#shop-dpreview');
+  
+  if (!modal || !overlay) return;
+  
+  function openDPReview() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeDPReview() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openDPReview = openDPReview;
+  
+  closeBtn?.addEventListener('click', closeDPReview);
+  overlay?.addEventListener('click', closeDPReview);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to DPReview...');
+    }
+    setTimeout(closeDPReview, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5206,6 +5240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAudibleModal();    // Sprint 29
   initTwitchModal();     // Sprint 29
   initBOMModal();        // Sprint 29
+  initDPReviewModal();   // Sprint 29
 
   // Extended goal reached: 83 incremental commits running.
 });

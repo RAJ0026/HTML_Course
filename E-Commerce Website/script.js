@@ -5204,6 +5204,40 @@ function initWonderyModal() {
 }
 
 /* ============================================================
+   One Medical Modal (Sprint 30)
+   ============================================================ */
+function initOneMedicalModal() {
+  const modal = $('#onemedical-modal');
+  const overlay = $('#onemedical-overlay');
+  const closeBtn = $('#onemedical-close');
+  const shopBtn = $('#shop-onemedical');
+  
+  if (!modal || !overlay) return;
+  
+  function openOneMedical() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeOneMedical() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openOneMedical = openOneMedical;
+  
+  closeBtn?.addEventListener('click', closeOneMedical);
+  overlay?.addEventListener('click', closeOneMedical);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to One Medical...');
+    }
+    setTimeout(closeOneMedical, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5346,6 +5380,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFabricModal();     // Sprint 30
   initShopbopModal();    // Sprint 30
   initWonderyModal();    // Sprint 30
+  initOneMedicalModal(); // Sprint 30
 
   // Extended goal reached: 83 incremental commits running.
 });

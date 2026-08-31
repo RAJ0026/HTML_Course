@@ -5238,6 +5238,40 @@ function initOneMedicalModal() {
 }
 
 /* ============================================================
+   AbeBooks Modal (Sprint 31)
+   ============================================================ */
+function initAbeBooksModal() {
+  const modal = $('#abebooks-modal');
+  const overlay = $('#abebooks-overlay');
+  const closeBtn = $('#abebooks-close');
+  const shopBtn = $('#shop-abebooks');
+  
+  if (!modal || !overlay) return;
+  
+  function openAbeBooks() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAbeBooks() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAbeBooks = openAbeBooks;
+  
+  closeBtn?.addEventListener('click', closeAbeBooks);
+  overlay?.addEventListener('click', closeAbeBooks);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to AbeBooks...');
+    }
+    setTimeout(closeAbeBooks, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5381,6 +5415,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initShopbopModal();    // Sprint 30
   initWonderyModal();    // Sprint 30
   initOneMedicalModal(); // Sprint 30
+  initAbeBooksModal();   // Sprint 31
 
   // Extended goal reached: 83 incremental commits running.
 });

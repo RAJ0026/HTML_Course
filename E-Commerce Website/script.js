@@ -5340,6 +5340,40 @@ function initAmazonInspireModal() {
 }
 
 /* ============================================================
+   ComiXology Modal (Sprint 31)
+   ============================================================ */
+function initComiXologyModal() {
+  const modal = $('#comixology-modal');
+  const overlay = $('#comixology-overlay');
+  const closeBtn = $('#comixology-close');
+  const shopBtn = $('#shop-comixology');
+  
+  if (!modal || !overlay) return;
+  
+  function openComiXology() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeComiXology() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openComiXology = openComiXology;
+  
+  closeBtn?.addEventListener('click', closeComiXology);
+  overlay?.addEventListener('click', closeComiXology);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to ComiXology...');
+    }
+    setTimeout(closeComiXology, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5486,6 +5520,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAbeBooksModal();   // Sprint 31
   initAmazonDriveModal(); // Sprint 31
   initAmazonInspireModal(); // Sprint 31
+  initComiXologyModal(); // Sprint 31
 
   // Extended goal reached: 83 incremental commits running.
 });

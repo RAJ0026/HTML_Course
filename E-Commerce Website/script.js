@@ -5272,6 +5272,40 @@ function initAbeBooksModal() {
 }
 
 /* ============================================================
+   Amazon Drive Modal (Sprint 31)
+   ============================================================ */
+function initAmazonDriveModal() {
+  const modal = $('#amazondrive-modal');
+  const overlay = $('#amazondrive-overlay');
+  const closeBtn = $('#amazondrive-close');
+  const shopBtn = $('#shop-amazondrive');
+  
+  if (!modal || !overlay) return;
+  
+  function openAmazonDrive() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAmazonDrive() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAmazonDrive = openAmazonDrive;
+  
+  closeBtn?.addEventListener('click', closeAmazonDrive);
+  overlay?.addEventListener('click', closeAmazonDrive);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Drive...');
+    }
+    setTimeout(closeAmazonDrive, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5416,6 +5450,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWonderyModal();    // Sprint 30
   initOneMedicalModal(); // Sprint 30
   initAbeBooksModal();   // Sprint 31
+  initAmazonDriveModal(); // Sprint 31
 
   // Extended goal reached: 83 incremental commits running.
 });

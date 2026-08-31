@@ -5374,6 +5374,40 @@ function initComiXologyModal() {
 }
 
 /* ============================================================
+   PillPack Modal (Sprint 32)
+   ============================================================ */
+function initPillPackModal() {
+  const modal = $('#pillpack-modal');
+  const overlay = $('#pillpack-overlay');
+  const closeBtn = $('#pillpack-close');
+  const shopBtn = $('#shop-pillpack');
+  
+  if (!modal || !overlay) return;
+  
+  function openPillPack() {
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closePillPack() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openPillPack = openPillPack;
+  
+  closeBtn?.addEventListener('click', closePillPack);
+  overlay?.addEventListener('click', closePillPack);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to PillPack...');
+    }
+    setTimeout(closePillPack, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5521,6 +5555,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAmazonDriveModal(); // Sprint 31
   initAmazonInspireModal(); // Sprint 31
   initComiXologyModal(); // Sprint 31
+  initPillPackModal();   // Sprint 32
 
   // Extended goal reached: 83 incremental commits running.
 });

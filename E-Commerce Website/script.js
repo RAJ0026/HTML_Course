@@ -5482,6 +5482,43 @@ function initCareersModal() {
 }
 
 /* ============================================================
+   Investor Modal (Sprint 32)
+   ============================================================ */
+function initInvestorModal() {
+  const modal = $('#investor-modal');
+  const overlay = $('#investor-overlay');
+  const closeBtn = $('#investor-close');
+  const shopBtn = $('#shop-investor');
+  const triggerBtn = $('#footer-investor');
+  
+  if (!modal || !overlay) return;
+  
+  function openInvestor(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeInvestor() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openInvestor = openInvestor;
+  
+  triggerBtn?.addEventListener('click', openInvestor);
+  closeBtn?.addEventListener('click', closeInvestor);
+  overlay?.addEventListener('click', closeInvestor);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Investor Relations...');
+    }
+    setTimeout(closeInvestor, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5632,6 +5669,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPillPackModal();   // Sprint 32
   initAboutModal();      // Sprint 32
   initCareersModal();    // Sprint 32
+  initInvestorModal();   // Sprint 32
 
   // Extended goal reached: 83 incremental commits running.
 });

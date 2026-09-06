@@ -5408,6 +5408,43 @@ function initPillPackModal() {
 }
 
 /* ============================================================
+   About Modal (Sprint 32)
+   ============================================================ */
+function initAboutModal() {
+  const modal = $('#about-modal');
+  const overlay = $('#about-overlay');
+  const closeBtn = $('#about-close');
+  const shopBtn = $('#shop-about');
+  const triggerBtn = $('#footer-about-link');
+  
+  if (!modal || !overlay) return;
+  
+  function openAbout(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeAbout() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openAbout = openAbout;
+  
+  triggerBtn?.addEventListener('click', openAbout);
+  closeBtn?.addEventListener('click', closeAbout);
+  overlay?.addEventListener('click', closeAbout);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to About Amazon...');
+    }
+    setTimeout(closeAbout, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5556,6 +5593,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAmazonInspireModal(); // Sprint 31
   initComiXologyModal(); // Sprint 31
   initPillPackModal();   // Sprint 32
+  initAboutModal();      // Sprint 32
 
   // Extended goal reached: 83 incremental commits running.
 });

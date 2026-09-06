@@ -5445,6 +5445,43 @@ function initAboutModal() {
 }
 
 /* ============================================================
+   Careers Modal (Sprint 32)
+   ============================================================ */
+function initCareersModal() {
+  const modal = $('#careers-modal');
+  const overlay = $('#careers-overlay');
+  const closeBtn = $('#careers-close');
+  const shopBtn = $('#shop-careers');
+  const triggerBtn = $('#footer-careers');
+  
+  if (!modal || !overlay) return;
+  
+  function openCareers(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('show');
+    overlay.classList.add('show');
+  }
+  
+  function closeCareers() {
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+  }
+  
+  window.openCareers = openCareers;
+  
+  triggerBtn?.addEventListener('click', openCareers);
+  closeBtn?.addEventListener('click', closeCareers);
+  overlay?.addEventListener('click', closeCareers);
+  
+  shopBtn?.addEventListener('click', () => {
+    if (window.showToast) {
+      showToast('Redirecting to Amazon Careers...');
+    }
+    setTimeout(closeCareers, 1000);
+  });
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -5594,6 +5631,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initComiXologyModal(); // Sprint 31
   initPillPackModal();   // Sprint 32
   initAboutModal();      // Sprint 32
+  initCareersModal();    // Sprint 32
 
   // Extended goal reached: 83 incremental commits running.
 });
